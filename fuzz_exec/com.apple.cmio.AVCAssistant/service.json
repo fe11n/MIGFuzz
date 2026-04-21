@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/Frameworks/CoreMediaIO.framework/Resources/AVC.plugin/Contents/Resources/AVCAssistant",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    2006
+  ],
+  "subsystem_end_ids": [
+    2029
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "AVCAssistant",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10001ADF8"
+  ],
+  "dispatch_routine_offsets": [
+    "0x1adf8"
+  ]
+}

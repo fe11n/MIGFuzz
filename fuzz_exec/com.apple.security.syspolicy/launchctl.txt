@@ -1,0 +1,333 @@
+system/com.apple.security.syspolicy = {
+	active count = 6
+	path = /System/Library/LaunchDaemons/com.apple.security.syspolicy.plist
+	type = LaunchDaemon
+	state = running
+
+	program = /usr/libexec/syspolicyd
+	arguments = {
+		/usr/libexec/syspolicyd
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocSpaceEfficient => 1
+		XPC_SERVICE_NAME => com.apple.security.syspolicy
+	}
+
+	domain = system
+	minimum runtime = 10
+	base minimum runtime = 10
+	exit timeout = 5
+	runs = 1
+	pid = 26565
+	immediate reason = ipc (mach)
+	forks = 0
+	execs = 1
+	initialized = 1
+	trampolined = 1
+	started suspended = 0
+	proxy started suspended = 0
+	last exit code = (never exited)
+
+	event triggers = {
+		CloudTelemetry.com.apple.syspolicyd.postinstall => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"_SequenceNumber" => 2
+				"PowerNap" => true
+				"PostInstall" => true
+				"Priority" => "Maintenance"
+			}
+		}
+		CloudTelemetry.com.apple.syspolicyd.submit => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"_SequenceNumber" => 2
+				"GracePeriod" => 43200
+				"ExpectedDuration" => 300
+				"ActivityGroupConcurrencyLimit" => 1
+				"RequireInexpensiveNetworkConnectivity" => true
+				"PowerNap" => true
+				"RandomInitialDelay" => 43200
+				"NetworkUploadSize" => 5242880
+				"Delay" => 86400
+				"RequireNetworkConnectivity" => true
+				"AllowBattery" => false
+				"ActivityGroupName" => "com.apple.CloudTelemetryService.group"
+				"Priority" => "Maintenance"
+			}
+		}
+		CloudTelemetry.com.apple.syspolicyd.db-cleanup => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"_SequenceNumber" => 2
+				"GracePeriod" => 43200
+				"ExpectedDuration" => 60
+				"PowerNap" => true
+				"ActivityGroupConcurrencyLimit" => 1
+				"RandomInitialDelay" => 43200
+				"Delay" => 86400
+				"AllowBattery" => false
+				"ActivityGroupName" => "com.apple.CloudTelemetryService.group"
+				"Priority" => "Maintenance"
+				"DiskIntensive" => true
+			}
+		}
+		com.apple.security.syspolicy.kext.mt => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"GracePeriod" => 43200
+				"Delay" => 518400
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.security.syspolicy.gatekeeper.policy-metrics => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"Interval" => 518400
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.security.syspolicy.measure => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"Interval" => 259200
+				"CPUIntensive" => true
+				"PowerNap" => true
+				"AllowBattery" => false
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.security.syspolicy.xprotect-update => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"Interval" => 86400
+				"GracePeriod" => 28800
+				"PowerNap" => true
+				"RequireNetworkConnectivity" => true
+				"AllowBattery" => true
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.security.syspolicy.find.bundles => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"Interval" => 604800
+				"PowerNap" => true
+				"AllowBattery" => false
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.security.syspolicy.rearm => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"GracePeriod" => 3600
+				"Delay" => 86400
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.security.syspolicy.report => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"GracePeriod" => 43200
+				"Delay" => 86400
+				"AllowBattery" => false
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.security.syspolicy.kext.deprecation => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"GracePeriod" => 604800
+				"Delay" => 1209600
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.security.syspolicy.sample-upload => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"Interval" => 86400
+				"GracePeriod" => 28800
+				"RequireScreenSleep" => true
+				"PowerNap" => true
+				"RequireNetworkConnectivity" => true
+				"AllowBattery" => true
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.security.syspolicy.invalidate => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"RequireScreenSleep" => true
+				"CPUIntensive" => true
+				"GracePeriod" => 259200
+				"PowerNap" => true
+				"Delay" => 86400
+				"AllowBattery" => true
+				"RequireNetworkConnectivity" => false
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.security.syspolicy.legacypolicy => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"Interval" => 42300
+				"PowerNap" => true
+				"AllowBattery" => true
+				"RequireNetworkConnectivity" => true
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.security.syspolicy.check.revocation => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"RequireScreenSleep" => true
+				"Interval" => 259200
+				"PowerNap" => true
+				"AllowBattery" => true
+				"RequireNetworkConnectivity" => true
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.security.syspolicy.db-cleanup => {
+			keepalive = 0
+			service = com.apple.security.syspolicy
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"RequireScreenSleep" => true
+				"Interval" => 604800
+				"PowerNap" => true
+				"AllowBattery" => true
+				"Priority" => "Maintenance"
+			}
+		}
+	}
+
+	endpoints = {
+		"com.apple.security.AppleSystemPolicy.mig" = {
+			port = 0x3d03
+			host-special port = 29 (syspolicyd)
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.security.syspolicy" = {
+			port = 0x2a123
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.security.syspolicy.kext" = {
+			port = 0x29803
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.security.syspolicy.exec" = {
+			port = 0x14b03
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+	}
+
+	event channels = {
+		"com.apple.xpc.activity" = {
+			port = 0x29933
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+	}
+
+	spawn type = interactive (4)
+	jetsam priority = 40
+	jetsam memory limit (active, soft) = 50 MB
+	jetsam memory limit (inactive, soft) = 50 MB
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	exponential throttling grace limit = 10
+	job state = running
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = inferred program | system service | exponential throttling | tle system
+}

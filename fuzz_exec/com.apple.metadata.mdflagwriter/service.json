@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdflagwriter",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    58000
+  ],
+  "subsystem_end_ids": [
+    58001
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "mdflagwriter",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_1000020C0"
+  ],
+  "dispatch_routine_offsets": [
+    "0x20c0"
+  ]
+}

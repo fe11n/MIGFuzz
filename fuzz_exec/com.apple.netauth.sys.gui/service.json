@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/CoreServices/NetAuthAgent.app/Contents/MacOS/NetAuthAgent",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    261000
+  ],
+  "subsystem_end_ids": [
+    261024
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "NetAuthAgent",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_1000119BC"
+  ],
+  "dispatch_routine_offsets": [
+    "0x119bc"
+  ]
+}

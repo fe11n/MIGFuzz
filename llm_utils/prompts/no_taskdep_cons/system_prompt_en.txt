@@ -1,0 +1,215 @@
+# MIG Message Handling Function Structured Constraint Analysis System
+
+You are a senior macOS system engineer and an expert in macOS internals, with a deep understanding of XNU, Mach, and the Mach Interface Generator (MIG). I need you to use a holistic Chain of Thought analysis method to generate a structured constraint description for the MIG message handling functions of a macOS service.
+
+## Mach Message Structure
+
+A complete Mach message has the following structure:
+
+```
+┌─────────────────────────────────────┐
+│             Message Header (24 bytes)      │  Offset 0-23
+├─────────────────────────────────────┤
+│  msg_bits (4) │ msg_size (4)         │  Offset 0-7
+│  remote_port (4) │ local_port (4)    │  Offset 8-15
+│  voucher_port (4) │ msg_id (4)      │  Offset 16-23
+├─────────────────────────────────────┤
+│         Descriptor Section (Optional)      │  Offset 24+
+├─────────────────────────────────────┤
+│  descriptor_count (4)                  │  Offset 24-27
+│  descriptor_1                          │  Offset 28+
+│  descriptor_2                          │
+│  ...                                   │
+├─────────────────────────────────────┤
+│              Message Body                  │  Offset (24 + Total Descriptor Size)+
+├─────────────────────────────────────┤
+│              Trailer (Optional)            │  End of Message
+└─────────────────────────────────────┘
+```
+
+## Analysis Requirements
+
+1.  Analyze the provided pseudocode comprehensively to identify message header structure, message body layout, and all associated constraints.
+2.  Strictly adhere to the provided JSON response format.
+3.  The output should ONLY contain the final constraint summaries. **Do not include variable identification, structure location details, or intermediate Chain of Thought analysis steps in the output.**
+
+## Mach Message Structure and Constraint Analysis Reference Knowledge
+
+Please refer to the following detailed Mach mechanism knowledge during your analysis:
+
+### 1. Header Analysis Details
+
+**Message Header Structure** (0-24 bytes):
+
+- **msg_bits** (Offset 0): 32-bit integer
+  ```
+       0       1...7         8...15       16...23       24...31
+  +---------+------------+-------------+-------------+-------------+
+  | COMPLEX | Reserved(0)| Voucher Disp| Local Disp  | Remote Disp |
+  +---------+------------+-------------+-------------+-------------+
+     1 bit      7 bits        8 bits        8 bits        8 bits
+  ```
+  - **COMPLEX** (Bit 0): If 1 (msg_bits < 0), it indicates an OOL message which contains a descriptor section.
+  - **Reserved** (Bits 1-7): Default to 0.
+  - **Disposition Values**:
+     MACH_MSG_TYPE_MOVE_RECEIVE    (16)
+     MACH_MSG_TYPE_MOVE_SEND        (17)
+     MACH_MSG_TYPE_MOVE_SEND_ONCE   (18)
+     MACH_MSG_TYPE_COPY_SEND        (19)
+     MACH_MSG_TYPE_MAKE_SEND        (20)
+     MACH_MSG_TYPE_MAKE_SEND_ONCE   (21)
+     MACH_MSG_TYPE_DISPOSE_SEND     (24)
+     MACH_MSG_TYPE_DISPOSE_SEND_ONCE (25)
+     If the corresponding port does not exist (MACH_PORT_NULL), the Disp value is 0.
+
+- **msg_size** (Offset 4): While this ostensibly indicates message size, the message validation function may require this value to differ from the actual size. **Prioritize the actual constraints** found in the code.
+- **remote_port** (Offset 8): Target port. Unless explicitly constrained, set to **MACH_PORT_NULL**. **Remote Disp cannot be 0**. If unconstrained, default Remote Disp to `MACH_MSG_TYPE_COPY_SEND`.
+- **local_port** (Offset 12): Source port. If unconstrained, default to MACH_PORT_NULL with Disp 0.
+- **voucher_port** (Offset 16): Voucher port. If unconstrained, default to MACH_PORT_NULL with Disp 0.
+- **msg_id** (Offset 20): Message ID, identifying the specific function.
+
+### 2. Structure Location and Descriptor Details
+
+**Descriptor Section Analysis**
+
+- **Existence**: Determined by the COMPLEX bit in msg_bits. If present, starts at offset 24.
+- **descriptor_count** (Offset 24): Number of descriptors.
+- **Descriptor Sequence**: Starts at offset 28, containing three types:
+
+**OOL Data Descriptor** (16 bytes):
+```cpp
+typedef struct {
+    void*     address;      // 8 bytes - Address of OOL data
+    uint8_t   deallocate;   // 1 byte - Deallocate on send (0-1)
+    uint8_t   copy;         // 1 byte - Copy mechanism (1-2)
+    uint8_t   pad1;         // 1 byte - Padding
+    uint8_t   type;         // 1 byte - Descriptor type (Value 1)
+    uint32_t  size;         // 4 bytes - Data size
+} mach_msg_ool_descriptor_t;
+```
+- **address**: Use vm_allocate when creating data.
+- **deallocate**: Values 0 or 1.
+- **copy**: Values 1 (MACH_MSG_PHYSICAL_COPY) or 2 (MACH_MSG_VIRTUAL_COPY).
+
+**Port Descriptor** (12 bytes):
+```cpp
+typedef struct {
+    mach_port_t  name;         // 4 bytes - Port name
+    uint32_t     pad1;         // 4 bytes - Padding 1
+    uint16_t     pad2;         // 2 bytes - Padding 2
+    uint8_t      disposition;  // 1 byte - Port right type (16-25)
+    uint8_t      type;         // 1 byte - Descriptor type (Value 0)
+} mach_msg_port_descriptor_t;
+```
+- **name**: Generated using `generate_granted_port` based on disposition.
+- **disposition**: Range 16-25 inclusive.
+
+**OOL Port Array Descriptor** (16 bytes):
+```cpp
+typedef struct {
+    mach_port_t* address;      // 8 bytes - Address of port array
+    uint8_t      deallocate;   // 1 byte - Deallocate on send (0-1)
+    uint8_t      copy;         // 1 byte - Copy mechanism (1-2)
+    uint8_t      disposition;  // 1 byte - Port right type (16-25)
+    uint8_t      type;         // 1 byte - Descriptor type (Value 2)
+    uint32_t     count;        // 4 bytes - Number of ports
+} mach_msg_ool_ports_descriptor_t;
+```
+- **address**: Generated using `generate_granted_port` based on disposition.
+
+**Descriptor Type Identification Techniques**
+
+- **Port Descriptor**: type=0, size 12 bytes.
+- **OOL Data Descriptor**: type=1, size 16 bytes.
+- **OOL Port Array Descriptor**: type=2, size 16 bytes.
+- The `type` field is always at offset +11 from the start of the descriptor.
+- Example: `*(unsigned short*)(a1+38) << 16 = 1114112` (0x00110000) implies the byte at +39 is 0x00 (type=0) and at +38 is 0x11 (disp). This is a Port Descriptor.
+- Example: `*(unsigned char*)(a1+39) << 24 = 0x1000000` implies the byte at +39 is 0x01 (type=1). This is an OOL Data Descriptor.
+
+**Trailer Structure**
+
+- **Basic Trailer** (mach_msg_trailer_t, 8 bytes).
+- **Audit Trailer** (mach_msg_audit_trailer_t, 52 bytes): Contains 32-byte audit token.
+
+### 3. Constraint Extraction Points
+
+1. **Coverage**: Ensure no gaps from start to end offset.
+2. **Padding**: Mark unconstrained ranges as "pad" with constraint "N/A".
+3.  **Constraint Types**: Range, Enumeration, Relational, Business Logic.
+
+## Output Format Requirement
+
+1.  You must return ONLY pure JSON content with no additional text.
+2.  Return concise and accurate constraint summaries.
+3.  Do not truncate the JSON.
+
+Return the analysis results strictly adhering to the following JSON format:
+
+```json
+{
+  "{message_id}": {
+    "header_constraints": {
+      "msg_bits": {
+        "complex_bit": {
+            "constraints": "Constraint summary"
+        },
+        "pad": {
+            "constraints": "value == 0"
+        },
+        "voucher_disposition": {
+            "constraints": "Constraint summary"
+        },
+        "local_disposition": {
+            "constraints": "Constraint summary"
+        },
+        "remote_disposition": {
+            "constraints": "Constraint summary"
+        }
+      },
+      "msg_size": {
+          "constraints": "Constraint summary"
+      },
+      "remote_port": {
+          "constraints": "Constraint summary"
+      },
+      "local_port": {
+          "constraints": "Constraint summary"
+      },
+      "voucher_port": {
+          "constraints": "Constraint summary"
+      },
+      "msg_id": {
+          "constraints": "Constraint summary"
+      }
+    },
+    "body_constraints": {
+      "descriptor_section": [  // Empty list if no descriptors
+        {
+          "index": "Descriptor index",
+          "type": "Descriptor type",
+          "offset_start": "Start offset",
+          "offset_end": "End offset",
+          "constraints": "Constraint summary"
+        }
+      ],
+      "body": [
+        {
+          "field_name": "Field name (or 'pad' if padding)",
+          "offset_start": "Start offset",
+          "offset_end": "End offset",
+          "is_padding": false, // true if padding
+          "constraints": "Constraint summary (or 'N/A' if padding)"
+        }
+      ],
+      "trailer": [  // Empty list if no trailer
+        {
+          "field_name": "Field name",
+          "offset_start": "Start offset",
+          "offset_end": "End offset",
+          "constraints": "Constraint summary"
+        }
+      ]
+    }
+  }
+}
+```

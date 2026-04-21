@@ -1,0 +1,64 @@
+请基于以下输入信息，修复编译错误并生成改进后的 Mach 消息构造代码，使其能够成功编译。
+
+【服务信息】
+- 服务名称：{service_name}
+
+【工具函数库说明】
+以下是生成的代码可用的工具函数库说明文件：
+```
+{generate_tools}
+```
+
+【现有消息生成代码（generate_message_cc）】
+以下是完整的 generate_message.cc 文件内容，包含所有消息ID的生成函数：
+```
+{generate_message_cc}
+```
+注意，该文件存在编译错误，无法成功编译。需要你根据编译失败原因分析问题，对其进行修改，使其能够成功编译。
+
+【编译失败原因（check_fail_reason）】
+以下为编译失败的详细原因：
+```
+{check_fail_reason}
+```
+
+【任务要求】
+1. 根据编译失败原因，明确代码中存在哪些语法错误、未定义符号、类型错误或其他编译问题。
+2. 找到 generate_message.cc 中对应的问题位置，说明需要如何调整以修复编译错误。
+3. 按要求返回新的消息生成代码。所有生成的函数需保证 C++14 语法正确并可直接编译。
+4. 确保修改仅限于修复编译错误，不改变消息的语义或结构，除非编译错误要求如此。
+5. 对于同一类型的错误，编译器可能只在其第一次出现的地方报告。因此修复报错时需要额外注意该错误是否会在代码的其它地方也出现，如果出现了则需要一并修改。
+6. 修复之后，额外考虑应用该更改后整体代码是否有其它编译错误（如使用的函数是否声明或定义等），确保更新后的代码能够通过编译。
+
+【输出 JSON 结构】
+返回单个 JSON 对象，包含以下字段：
+- "part1_content": 字符串；完整的 PART1 内容（包含头文件引用和工具函数定义）。如果需要修改 PART1 以修复编译错误，请返回修改后的完整内容；如果无需修改，请不输出此字段。注意：不需要包含 PART1 的介绍性注释（如 "// PART1: Header file inclusions..."），直接从 #include 开始即可。
+- "updates": 对象；键为消息ID（字符串），值为该消息ID的更新内容对象。
+
+每个更新内容对象包含以下字段：
+- "generate_header": 字符串；完整的 generate_header_{{message_id}} 实现，若无需改动请不输出此字段。
+- "generate_descriptor": 字符串；完整的 generate_descriptor_{{message_id}} 实现，若无需改动请不输出此字段。
+- "generate_body": 字符串；完整的 generate_body_{{message_id}} 实现，若无需改动请不输出此字段。
+- "generate_trailer": 字符串；完整的 generate_trailer_{{message_id}} 实现，若无需改动请不输出此字段。
+- "generate_message": 字符串；完整的 generate_message_{{message_id}} 实现，若无需改动请不输出此字段。
+- "notes": 字符串；总结你对该消息ID编译错误定位与修复方案的分析。
+
+示例 JSON 格式：
+{{
+  "part1_content": "#include <mach/mach.h>\n...",
+  "updates": {{
+    "96500": {{
+      "generate_header": "static std::vector<uint8_t> generate_header_96500(...) {{ ... }}",
+      "notes": "修复了未定义符号错误..."
+    }},
+    "96501": {{
+      "generate_body": "static std::vector<uint8_t> generate_body_96501(...) {{ ... }}",
+      "notes": "调整了参数类型..."
+    }}
+  }}
+}}
+
+注意：
+- 只返回符合上述结构的 JSON 文本，不要输出额外文字。
+- 当引用 PART1 工具函数时，请确认相应函数已存在或在 "part1_additions" 中追加实现。
+- 只输出需要修改的消息ID，不需要修改的ID无需包含。

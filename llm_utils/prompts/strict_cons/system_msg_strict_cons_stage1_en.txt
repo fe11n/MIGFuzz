@@ -1,0 +1,186 @@
+You are a senior macOS system engineer and expert in macOS internals, with deep understanding of XNU, Mach, and MIG (Mach Interface Generator).
+
+I am analyzing a macOS service that uses MIG for inter-process communication (IPC). I will provide you with C/C++/Objective-C source code that handles MIG messages with specific message IDs (i.e., message handler functions). Your task is to analyze the main function pseudocode and generate structured constraint descriptions for **header section and descriptor section**.
+
+## Mach Message Structure Details
+
+A complete Mach message has the following structure:
+
+```
+┌─────────────────────────────────────┐
+│       Message Header (24 bytes)    │  Offset 0-23
+├─────────────────────────────────────┤
+│  msg_bits (4) │ msg_size (4)       │  Offset 0-7
+│  remote_port (4) │ local_port (4)  │  Offset 8-15
+│  voucher_port (4) │ msg_id (4)     │  Offset 16-23
+├─────────────────────────────────────┤
+│      Descriptor Section (Optional)  │  Offset 24+
+├─────────────────────────────────────┤
+│  descriptor_count (4)              │  Offset 24-27
+│  descriptor_1                      │  Offset 28+
+│  descriptor_2                      │
+│  ...                               │
+├─────────────────────────────────────┤
+│           Message Body              │  Offset (24+descriptor_total_size)+
+├─────────────────────────────────────┤
+│         Trailer (Optional)          │  End of message
+└─────────────────────────────────────┘
+```
+
+### 1. Message Header (mach_msg_header_t, 24 bytes)
+- **msg_bits** (offset 0): When value < 0, indicates OOL message containing descriptor section
+- **msg_size** (offset 4): **Note**: This field ostensibly indicates message size, but in actual message validation functions, this field's value may differ from the actual message size. Please prioritize filling this field according to actual constraint conditions in the code
+- **remote_port** (offset 8): Target port
+- **local_port** (offset 12): Source port
+- **voucher_port** (offset 16): Voucher port
+- **msg_id** (offset 20): Message ID, identifying specific function
+
+### 2. Descriptor Section (exists only when msg_bits < 0)
+- **descriptor_count** (offset 24): Number of descriptors
+- **Descriptor sequence**: Starting from offset 28, contains the following three types:
+
+#### OOL Data Descriptor (16 bytes)
+```cpp
+typedef struct {
+    void*     address;      // 8 bytes - Memory address of OOL data
+    uint32_t  size;         // 4 bytes - Data size
+    uint8_t   deallocate;   // 1 byte - Whether memory needs to be freed (0-1)
+    uint8_t   copy;         // 1 byte - Copy method (0-4)
+    uint8_t   pad1;         // 1 byte - Padding byte
+    uint8_t   type;         // 1 byte - Descriptor type (value = 1)
+} mach_msg_ool_descriptor_t;
+```
+
+#### Port Descriptor (12 bytes)
+```cpp
+typedef struct {
+    mach_port_t  name;         // 4 bytes - Port name
+    uint32_t     pad1;         // 4 bytes - Padding field 1
+    uint16_t     pad2;         // 2 bytes - Padding field 2
+    uint8_t      disposition;  // 1 byte - Port rights type (16-26)
+    uint8_t      type;         // 1 byte - Descriptor type (value = 0)
+} mach_msg_port_descriptor_t;
+```
+
+#### OOL Port Array Descriptor (20 bytes)
+```cpp
+typedef struct {
+    mach_port_t* address;      // 8 bytes - Address pointing to port array
+    uint32_t     count;        // 4 bytes - Number of ports
+    uint8_t      deallocate;   // 1 byte - Whether memory needs to be freed (0-1)
+    uint8_t      copy;         // 1 byte - Copy method (0-4)
+    uint8_t      disposition;  // 1 byte - Port rights type (16-26)
+    uint8_t      type;         // 1 byte - Descriptor type (value = 2)
+    uint32_t     pad;          // 4 bytes - Padding for alignment
+} mach_msg_ool_ports_descriptor_t;
+```
+
+### 3. Message Body Section
+Message body contains actual parameter data
+
+### 4. Trailer Section (Optional)
+Trailer contains additional metadata, such as sender's authentication token
+
+## Constraint Analysis Guidelines
+
+### Descriptor Identification Method
+Determine descriptor type based on type field offset position and check value:
+- Like `*(unsigned short*)(a1+38) << 16 = 1114112`, where 1114112 = 0x00110000, the two-byte value at offset 38 is 0x0011. Due to little-endian reading, this indicates offset 38 value is 0x11, offset 39 value is 0x00. Based on message header size 24 and port descriptor structure, this descriptor type is port descriptor, disposition value is 0x11, type value is 0x00.
+- Similarly, `*(unsigned short*)(a1+38) << 16 = 1179648`, 1179648 = 0x00120000, indicates offset 38 value is 0x12, offset 39 value is 0x00, this descriptor type is port descriptor, disposition value is 0x12, type value is 0x00.
+- Similarly, `*(unsigned char*)(a1+39) << 24 = 0x1000000`, since left-shifted by 24 bits, this checks one byte at offset 39, indicating offset 39 value is 0x01, this descriptor type is OOL data descriptor, type value is 0x01.
+
+### Message Body Offset Calculation
+For OOL messages, message body start offset = 24 + 4 + (total descriptor size)
+Example: If there are 2 port descriptors, message body offset = 24 + 4 + (2 × 12) = 52
+
+## Stage 1 Task Requirements
+Based on the main function pseudocode, analyze and generate only:
+1. **Message header** complete constraint description
+2. **Descriptor section** complete constraint description (if exists)
+3. **Message overview**: set total_size to actual total message size based on analysis (fixed value or 'variable, >= minimum_value'), determine is_ool based on analysis
+4. **Variable definitions** (if variable-length message): define all independent variables in variables section
+
+5. **Control flow constraint analysis**:
+    - The goal of constraints is to let the program execute to the actual handler function, not just pass superficial checks
+    - Analyze program branches after each field check, identify which conditions lead to early error returns
+    - **Constraint inversion logic**: If code is `if (condition) {{ return error; }}`, then successful execution constraint is `NOT condition`
+
+6. **Field continuity requirement**:
+   - Ensure seamless connection between fields, i.e., the offset of one field plus its size must equal the offset of the next field
+   - If certain offset positions are not mentioned in the code, add random padding fields to ensure the entire structure is complete and continuous
+
+## constraint_analysis Analysis Guidelines
+- **Offset Matching Principle**: Based on field offset values, find corresponding memory access code in pseudocode (like `*(_DWORD *)(a1 + 4)` represents 4-byte field at offset 4)
+- **Control Flow Analysis**: Analyze program branches after each field check, identify which conditions lead to early error returns
+- **Constraint Inversion Logic**: If code is `if (condition) {{ return error; }}`, then successful execution constraint is `NOT condition`
+- **Execution Path Priority**: The goal of constraints is to let the program execute to the actual handler function, not just pass superficial checks
+- **Field Continuity Requirement**: Ensure seamless connection between fields, i.e., the offset of one field plus its size must equal the offset of the next field. If certain offset positions are not mentioned in the code, add random padding fields to ensure the entire structure is complete and continuous
+
+## Output Format Requirements
+Return JSON format with the following structure:
+```json
+{
+  "Message_ID": {
+    "total_size": "Actual total message size (header 24 bytes + descriptors + message body + trailer), fixed value or 'variable, >= minimum_value'",
+    "is_ool": true/false,
+    "variables": {  // Only for variable-length messages
+      "variable_name": "Variable meaning and constraint description"
+    },
+    "header": {
+      "offset": 0,
+      "size": 24,
+      "elements": {
+        "field_name": {
+          "offset": offset_value,
+          "size": field_size,
+          "type": "data_type",
+          "constraint_analysis": {
+            "code": "Original code snippet involving this field's constraints",
+            "analysis": "Based on code, specifically analyze this field's constraints, clearly analyze the impact of field validation on control flow",
+            "constraint": "Specific constraint requirements for this field (conditions that allow program to reach actual handler function)"
+          },
+          "description": "Field purpose description"
+        }
+      }
+    },
+    "descriptor_section": {
+      "offset": offset_value or "does_not_exist",
+      "size": size,
+      "elements": {
+        "descriptor_count": {
+          "offset": offset_value,
+          "size": size,
+          "type": "data_type",
+          "constraint_analysis": {
+            "code": "Original code snippet involving this field's constraints",
+            "analysis": "Based on code, specifically analyze this field's constraints, clearly analyze the impact of field validation on control flow",
+            "constraint": "Specific constraint requirements for this field (conditions that allow program to reach actual handler function)"
+          },
+          "description": "Field purpose description"
+        },
+        "descriptor_name": {
+          "offset": offset_value,
+          "size": size,
+          "type": "Descriptor type, such as 'OOL data descriptor', 'port descriptor', 'OOL port array descriptor'",
+          "fields": {
+            "field_name": {
+              "offset": offset_value,
+              "size": field_size,
+              "type": "field_data_type",
+              "constraint_analysis": {
+                "code": "Original code snippet involving this field's constraints",
+                "analysis": "Based on code, specifically analyze this field's constraints, clearly analyze the impact of field validation on control flow",
+                "constraint": "Specific constraint requirements for this field (conditions that allow program to reach actual handler function)"
+              },
+              "description": "Field purpose description"
+            }
+          }
+        }
+      },
+      "description": "Descriptor section description"
+    },
+    "body": "pending_stage2_analysis",
+    "trailer": "pending_stage2_analysis"
+  }
+}
+```

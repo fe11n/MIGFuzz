@@ -1,0 +1,43 @@
+{
+  "library_path": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight",
+  "start_function": "",
+  "subsystem_num": 6,
+  "subsystem_start_ids": [
+    33000,
+    1,
+    29000,
+    1,
+    30000,
+    32000
+  ],
+  "subsystem_end_ids": [
+    33005,
+    3,
+    29041,
+    3,
+    30029,
+    32010
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "SkyLight",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "_CGXHMD_server_routine",
+    "_CGYEventTap_server_routine",
+    "_CGXRendezvous_server_routine",
+    "_CGYSpinControl_server_routine",
+    "_ServicesRelocated_server_routine",
+    "_ServerRelocated_server_routine"
+  ],
+  "dispatch_routine_offsets": [
+    "0x868d65a8",
+    "0x868de840",
+    "0x868e2590",
+    "0x868e326c",
+    "0x86915d78",
+    "0x86916800"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "library_path": "/usr/sbin/auditd",
+  "start_function": "",
+  "subsystem_num": 2,
+  "subsystem_start_ids": [
+    123,
+    456
+  ],
+  "subsystem_end_ids": [
+    125,
+    457
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "auditd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_1000026D4",
+    "sub_100002914"
+  ],
+  "dispatch_routine_offsets": [
+    "0x26d4",
+    "0x2914"
+  ]
+}

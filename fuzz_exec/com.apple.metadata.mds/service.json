@@ -1,0 +1,67 @@
+{
+  "library_path": "/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Support/mds",
+  "start_function": "",
+  "subsystem_num": 12,
+  "subsystem_start_ids": [
+    10030,
+    25000,
+    41000,
+    44000,
+    26000,
+    48000,
+    41100,
+    12000,
+    14000,
+    15000,
+    44500,
+    24000
+  ],
+  "subsystem_end_ids": [
+    10042,
+    25009,
+    41005,
+    44002,
+    26001,
+    48009,
+    41103,
+    12001,
+    14044,
+    15001,
+    44502,
+    24020
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "mds",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10012FA48",
+    "sub_100130588",
+    "sub_100131040",
+    "sub_100131978",
+    "sub_100132688",
+    "sub_100132B70",
+    "sub_1001330FC",
+    "sub_1001331D0",
+    "sub_1001334DC",
+    "sub_100137AA8",
+    "sub_1001394A0",
+    "sub_10013B24C"
+  ],
+  "dispatch_routine_offsets": [
+    "0x12fa48",
+    "0x130588",
+    "0x131040",
+    "0x131978",
+    "0x132688",
+    "0x132b70",
+    "0x1330fc",
+    "0x1331d0",
+    "0x1334dc",
+    "0x137aa8",
+    "0x1394a0",
+    "0x13b24c"
+  ]
+}

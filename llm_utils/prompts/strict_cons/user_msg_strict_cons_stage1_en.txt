@@ -1,0 +1,22 @@
+Please analyze the main function pseudocode for message ID {message_id} and generate header and descriptor section constraints.
+
+## Message Details Analysis
+
+### Message ID {message_id} - {function_name}
+
+**Main function pseudocode (message parsing logic):**
+```c
+{pseudocode}
+```
+
+**Task Requirements:**
+Please carefully analyze the above main function pseudocode and generate structured constraint descriptions for message header and descriptor section.
+
+Requirements:
+1. **Strict JSON format**: Include header and descriptor_section sections
+2. **Detailed analysis of each element**: Provide offset, size, type, constraint_analysis, purpose description
+3. **Precise constraints**: Based on pseudocode analysis, provide accurate constraint expressions
+4. **constraint_analysis structure requirements**: Each field must include code, analysis, constraint three sub-elements
+5. **Focus on header and descriptor validation**: Ensure constraints allow program to pass initial validation and enter message body processing
+
+Please focus on header and descriptor section analysis. Body and trailer will be handled in subsequent stage.

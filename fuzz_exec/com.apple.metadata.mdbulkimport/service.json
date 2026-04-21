@@ -1,0 +1,39 @@
+{
+  "library_path": "/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdbulkimport",
+  "start_function": "",
+  "subsystem_num": 5,
+  "subsystem_start_ids": [
+    2405,
+    46000,
+    50000,
+    57000,
+    49000
+  ],
+  "subsystem_end_ids": [
+    2409,
+    46002,
+    50002,
+    57001,
+    49001
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "mdbulkimport",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10002E6A8",
+    "sub_10002F220",
+    "sub_10002FC2C",
+    "sub_10002FF38",
+    "sub_1000300E8"
+  ],
+  "dispatch_routine_offsets": [
+    "0x2e6a8",
+    "0x2f220",
+    "0x2fc2c",
+    "0x2ff38",
+    "0x300e8"
+  ]
+}

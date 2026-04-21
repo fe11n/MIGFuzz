@@ -1,0 +1,27 @@
+{
+  "library_path": "/System/Library/PrivateFrameworks/Uninstall.framework/Resources/uninstalld",
+  "start_function": "",
+  "subsystem_num": 2,
+  "subsystem_start_ids": [
+    64,
+    968900
+  ],
+  "subsystem_end_ids": [
+    73,
+    968902
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "uninstalld",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10000B428",
+    "sub_10000B6FC"
+  ],
+  "dispatch_routine_offsets": [
+    "0xb428",
+    "0xb6fc"
+  ]
+}

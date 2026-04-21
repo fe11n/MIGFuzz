@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/MacOS/ARDAgent",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    26540
+  ],
+  "subsystem_end_ids": [
+    26542
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "ARDAgent",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10009D2E8"
+  ],
+  "dispatch_routine_offsets": [
+    "0x9d2e8"
+  ]
+}

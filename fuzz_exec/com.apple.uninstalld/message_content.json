@@ -1,0 +1,309 @@
+[
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.uninstalld/out/crashes/other_0xxxxxxx388_0x0_2",
+        "messages": [
+            {
+                "body": "",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 71,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 24,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "f81f9e774b6318e20027976f",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 70,
+                    "msgh_local_port": 2806064616,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "1f2000007511000000000074",
+                "header": {
+                    "msgh_bits": 4864,
+                    "msgh_id": 65,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "f50100000000000000000000",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 70,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "002000000000000000000000",
+                "header": {
+                    "msgh_bits": 4864,
+                    "msgh_id": 65,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "000000006c67000011000000",
+                "header": {
+                    "msgh_bits": 4864,
+                    "msgh_id": 65,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "000000740000000100747511",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 72,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ]
+    },
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.uninstalld/out/icrashes/other_0xxxxxxx388_0x0_2",
+        "messages": [
+            {
+                "body": "",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 71,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 24,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "f81f9e774b6318e20027976f",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 70,
+                    "msgh_local_port": 2806064616,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "1f2000007511000000000074",
+                "header": {
+                    "msgh_bits": 4864,
+                    "msgh_id": 65,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "f50100000000000000000000",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 70,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "002000000000000000000000",
+                "header": {
+                    "msgh_bits": 4864,
+                    "msgh_id": 65,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "000000006c67000011000000",
+                "header": {
+                    "msgh_bits": 4864,
+                    "msgh_id": 65,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "000000740000000100747511",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 72,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ]
+    },
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.uninstalld/out/crashes/other_0xxxxxxx388_0x0_3",
+        "messages": [
+            {
+                "body": "180270357c4ca44e59534e2f",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 968901,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "01b46a8c17aeabe9e1b4b750",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 70,
+                    "msgh_local_port": 1865238513,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "e5d0b2e80c1ad5179fb5d8a3",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 968901,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "3e185345c5af15d16ad52c43",
+                "header": {
+                    "msgh_bits": 4864,
+                    "msgh_id": 65,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 71,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 24,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "6062202c43cc409aede805f2",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 72,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ],
+        "conwith_generator": false
+    },
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.uninstalld/out/icrashes/other_0xxxxxxx388_0x0_3",
+        "messages": [
+            {
+                "body": "180270357c4ca44e59534e2f",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 968901,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "01b46a8c17aeabe9e1b4b750",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 70,
+                    "msgh_local_port": 1865238513,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "e5d0b2e80c1ad5179fb5d8a3",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 968901,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "3e185345c5af15d16ad52c43",
+                "header": {
+                    "msgh_bits": 4864,
+                    "msgh_id": 65,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 71,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 24,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "6062202c43cc409aede805f2",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 72,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ]
+    }
+]

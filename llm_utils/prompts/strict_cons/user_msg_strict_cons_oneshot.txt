@@ -1,0 +1,20 @@
+请为服务 {service_name} 的单个消息ID生成严格的结构化约束描述。
+
+## 目标函数信息
+
+**服务名**: {service_name}
+**消息ID**: {message_id}
+**函数名**: {function_name}
+
+**主函数伪代码：**
+```
+{pseudocode}
+```
+
+**处理函数伪代码：**
+```
+{handle_function_pseudocode}
+```
+
+## 任务要求
+请参考前面提供的示例，为上述单个消息ID生成完整的结构化约束描述。

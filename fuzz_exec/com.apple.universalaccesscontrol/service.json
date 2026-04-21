@@ -1,0 +1,27 @@
+{
+  "library_path": "/System/Library/CoreServices/UniversalAccessControl.app/Contents/MacOS/UniversalAccessControl",
+  "start_function": "",
+  "subsystem_num": 2,
+  "subsystem_start_ids": [
+    630026,
+    630025
+  ],
+  "subsystem_end_ids": [
+    630031,
+    630026
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "UniversalAccessControl",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_1000077A0",
+    "sub_1000079B0"
+  ],
+  "dispatch_routine_offsets": [
+    "0x77a0",
+    "0x79b0"
+  ]
+}

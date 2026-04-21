@@ -1,0 +1,31 @@
+{
+  "library_path": "/usr/libexec/sandboxd",
+  "start_function": "",
+  "subsystem_num": 3,
+  "subsystem_start_ids": [
+    322514800,
+    322614800,
+    64
+  ],
+  "subsystem_end_ids": [
+    322514814,
+    322614806,
+    73
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "sandboxd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10001FB10",
+    "sub_1000207C4",
+    "sub_100020D04"
+  ],
+  "dispatch_routine_offsets": [
+    "0x1fb10",
+    "0x207c4",
+    "0x20d04"
+  ]
+}

@@ -1,0 +1,17 @@
+Please generate structured constraint descriptions for a single message ID of service {service_name} using Chain of Thought analysis methodology.
+
+## Target Function Information
+
+**Service Name**: {service_name}
+**Message ID**: {message_id}
+**Function Name**: {function_name}
+
+**Main Function Pseudocode:**
+```
+{pseudocode}
+```
+
+**Handler Function Pseudocode:**
+```
+{handle_function_pseudocode}
+```

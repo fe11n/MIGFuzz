@@ -1,0 +1,32 @@
+Please analyze the body and trailer constraints for message ID {message_id} based on main function pseudocode and handler function pseudocode.
+
+## Code Analysis
+
+### Message ID {message_id} - {function_name}
+
+**Main function pseudocode (message validation logic):**
+```c
+{pseudocode}
+```
+
+**Handler function pseudocode (actual business logic):**
+```c
+{handle_function_pseudocode}
+```
+
+**Message body start offset**: {body_offset}
+
+**Variables identified in stage 1**: {stage1_variables}
+
+**Task Requirements:**
+Please analyze the message body and trailer constraints based on the above two function pseudocodes.
+
+Focus on:
+1. **Message body field analysis**: Analyze which fields will be used as handler function parameters, understand their business meanings
+2. **Parameter extraction logic**: Analyze how main function extracts parameters from message and passes to handler function
+3. **Trailer analysis**: Analyze whether trailer section exists and its structure
+4. **Business semantics**: Detail actual usage of each field as function parameter in the description
+5. **Comprehensive constraint analysis**: For each field, analyze both its constraints during message validation stage and its purpose in handler function
+6. **Variable constraint updates**: If new variable constraints are discovered, please update the variables field
+
+Please generate constraint description containing only body and trailer sections.

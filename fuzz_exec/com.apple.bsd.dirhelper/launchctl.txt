@@ -1,0 +1,79 @@
+system/com.apple.bsd.dirhelper = {
+	active count = 0
+	path = /System/Library/LaunchDaemons/com.apple.bsd.dirhelper.plist
+	type = LaunchDaemon
+	state = not running
+
+	program = /usr/libexec/dirhelper
+	arguments = {
+		/usr/libexec/dirhelper
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocSpaceEfficient => 1
+		CLEAN_FILES_OLDER_THAN_DAYS => 3
+		XPC_SERVICE_NAME => com.apple.bsd.dirhelper
+	}
+
+	domain = system
+	minimum runtime = 10
+	base minimum runtime = 10
+	exit timeout = 5
+	runs = 1
+	last exit reason = JETSAM_REASON_MEMORY_IDLE_EXIT
+	last jetsam exit details = JETSAM_REASON_MEMORY_IDLE_EXIT
+
+	event triggers = {
+		com.apple.bsd.dirhelper.268435457 => {
+			keepalive = 0
+			service = com.apple.bsd.dirhelper
+			stream = com.apple.launchd.calendarinterval
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Minute" => 35
+				"Hour" => 3
+			}
+		}
+	}
+
+	endpoints = {
+		"com.apple.bsd.dirhelper" = {
+			port = 0x9603
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 1
+		}
+	}
+
+	event channels = {
+		"com.apple.launchd.calendarinterval" = {
+			port = 0xaa03
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 1
+		}
+	}
+
+	spawn type = adaptive (6)
+	jetsam priority = 40
+	jetsam memory limit (active, soft) = 15 MB
+	jetsam memory limit (inactive, soft) = 15 MB
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	exponential throttling grace limit = 10
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = runatload | supports transactions | supports pressured exit | inferred program | system service | exponential throttling | tle system
+}

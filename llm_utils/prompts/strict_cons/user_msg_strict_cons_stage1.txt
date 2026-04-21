@@ -1,0 +1,22 @@
+请分析消息ID {message_id} 的主函数伪代码，生成header和descriptor部分的约束。
+
+## 消息详情分析
+
+### 消息ID {message_id} - {function_name}
+
+**主函数伪代码 (消息解析逻辑):**
+```c
+{pseudocode}
+```
+
+**任务要求：**
+请仔细分析上述主函数伪代码，生成消息头部（header）和描述符部分（descriptor_section）的结构化约束描述。
+
+要求：
+1. **严格按照JSON格式**：包含header和descriptor_section部分
+2. **详细分析每个元素**：给出偏移、大小、类型、constraint_analysis、作用描述
+3. **精确约束**：基于伪代码分析，给出准确的约束表达式
+4. **constraint_analysis结构要求**：每个字段必须包含code、analysis、constraint三个子元素
+5. **重点关注头部和描述符验证**：确保约束能让程序通过初步验证进入消息体处理
+
+请专注于header和descriptor部分的分析，body和trailer将在后续阶段处理。

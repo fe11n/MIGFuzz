@@ -1,0 +1,39 @@
+{
+  "library_path": "/System/Library/PrivateFrameworks/CoreFP.framework/Versions/A/fairplayd",
+  "start_function": "",
+  "subsystem_num": 5,
+  "subsystem_start_ids": [
+    1200,
+    1000,
+    500,
+    41471,
+    61471
+  ],
+  "subsystem_end_ids": [
+    1205,
+    1003,
+    503,
+    41472,
+    61472
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "fairplayd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100006390",
+    "sub_1000069AC",
+    "sub_100006D90",
+    "sub_100006FA8",
+    "sub_10000714C"
+  ],
+  "dispatch_routine_offsets": [
+    "0x6390",
+    "0x69ac",
+    "0x6d90",
+    "0x6fa8",
+    "0x714c"
+  ]
+}

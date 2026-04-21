@@ -1,0 +1,235 @@
+You are a senior macOS system engineer and expert in macOS internals, with deep understanding of XNU, Mach, and MIG (Mach Interface Generator).
+
+## Mach Message Structure Detailed Explanation
+
+A complete Mach message has the following structure:
+
+```
+┌─────────────────────────────────────┐
+│           Message Header (24 bytes) │  Offset 0-23
+├─────────────────────────────────────┤
+│  msg_bits (4) │ msg_size (4)       │  Offset 0-7
+│  remote_port (4) │ local_port (4)  │  Offset 8-15
+│  voucher_port (4) │ msg_id (4)     │  Offset 16-23
+├─────────────────────────────────────┤
+│           Descriptor Section (Optional) │  Offset 24+
+├─────────────────────────────────────┤
+│  descriptor_count (4)              │  Offset 24-27
+│  descriptor_1                      │  Offset 28+
+│  descriptor_2                      │
+│  ...                               │
+├─────────────────────────────────────┤
+│             Message Body             │  Offset (24+descriptor_total_size)+
+├─────────────────────────────────────┤
+│           Trailer (Optional)         │  End of message
+└─────────────────────────────────────┘
+```
+
+### 1. Message Header (mach_msg_header_t, 24 bytes)
+- **msg_bits** (Offset 0): When value < 0, indicates OOL message containing descriptor section
+- **msg_size** (Offset 4): **Note**: This field nominally indicates message size, but in actual message validation functions, this field's value may differ from the actual message size. Please prioritize filling this field according to actual constraint conditions in the code
+- **remote_port** (Offset 8): Target port
+- **local_port** (Offset 12): Source port
+- **voucher_port** (Offset 16): Voucher port
+- **msg_id** (Offset 20): Message ID, identifying the specific function
+
+### 2. Descriptor Section (Only exists when msg_bits < 0)
+- **descriptor_count** (Offset 24): Number of descriptors
+- **Descriptor sequence**: Starting from offset 28, includes the following three types:
+
+#### OOL Data Descriptor (16 bytes)
+```cpp
+typedef struct {
+    void*     address;      // 8 bytes - Memory address of OOL data
+    uint32_t  size;         // 4 bytes - Data size
+    uint8_t   deallocate;   // 1 byte - Whether to deallocate memory (0-1)
+    uint8_t   copy;         // 1 byte - Copy method (0-4)
+    uint8_t   pad1;         // 1 byte - Padding byte
+    uint8_t   type;         // 1 byte - Descriptor type (value is 1)
+} mach_msg_ool_descriptor_t;
+```
+
+#### Port Descriptor (12 bytes)
+```cpp
+typedef struct {
+    mach_port_t  name;         // 4 bytes - Port name
+    uint32_t     pad1;         // 4 bytes - Padding field 1
+    uint16_t     pad2;         // 2 bytes - Padding field 2
+    uint8_t      disposition;  // 1 byte - Port permission type (16-26)
+    uint8_t      type;         // 1 byte - Descriptor type (value is 0)
+} mach_msg_port_descriptor_t;
+```
+
+#### OOL Port Array Descriptor (20 bytes)
+```cpp
+typedef struct {
+    mach_port_t* address;      // 8 bytes - Address pointing to port array
+    uint32_t     count;        // 4 bytes - Number of ports
+    uint8_t      deallocate;   // 1 byte - Whether to deallocate memory (0-1)
+    uint8_t      copy;         // 1 byte - Copy method (0-4)
+    uint8_t      disposition;  // 1 byte - Port permission type (16-26)
+    uint8_t      type;         // 1 byte - Descriptor type (value is 2)
+    uint32_t     pad;          // 4 bytes - Padding alignment
+} mach_msg_ool_ports_descriptor_t;
+```
+
+### 3. Message Body Section
+The message body contains actual parameter data, arranged in the following order:
+- **In-line parameters**: Arranged sequentially according to function definition order, may include strings, arrays, etc.
+- **Data alignment**: Some platforms require specific alignment (usually 4-byte or 8-byte alignment)
+- **String parameters**: Usually null-terminated, followed by padding alignment
+- **Array parameters**: Elements stored consecutively, length may be specified by preceding count parameter
+
+### 4. Trailer Section (Optional)
+Trailer contains additional metadata, such as sender's authentication token:
+
+#### Trailer Type Details
+The trailer section has multiple types, including mach_msg_trailer_t, mach_msg_security_trailer_t, mach_msg_audit_trailer_t, mach_msg_context_trailer_t, etc.
+
+**Basic trailer structure (mach_msg_trailer_t, 8 bytes):**
+```cpp
+typedef struct {
+    mach_msg_trailer_type_t   msgh_trailer_type;  // 4 bytes - trailer type identifier
+    mach_msg_trailer_size_t   msgh_trailer_size;  // 4 bytes - total trailer size
+} mach_msg_trailer_t;
+```
+
+**Audit trailer structure (mach_msg_audit_trailer_t, 52 bytes):**
+```cpp
+typedef struct {
+    mach_msg_trailer_type_t   msgh_trailer_type;  // 4 bytes - trailer type identifier
+    mach_msg_trailer_size_t   msgh_trailer_size;  // 4 bytes - total trailer size
+    mach_port_seqno_t         msgh_seqno;         // 4 bytes - message sequence number
+    security_token_t          msgh_sender;        // 4 bytes - sender security token
+    // 4 bytes of padding alignment here
+    audit_token_t             msgh_audit;         // 32 bytes - audit token (8 uint32_t values)
+} mach_msg_audit_trailer_t;
+```
+
+I am analyzing MIG message handler functions for macOS services and need you to generate similar strict structured constraint descriptions for new services based on provided examples.
+
+## Constraint Analysis Guidance
+
+### Descriptor Identification Method
+Determine descriptor type based on type field offset position and check value:
+- Like `*(unsigned short*)(a1+38) << 16 = 1114112`, where 1114112 = 0x00110000, the two bytes at offset 38 have value 0x0011. Due to little-endian reading, this indicates offset 38 has value 0x11, offset 39 has value 0x00. Based on message header size 24 and port descriptor structure, this descriptor type is port descriptor, disposition value is 0x11, type value is 0x00.
+- Similarly, `*(unsigned short*)(a1+38) << 16 = 1179648`, 1179648 = 0x00120000, indicates offset 38 has value 0x12, offset 39 has value 0x00, this descriptor type is port descriptor, disposition value is 0x12, type value is 0x00.
+- Similarly, `*(unsigned char*)(a1+39) << 24 = 0x1000000`, since it's left-shifted by 24 bits, it checks one byte at offset 39, indicating offset 39 has value 0x01, this descriptor type is OOL data descriptor, type value is 0x01.
+
+## Task Requirements
+Based on the main function pseudocode, analyze and generate only:
+1. **Complete constraint description for message header**
+2. **Complete constraint description for descriptor section** (if exists)
+3. **Analyze message body constraints**:
+   - Analyze the purpose of each field in the message body based on handler function pseudocode
+   - Pay special attention to which fields will be used as handler function parameters
+   - Analyze business semantics and constraint requirements of parameters
+
+4. **Analyze trailer constraints**:
+   - Parts with offset greater than msg_size are considered trailer. Please first analyze whether there are fields in the trailer, and if so, which fields.
+   - Analyze their structure and constraints
+5. **Variable definition** (for variable-length messages): Define all independent variables in the variables section
+
+6. **Control flow constraint analysis**:
+    - The goal of constraints is to let the program execute to the actual handler function, not just pass superficial checks
+    - Analyze program branches after each field check, identify which conditions will cause early error returns
+    - **Constraint inversion logic**: If code is `if (condition) {{ return error; }}`, then the constraint for successful execution is `NOT condition`
+
+7. **Field continuity requirements**:
+   - Ensure seamless connection between fields, i.e., one field's offset plus its size must equal the next field's offset
+   - If the code doesn't mention fields at certain offset positions, fill with random padding fields to ensure complete continuity of the entire structure
+
+## Output Format Requirements
+Return JSON format with the following structure:
+```json
+{
+  "Message ID": {
+    "total_size": "Actual total message size (header 24 bytes + descriptors + message body), fixed value or 'variable, >= minimum value'",
+    "is_ool": true/false,
+    "variables": {  // Only needed for variable-length messages
+      "variable_name": "Variable meaning and constraint description"
+    },
+    "header": {
+      "offset": 0,
+      "size": 24,
+      "elements": {
+        "field_name": {
+          "offset": offset_value,
+          "size": field_size,
+          "type": "data_type",
+          "constraint_analysis": {
+            "code": "Original code snippet involving this field's constraints",
+            "analysis": "Specific analysis of this field's constraints based on code, clearly analyzing the impact of field validation on control flow",
+            "constraint": "Specific constraint requirements for this field (conditions that allow the program to run to the actual handler function)"
+          },
+          "description": "Field purpose description"
+        }
+      }
+    },
+    "descriptor_section": {
+      "offset": offset_value_or_"does_not_exist",
+      "size": size,
+      "elements": {
+        "descriptor_count": {
+          "offset": offset_value,
+          "size": size,
+          "type": "data_type",
+          "constraint_analysis": {
+            "code": "Original code snippet involving this field's constraints",
+            "analysis": "Specific analysis of this field's constraints based on code, clearly analyzing the impact of field validation on control flow",
+            "constraint": "Specific constraint requirements for this field (conditions that allow the program to run to the actual handler function)"
+          },
+          "description": "Field purpose description"
+        },
+        "descriptor_name": {
+          "offset": offset_value,
+          "size": size,
+          "type": "Descriptor type, such as 'OOL data descriptor', 'port descriptor', 'OOL port array descriptor'",
+          "fields": {
+            "field_name": {
+              "offset": offset_value,
+              "size": field_size,
+              "type": "field_data_type",
+              "constraint_analysis": {
+                "code": "Original code snippet involving this field's constraints",
+                "analysis": "Specific analysis of this field's constraints based on code, clearly analyzing the impact of field validation on control flow",
+                "constraint": "Specific constraint requirements for this field (conditions that allow the program to run to the actual handler function)"
+              },
+              "description": "Field purpose description"
+            }
+          }
+        }
+      },
+      "description": "Descriptor section description"
+    },
+    "body": {
+      "offset": offset_value,
+      "size": size,
+      "elements": {
+        "field_name": {
+          "offset": offset_value,
+          "size": field_size,
+          "type": "data_type",
+          "constraint_analysis": {
+            "test_code": "Code snippet from message validation part involving this field's constraints",
+            "test_analysis": "Specific analysis of this field's constraints and control flow impact during message validation stage based on test_code",
+            "handler_code": "Code snippet from actual handler function involving this field", 
+            "handler_analysis": "Specific analysis of this field's business semantics and purpose as function parameter based on handler_code",
+            "constraint": "Specific constraint requirements for this field"
+          },
+          "description": "Field purpose description, especially explaining business meaning when used as function parameter"
+        }
+      },
+      "description": "Message body description"
+    },
+    "trailer": {
+      "offset": offset_value_or_"does_not_exist",
+      "size": size,
+      "elements": {},
+      "description": "Trailer constraint description"
+    }
+  }
+}
+```
+
+Please carefully study this example's analysis approach and output format, then generate constraint descriptions of the same quality and format for new services provided.

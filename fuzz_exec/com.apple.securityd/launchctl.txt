@@ -1,0 +1,68 @@
+system/com.apple.securityd = {
+	active count = 2
+	path = /System/Library/LaunchDaemons/com.apple.securityd.plist
+	type = LaunchDaemon
+	state = running
+
+	program = /usr/sbin/securityd
+	arguments = {
+		/usr/sbin/securityd
+		-i
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocSpaceEfficient => 1
+		__CF_USER_TEXT_ENCODING => 0x0:0:0
+		__CFPREFERENCES_AVOID_DAEMON => 1
+		XPC_SERVICE_NAME => com.apple.securityd
+	}
+
+	domain = system
+	minimum runtime = 10
+	base minimum runtime = 10
+	exit timeout = 5
+	runs = 1
+	pid = 26441
+	immediate reason = speculative
+	forks = 0
+	execs = 1
+	initialized = 1
+	trampolined = 1
+	started suspended = 0
+	proxy started suspended = 0
+	last exit code = (never exited)
+
+	endpoints = {
+		"com.apple.SecurityServer" = {
+			port = 0xa303
+			active = 1
+			managed = 1
+			reset = 1
+			hide = 0
+			watching = 0
+		}
+	}
+
+	spawn type = interactive (4)
+	jetsam priority = 140
+	jetsam memory limit (active, soft) = 60 MB
+	jetsam memory limit (inactive, soft) = 60 MB
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	resource limits = {
+		maxfiles (soft) => 2000
+	}
+
+	exponential throttling grace limit = 10
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = runatload | supports transactions | inferred program | system service | exponential throttling | tle system
+}

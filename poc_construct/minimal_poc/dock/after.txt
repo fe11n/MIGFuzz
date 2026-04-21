@@ -1,0 +1,183 @@
+gui/501/com.apple.Dock.agent = {
+        active count = 14
+        path = /System/Library/LaunchAgents/com.apple.Dock.plist
+        type = LaunchAgent
+        state = running
+
+        program = /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock
+        inherited environment = {
+                SSH_AUTH_SOCK => /private/tmp/com.apple.launchd.801CoH0tWx/Listeners
+        }
+
+        default environment = {
+                PATH => /usr/bin:/bin:/usr/sbin:/sbin
+        }
+
+        environment = {
+                XPC_SERVICE_NAME => com.apple.Dock.agent
+        }
+
+        domain = gui/501 [100003]
+        asid = 100003
+        minimum runtime = 1
+        base minimum runtime = 1
+        exit timeout = 5
+        runs = 2
+        successive crashes = 1
+        pid = 28771
+        immediate reason = semaphore
+        forks = 0
+        execs = 1
+        initialized = 1
+        trampolined = 1
+        started suspended = 0
+        proxy started suspended = 0
+        last terminating signal = Segmentation fault: 11
+
+        semaphores = {
+                successful exit => 0
+        }
+
+        endpoints = {
+                "com.apple.dock.launchpad" = {
+                        port = 0x42503
+                        active = 1
+                        managed = 1
+                        reset = 0
+                        hide = 1
+                        watching = 0
+                }
+                "com.apple.dock.downloads" = {
+                        port = 0x42603
+                        active = 0
+                        managed = 1
+                        reset = 0
+                        hide = 1
+                        watching = 0
+                }
+                "com.apple.dock.remotedesktoppicture" = {
+                        port = 0x53103
+                        active = 1
+                        managed = 1
+                        reset = 0
+                        hide = 1
+                        watching = 0
+                }
+                "com.apple.dock.notificationcenter" = {
+                        port = 0x53003
+                        active = 1
+                        managed = 1
+                        reset = 0
+                        hide = 1
+                        watching = 0
+                }
+                "com.apple.dock.appstore" = {
+                        port = 0x52f03
+                        active = 1
+                        managed = 1
+                        reset = 0
+                        hide = 1
+                        watching = 0
+                }
+                "com.apple.dock.controlcenter" = {
+                        port = 0x42703
+                        active = 1
+                        managed = 1
+                        reset = 0
+                        hide = 1
+                        watching = 0
+                }
+                "com.apple.desktoppicture.cache-delete" = {
+                        port = 0x52e03
+                        active = 0
+                        managed = 1
+                        reset = 0
+                        hide = 1
+                        watching = 0
+                }
+                "com.apple.dock.server" = {
+                        port = 0x52d03
+                        active = 1
+                        managed = 1
+                        reset = 0
+                        hide = 1
+                        watching = 0
+                }
+                "com.apple.dock.sidecar" = {
+                        port = 0x42803
+                        active = 1
+                        managed = 1
+                        reset = 0
+                        hide = 1
+                        watching = 0
+                }
+                "com.apple.dock.ppt" = {
+                        port = 0x42903
+                        active = 1
+                        managed = 1
+                        reset = 0
+                        hide = 1
+                        watching = 0
+                }
+                "com.apple.dock.spaces" = {
+                        port = 0x42a03
+                        active = 1
+                        managed = 1
+                        reset = 0
+                        hide = 1
+                        watching = 0
+                }
+                "com.apple.dock.fullscreen" = {
+                        port = 0x52c03
+                        active = 1
+                        managed = 1
+                        reset = 0
+                        hide = 1
+                        watching = 0
+                }
+        }
+
+        pid-local endpoints = {
+                "com.apple.coredrag" = {
+                        port = 0xbe33b
+                        active = 1
+                        managed = 0
+                        reset = 0
+                        hide = 0
+                        watching = 0
+                }
+                "com.apple.axserver" = {
+                        port = 0x5e62f
+                        active = 1
+                        managed = 0
+                        reset = 0
+                        hide = 0
+                        watching = 0
+                }
+                "EyeCandyDiagnose" = {
+                        port = 0x777ef
+                        active = 1
+                        managed = 0
+                        reset = 0
+                        hide = 0
+                        watching = 0
+                }
+        }
+
+        spawn type = app (1)
+        spawn role = ui (2)
+        jetsam priority = 80
+        jetsam memory limit (active, soft) = 560 MB
+        jetsam memory limit (inactive, soft) = 560 MB
+        jetsamproperties category = app
+        jetsam thread limit = 512
+        cpumon = default
+        exponential throttling grace limit = 10
+        job state = running
+        probabilistic guard malloc policy = {
+                activation rate = 1/1000
+                sample rate = 1/0
+        }
+
+        properties = app | system service | exponential throttling | tle system
+}

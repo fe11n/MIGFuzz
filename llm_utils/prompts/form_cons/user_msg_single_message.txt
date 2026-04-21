@@ -1,0 +1,39 @@
+我需要为消息ID {message_id} 生成结构化的约束描述。
+
+## 消息详情分析
+
+### 消息ID {message_id} - {function_name}
+
+**主函数伪代码 (消息解析逻辑):**
+```c
+{pseudocode}
+```
+
+**分析要点:**
+- 观察主函数如何从消息中提取数据
+- 分析消息字段的结构和验证逻辑
+- 理解各字段在消息解析中的作用
+
+## 任务要求
+请仔细分析上述消息ID的伪代码，生成结构化的约束描述。
+
+要求：
+1. **严格按照JSON格式**：包含total_size、is_ool、header、descriptor_section、body、trailer等部分
+2. **详细分析每个元素**：给出偏移、大小、类型、constraint_analysis、作用描述
+3. **变量处理**：对于变长消息，在variables部分定义所有自变量
+4. **精确约束**：基于伪代码分析，给出准确的约束表达式
+5. **🎯 描述符字段详细约束分析要求**：对于包含描述符的消息，必须详细分析每个描述符内部各字段的约束：
+   - **OOL数据描述符**: 分析address、size、deallocate、copy、pad1、type等字段的具体约束
+   - **端口描述符**: 分析name、pad1、pad2、disposition、type等字段的具体约束  
+   - **OOL端口数组描述符**: 分析address、count、deallocate、copy、disposition、type、pad等字段的具体约束
+   - 每个描述符字段都必须包含constraint_analysis结构（code、analysis、constraint三个子元素）
+6. **🎯 constraint_analysis结构要求**：每个字段必须包含以下三个子元素：
+   - **code**: 基于该字段的偏移位置，找到代码中涉及该字段约束的原代码片段
+   - **analysis**: 基于code具体分析该字段约束，明确分析该字段验证对控制流的影响，解释为什么需要特定约束才能到达处理函数
+   - **constraint**: 该字段的具体约束要求，必须是能让程序运行到实际处理函数的条件（可能与代码中的表面检查条件相反）
+
+## constraint_analysis分析指导
+- **偏移匹配原则**：根据字段的偏移值，在伪代码中找到对应的内存访问代码（如`*(_DWORD *)(a1 + 4)`表示偏移4的4字节字段）
+- **控制流分析**：分析每个字段检查后的程序分支，识别哪些条件会导致提前返回错误
+- **约束反转逻辑**：如果代码是`if (condition) {{ return error; }}`，那么成功执行的约束是`NOT condition`
+- **执行路径优先**：约束的目标是让程序执行到实际的处理函数，而不仅仅是通过表面的检查

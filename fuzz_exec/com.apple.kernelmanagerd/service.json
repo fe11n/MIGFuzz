@@ -1,0 +1,23 @@
+{
+  "library_path": "/usr/libexec/kernelmanagerd",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    77000
+  ],
+  "subsystem_end_ids": [
+    77001
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "kernelmanagerd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100158C34"
+  ],
+  "dispatch_routine_offsets": [
+    "0x158c34"
+  ]
+}

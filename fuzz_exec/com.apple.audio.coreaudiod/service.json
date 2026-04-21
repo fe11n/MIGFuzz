@@ -1,0 +1,27 @@
+{
+  "library_path": "/System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio",
+  "start_function": "",
+  "subsystem_num": 2,
+  "subsystem_start_ids": [
+    1010500,
+    1010000
+  ],
+  "subsystem_end_ids": [
+    1010507,
+    1010072
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "CoreAudio",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "_HALB_MIGClient_server_routine",
+    "_HALB_MIGServer_server_routine"
+  ],
+  "dispatch_routine_offsets": [
+    "0x83460450",
+    "0x8346fa14"
+  ]
+}

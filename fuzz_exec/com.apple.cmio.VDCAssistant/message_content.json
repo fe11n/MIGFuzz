@@ -1,0 +1,19 @@
+[
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.cmio.VDCAssistant/out/icrashes/access_violation_0xxxxxxxac0_0x18_3",
+        "messages": [
+            {
+                "body": "",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 2007,
+                    "msgh_local_port": 1008489,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 24,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ],
+        "conwith_generator": false
+    }
+]

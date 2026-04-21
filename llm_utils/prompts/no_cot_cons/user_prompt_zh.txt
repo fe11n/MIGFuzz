@@ -1,0 +1,17 @@
+请为服务 {service_name} 的单个消息ID使用思维链(Chain of Thought)分析方法生成结构化约束描述。
+
+## 目标函数信息
+
+**服务名**: {service_name}
+**消息ID**: {message_id}
+**函数名**: {function_name}
+
+**主函数伪代码：**
+```
+{pseudocode}
+```
+
+**处理函数伪代码：**
+```
+{handle_function_pseudocode}
+```

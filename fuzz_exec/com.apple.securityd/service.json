@@ -1,0 +1,35 @@
+{
+  "library_path": "/usr/sbin/securityd",
+  "start_function": "",
+  "subsystem_num": 4,
+  "subsystem_start_ids": [
+    4294966872,
+    900,
+    1000,
+    64
+  ],
+  "subsystem_end_ids": [
+    4294967295,
+    902,
+    1102,
+    73
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "securityd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10001989C",
+    "sub_10004CAA4",
+    "sub_100059458",
+    "sub_10005E1A8"
+  ],
+  "dispatch_routine_offsets": [
+    "0x1989c",
+    "0x4caa4",
+    "0x59458",
+    "0x5e1a8"
+  ]
+}

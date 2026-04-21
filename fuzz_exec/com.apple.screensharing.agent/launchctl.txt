@@ -1,0 +1,100 @@
+gui/501/com.apple.screensharing.agent = {
+	active count = 0
+	path = /System/Library/LaunchAgents/com.apple.screensharing.agent.plist
+	type = LaunchAgent
+	state = not running
+
+	program = /System/Library/CoreServices/RemoteManagement/ScreensharingAgent.bundle/Contents/MacOS/ScreensharingAgent
+	arguments = {
+		/System/Library/CoreServices/RemoteManagement/ScreensharingAgent.bundle/Contents/MacOS/ScreensharingAgent
+	}
+
+	inherited environment = {
+		SSH_AUTH_SOCK => /private/tmp/com.apple.launchd.9wN8jZLmjZ/Listeners
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocSpaceEfficient => 1
+		XPC_SERVICE_NAME => com.apple.screensharing.agent
+	}
+
+	domain = gui/501 [100003]
+	asid = 100003
+	minimum runtime = 1
+	base minimum runtime = 1
+	exit timeout = 5
+	runs = 0
+	last exit code = (never exited)
+
+	event triggers = {
+		com.apple.launchd.WatchPaths => {
+			keepalive = 0
+			service = com.apple.screensharing.agent
+			stream = com.apple.fsevents.matching
+			monitor = com.apple.UserEventAgent-Aqua
+			descriptor = {
+				"WatchPaths" => [
+					0 = "/private/etc/com.apple.screensharing.agent.launchd"
+				]
+			}
+		}
+		com.apple.screensharing.agent => {
+			keepalive = 0
+			service = com.apple.screensharing.agent
+			stream = com.apple.notifyd.matching
+			monitor = com.apple.notifyd
+			descriptor = {
+				"Notification" => "com.apple.screensharing.agent.launchd"
+			}
+		}
+	}
+
+	endpoints = {
+		"com.apple.screensharing.agent" = {
+			port = 0x0
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 1
+		}
+	}
+
+	event channels = {
+		"com.apple.fsevents.matching" = {
+			port = 0x0
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 1
+		}
+		"com.apple.notifyd.matching" = {
+			port = 0x0
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 1
+		}
+	}
+
+	spawn type = interactive (4)
+	jetsam priority = 40
+	jetsam memory limit (active, soft) = 100 MB
+	jetsam memory limit (inactive, soft) = 100 MB
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	exponential throttling grace limit = 10
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = supports transactions | inferred program | system service | exponential throttling | tle system
+}

@@ -1,0 +1,27 @@
+{
+  "library_path": "/usr/sbin/universalaccessd",
+  "start_function": "",
+  "subsystem_num": 2,
+  "subsystem_start_ids": [
+    630022,
+    630021
+  ],
+  "subsystem_end_ids": [
+    630029,
+    630023
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "universalaccessd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_1000016B4",
+    "sub_100001980"
+  ],
+  "dispatch_routine_offsets": [
+    "0x16b4",
+    "0x1980"
+  ]
+}

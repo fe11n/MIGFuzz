@@ -1,0 +1,19 @@
+[
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.quicklook/out/icrashes/access_violation_0xxxxxxx800_0xxxxxxx780_1",
+        "messages": [
+            {
+                "body": "01000000008032020100000001010001471e04000000000000000000471e0400",
+                "header": {
+                    "msgh_bits": 2147483667,
+                    "msgh_id": 1003,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 56,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ],
+        "conwith_generator": true
+    }
+]

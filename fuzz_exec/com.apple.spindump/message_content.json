@@ -1,0 +1,29 @@
+[
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.spindump/out/crashes/access_violation_0xxxxxxx9f4_0x38_2",
+        "messages": [
+            {
+                "body": "000000000000000000000000",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 1008,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "000000000000000000000000",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 1003,
+                    "msgh_local_port": 3075,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ]
+    }
+]

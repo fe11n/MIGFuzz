@@ -1,0 +1,86 @@
+gui/501/com.apple.CoreLocationAgent = {
+	active count = 4
+	path = /System/Library/LaunchAgents/com.apple.CoreLocationAgent.plist
+	type = LaunchAgent
+	state = running
+
+	program = /System/Library/CoreServices/CoreLocationAgent.app/Contents/MacOS/CoreLocationAgent
+	arguments = {
+		/System/Library/CoreServices/CoreLocationAgent.app/Contents/MacOS/CoreLocationAgent
+	}
+
+	inherited environment = {
+		SSH_AUTH_SOCK => /private/tmp/com.apple.launchd.9wN8jZLmjZ/Listeners
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocSpaceEfficient => 1
+		XPC_SERVICE_NAME => com.apple.CoreLocationAgent
+	}
+
+	domain = gui/501 [100003]
+	asid = 100003
+	minimum runtime = 1
+	base minimum runtime = 1
+	exit timeout = 5
+	runs = 1
+	pid = 26745
+	immediate reason = ipc (mach)
+	forks = 0
+	execs = 1
+	initialized = 1
+	trampolined = 1
+	started suspended = 0
+	proxy started suspended = 0
+	last exit code = (never exited)
+
+	endpoints = {
+		"com.apple.CoreLocation.agent" = {
+			port = 0x53b03
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+	}
+
+	pid-local endpoints = {
+		"com.apple.tsm.portname" = {
+			port = 0x5ff03
+			active = 1
+			managed = 0
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.axserver" = {
+			port = 0x7ca03
+			active = 1
+			managed = 0
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+	}
+
+	spawn type = interactive (4)
+	jetsam priority = 40
+	jetsam memory limit (active, soft) = 50 MB
+	jetsam memory limit (inactive, soft) = 50 MB
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	exponential throttling grace limit = 10
+	job state = running
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = supports transactions | supports pressured exit | inferred program | system service | exponential throttling | tle system
+}

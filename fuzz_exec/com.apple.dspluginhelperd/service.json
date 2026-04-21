@@ -1,0 +1,27 @@
+{
+  "library_path": "/usr/libexec/dspluginhelperd",
+  "start_function": "",
+  "subsystem_num": 2,
+  "subsystem_start_ids": [
+    8000,
+    9000
+  ],
+  "subsystem_end_ids": [
+    8006,
+    9003
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "dspluginhelperd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "_extmodule_call_server_routine",
+    "_session_call_server_routine"
+  ],
+  "dispatch_routine_offsets": [
+    "0x3d210",
+    "0x3d95c"
+  ]
+}

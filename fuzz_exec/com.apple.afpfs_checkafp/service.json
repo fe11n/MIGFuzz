@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/Filesystems/AppleShare/check_afp.app/Contents/MacOS/check_afp",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    6383216
+  ],
+  "subsystem_end_ids": [
+    6383217
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "check_afp",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_1000029D0"
+  ],
+  "dispatch_routine_offsets": [
+    "0x29d0"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "library_path": "/System/Library/CoreServices/Dock.app/Contents/MacOS/Dock",
+  "start_function": "sub_1000074D0",
+  "start_function_offset": "0x74d0",
+  "subsystem_num": 2,
+  "dispatch_routines": [
+    "sub_100120FA0",
+    "sub_100123114"
+  ],
+  "dispatch_routine_offsets": [
+    "0x120fa0",
+    "0x123114"
+  ],
+  "subsystem_start_ids": [
+    96500,
+    690000
+  ],
+  "subsystem_end_ids": [
+    96552,
+    690011
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "Dock",
+    "iterations": 1000,
+    "threads": 5
+  }
+}

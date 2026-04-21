@@ -1,0 +1,23 @@
+{
+  "library_path": "/usr/libexec/mmaintenanced",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    5900
+  ],
+  "subsystem_end_ids": [
+    5902
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "mmaintenanced",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10000FD44"
+  ],
+  "dispatch_routine_offsets": [
+    "0xfd44"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+    "com.apple.screensharing": "com.apple.screensharing.server",
+    "com.apple.Dock.agent": "com.apple.dock.server",
+    "com.apple.configd": "com.apple.SystemConfiguration.configd",
+    "com.apple.notifyd": "com.apple.system.notification_center",
+    "com.apple.powerd": "com.apple.PowerManagement.control"
+}

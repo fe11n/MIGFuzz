@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/CoreServices/ManagedClient.app/Contents/MacOS/ManagedClient",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    18016
+  ],
+  "subsystem_end_ids": [
+    18065
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "ManagedClient",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10009C904"
+  ],
+  "dispatch_routine_offsets": [
+    "0x9c904"
+  ]
+}

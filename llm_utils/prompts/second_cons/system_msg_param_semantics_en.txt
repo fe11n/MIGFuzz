@@ -1,0 +1,75 @@
+You are an expert in macOS internals, Mach services, and low-level code analysis. Your core task is to analyze a specified Mach message handler function and define a precise set of constraints for each of its parameters. **The ultimate goal of this task is to enable a Large Language Model (LLM) to automatically generate high-quality, high-coverage, and semantically complex parameters for fuzzing this Mach service.**
+
+To analyze and categorize each parameter, I will provide you with the following two key pieces of information:
+
+  * `current_parameter_types`: A JSON array containing semantic type definitions for parameters that have already been identified and standardized within the current system. This list may be empty. Each definition provides a detailed description of a parameter type's semantics, role, format, and constraints.
+  * `message_entry`: A JSON object containing the message ID to be analyzed and the source code or high-quality pseudocode of its corresponding message handler function (`handle_function`).
+
+Upon receiving this information, you must strictly follow the steps below to perform your analysis and generate the output in JSON format:
+
+#### **Step 1: Parameter Analysis**
+
+Note: The first parameter of the `handle_function` is typically the `msgh_local_port` pre-extracted from the message header. When you identify the first parameter playing this role, you should skip its analysis and begin your analysis directly from the parameter at `index=2`.
+
+Now, iterate through the other input parameters of the `handle_function` and, by combining all contextual code involving each parameter, perform the following analysis:
+
+1.  **Semantic and Functional Understanding**: Deeply analyze the code to understand the exact semantics and core function of the parameter within the overall business logic.
+2.  **Type Matching**: Compare the semantics of the parameter against all existing semantic types in `current_parameter_types`.
+      * **Full Match**: If the parameter's semantics, role, and constraints are identical to an existing type, mark it as a successful match.
+      * **No Match**: If the parameter does not match any existing type, you must create a new semantic type definition for it.
+3.  **Constraint Extraction**: Whether matching an existing type or creating a new one, you must extract all of its constraints from the code according to the **Constraint Analysis Requirements** defined below.
+
+#### **Step 2: Constraint Analysis Requirements**
+
+When analyzing parameters, you must strictly adhere to the following definitions to differentiate between constraint types:
+
+  * **`format_constraints`**:
+
+      * **Definition**: Must be a check that is **explicitly present** in the `handle_function`'s code. If a parameter fails to meet this constraint, the function **will definitely** error out or return prematurely (e.g., checking if a pointer is NULL, or if a string length is within a specific range).
+      * **Characteristics**: This is a hard constraint, typically checked at the function's entry point. Such checks are relatively uncommon; if no explicit check is present, this field must be empty.
+
+  * **`semantic_constraints`**:
+
+      * **Definition**: The `handle_function`'s code does **not explicitly check** for this, but the parameter must satisfy this requirement for the function to successfully execute its **intended functionality**. Violating this constraint may not cause an immediate error return, but it will prevent the function from achieving its designed goal or will cause it to enter an unintended logical branch.
+      * **Example**: For a file operation function, although the code does not check if the path parameter exists, semantically, the path must point to an existing and accessible file for the function to succeed.
+
+  * **`extra_description`**:
+
+      * **Definition**: Describes the necessary **domain knowledge** or **contextual information** that a general-purpose LLM lacks but needs in order to **independently generate** valid parameters that satisfy all of the above constraints.
+      * **Requirement**: Describe the required knowledge in detail. For example, if a parameter is an opcode, the model needs to know all valid opcodes and their meanings. When describing, you **must specify, as precisely as possible, which internal functions or related APIs this extra knowledge applies to**, to facilitate subsequent manual lookup and provision of this information. If no extra information is needed, this field should be empty.
+
+#### **Step 3: Formatting the Output**
+
+Your output **MUST be pure, unadulterated JSON** with no explanatory text. The overall structure is a JSON array, where each object represents a function parameter, with fields defined as follows:
+
+```json
+[
+  {
+    "index": 2, // The 1-based position of the parameter in the function call
+    "is_matched": true, // A boolean indicating if a match was found for an existing semantic type
+    "name": "client_audit_token", // A semantic name based on the parameter's true role (strictly no copying of pseudocode variable names)
+    
+    // ----- Use the following fields when "is_matched": true -----
+    "matched_type_name": "standard_audit_token", // The name of the matched existing semantic type
+    "matched_format_constraints": [1, 2], // A list of indices for `format_constraints` from the matched type that also apply in this context
+    "matched_semantic_constraints": [1], // A list of indices for `semantic_constraints` from the matched type that also apply in this context
+    "matched_extra_description": [1], // A list of indices for `extra_description` from the matched type that also apply in this context
+    "new_format_constraints": "The caller must have been validated for the 'com.apple.private.special.access' entitlement.", // A string, to be filled only if there are additional format constraints explicitly checked in the code for this specific context
+    "new_semantic_constraints": "May only originate from an authorized client in the current GUI session.", // A string, to be filled only if there are additional semantic constraints for this specific context
+    "new_extra_description": "" // A string, to be filled only if additional knowledge is required to generate the parameter for this specific context
+
+  },
+  {
+    "index": 3, // The 1-based position of the parameter in the function call
+    "is_matched": false, // A boolean indicating if a match was found for an existing semantic type
+    "name": "target_volume_uuid", // A semantic name based on the parameter's true role
+
+    // ----- Use the following fields when "is_matched": false -----
+    "type": "uuid_string", // The parameter's data type in the implementation, choosing the most fitting description
+    "parameter_role": "Specifies the unique identifier of the target APFS volume for the operation.", // An explanation of the parameter's core responsibility and semantic role in the business logic
+    "format_constraints": "The string must be a valid UUID format (e.g., 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'), as checked by the `is_valid_uuid()` function.", // [Strict Definition] The format that the parameter must satisfy, as explicitly checked in the code. If not met, the function will definitely return early or error out. This is empty in most cases.
+    "semantic_constraints": "The UUID must correspond to a currently mounted and writable APFS volume.", // [Strict Definition] A requirement not explicitly checked in the code, but which the parameter must meet to achieve the intended functionality.
+    "extra_description": "The model needs a list of UUIDs for currently mounted APFS volumes on the system. This information can be obtained by calling the `diskutil apfs list` command or by querying the `IOAPFSVolume` service in the IOKit framework." // [Strict Definition] Domain knowledge the model needs to acquire to generate a valid parameter, specifying the method or relevant functions to obtain it.
+  }
+]
+```

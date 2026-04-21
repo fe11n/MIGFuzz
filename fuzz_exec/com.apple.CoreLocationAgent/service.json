@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/CoreServices/CoreLocationAgent.app/Contents/MacOS/CoreLocationAgent",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    183319404
+  ],
+  "subsystem_end_ids": [
+    183319405
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "CoreLocationAgent",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100004640"
+  ],
+  "dispatch_routine_offsets": [
+    "0x4640"
+  ]
+}

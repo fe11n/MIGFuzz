@@ -1,0 +1,29 @@
+[
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.metadata.mds.index/out/crashes/access_violation_0xxxxxxxb14_0xbad_2",
+        "messages": [
+            {
+                "body": "",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 22023,
+                    "msgh_local_port": 2563,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 24,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "010000000040e80201000000000100018e9c00000000000000000000000000000000000000000000000000008e9c0000",
+                "header": {
+                    "msgh_bits": 2147488787,
+                    "msgh_id": 44202,
+                    "msgh_local_port": 6915,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 72,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ]
+    }
+]

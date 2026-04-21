@@ -1,0 +1,24 @@
+{
+  "library_path": "/System/Library/Frameworks/QuickLook.framework/Resources/quicklookd.app/Contents/MacOS/quicklookd",
+  "start_function": "",
+  "start_function_offset": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    1000
+  ],
+  "subsystem_end_ids": [
+    1009
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "quicklookd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100009894"
+  ],
+  "dispatch_routine_offsets": [
+    "0x9894"
+  ]
+}

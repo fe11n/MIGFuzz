@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    66000
+  ],
+  "subsystem_end_ids": [
+    66007
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "fseventsd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100011FB4"
+  ],
+  "dispatch_routine_offsets": [
+    "0x11fb4"
+  ]
+}

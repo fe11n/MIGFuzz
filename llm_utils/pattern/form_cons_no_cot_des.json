@@ -1,0 +1,137 @@
+{
+  "2008": {
+    "stage1_variable_identification": {
+      "message_start_offset": {
+        "variable_name": "a1",
+        "description": "The message's starting address variable, serving as the base for all subsequent offset calculations."
+      },
+      "derived_offset_variables": [],
+      "variable_length_controllers": [],
+      "other_relevant_variables": [
+        {
+          "variable_name": "a2",
+          "alias": "reply_msg_ptr",
+          "purpose": "A pointer to the reply message buffer.",
+          "constraint_role": "Used to store the processing result or error code."
+        },
+        {
+          "variable_name": "v2",
+          "alias": "error_code",
+          "purpose": "Holds the error code to be placed in the reply message upon failure.",
+          "constraint_role": "Its value changes depending on which constraint check fails."
+        }
+      ]
+    },
+    "stage2_header_analysis": {
+      "msg_bits": {
+        "start_offset": "0",
+        "end_offset": "3",
+        "complex_bit": {
+          "constraints": "bit 0 == 1"
+        },
+        "pad": {
+          "constraints": "value == 0"
+        },
+        "voucher_disposition": {
+          "constraints": "value == 0"
+        },
+        "local_disposition": {
+          "constraints": "value == 0"
+        },
+        "remote_disposition": {
+          "constraints": "value == MACH_MSG_TYPE_COPY_SEND (19)"
+        }
+      },
+      "msg_size": {
+        "start_offset": "4",
+        "end_offset": "7",
+        "constraints": "value == 40"
+      },
+      "remote_port": {
+        "start_offset": "8",
+        "end_offset": "11",
+        "constraints": "No explicit constraints."
+      },
+      "local_port": {
+        "start_offset": "12",
+        "end_offset": "15",
+        "constraints": "Must be a valid Mach port."
+      },
+      "voucher_port": {
+        "start_offset": "16",
+        "end_offset": "19",
+        "constraints": "No explicit constraints."
+      },
+      "msg_id": {
+        "start_offset": "20",
+        "end_offset": "23",
+        "constraints": "value == 2008 (Determined from input information; not validated in the code)."
+      }
+    },
+    "stage3_structure_location": {
+      "header_boundaries": {
+        "offset_start": 0,
+        "offset_end": 24
+      },
+      "descriptor_analysis": {
+        "existence_determination": "Based on the `msg_bits` analysis (`value < 0`), this is a complex message and must contain a Descriptor section.",
+        "identified_descriptors": [
+          {
+            "index": 1,
+            "type": "Port Descriptor",
+            "size": 12,
+            "offset_start": 28,
+            "offset_end": 40,
+            "type_constraints": "The `type` field at offset 39 must be 0. The `disposition` field at offset 38 must be 0x12 (MACH_MSG_TYPE_MOVE_RECEIVE)."
+          }
+        ],
+        "offset_start": 24,
+        "offset_end": 40
+      },
+      "body_boundaries": {
+        "offset_start": 40,
+        "offset_end": 40
+      },
+      "trailer_boundaries": {
+        "trailer_type_determination": "No Trailer is present. The `msg_size` of 40 exactly fits the header and one descriptor, leaving no room for a trailer."
+      }
+    },
+    "stage4_constraint_extraction": {
+      "descriptor_section": {
+        "start_offset": 24,
+        "end_offset": 40,
+        "fields": [
+          {
+            "start_offset": 24,
+            "end_offset": 27,
+            "is_padding": false,
+            "field_name": "descriptor_count",
+            "field_type": "uint32_t",
+            "constraints": "value == 1"
+          },
+          {
+            "start_offset": 28,
+            "end_offset": 31,
+            "is_padding": false,
+            "field_name": "port_descriptor.name",
+            "field_type": "mach_port_t",
+            "constraints": "Must be a valid Mach port name."
+          },
+          {
+            "start_offset": 32,
+            "end_offset": 37,
+            "is_padding": true
+          },
+          {
+            "start_offset": 38,
+            "end_offset": 39,
+            "is_padding": false,
+            "field_name": "port_descriptor.disposition_and_type",
+            "field_type": "uint16_t",
+            "constraints": "The 2-byte value at offset 38 must be 0x0012 (little-endian)."
+          }
+        ]
+      }
+    }
+  }
+}

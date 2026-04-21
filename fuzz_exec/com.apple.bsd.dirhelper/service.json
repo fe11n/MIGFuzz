@@ -1,0 +1,23 @@
+{
+  "library_path": "/usr/libexec/dirhelper",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    47213
+  ],
+  "subsystem_end_ids": [
+    47221
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "dirhelper",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "_dirhelper_server_routine"
+  ],
+  "dispatch_routine_offsets": [
+    "0x3bc8"
+  ]
+}

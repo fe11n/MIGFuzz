@@ -1,0 +1,39 @@
+{
+  "library_path": "/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker",
+  "start_function": "",
+  "subsystem_num": 5,
+  "subsystem_start_ids": [
+    2405,
+    46000,
+    50000,
+    57000,
+    49000
+  ],
+  "subsystem_end_ids": [
+    2409,
+    46002,
+    50002,
+    57001,
+    49001
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "mdworker",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10002E710",
+    "sub_10002F288",
+    "sub_10002FC94",
+    "sub_10002FFA0",
+    "sub_100030150"
+  ],
+  "dispatch_routine_offsets": [
+    "0x2e710",
+    "0x2f288",
+    "0x2fc94",
+    "0x2ffa0",
+    "0x30150"
+  ]
+}

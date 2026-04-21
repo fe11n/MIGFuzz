@@ -1,0 +1,166 @@
+{"app_name":"Dock","timestamp":"2025-12-28 11:44:53.00 +0800","app_version":"1.8","slice_uuid":"bdeeacd1-0e93-31b1-97e2-c83454aa5631","build_version":"2427.2.4","platform":1,"bundleID":"com.apple.dock","share_with_app_devs":0,"is_first_party":1,"bug_type":"309","os_version":"macOS 26.2 (25C56)","roots_installed":0,"name":"Dock","incident_id":"927367DD-DBF8-4598-9947-AFF6A142C925"}
+{
+  "uptime" : 3900,
+  "procRole" : "Foreground",
+  "version" : 2,
+  "userID" : 501,
+  "deployVersion" : 210,
+  "modelCode" : "VirtualMac2,1",
+  "coalitionID" : 483,
+  "osVersion" : {
+    "train" : "macOS 26.2",
+    "build" : "25C56",
+    "releaseType" : "User"
+  },
+  "captureTime" : "2025-12-28 11:44:41.8405 +0800",
+  "codeSigningMonitor" : 0,
+  "incident" : "927367DD-DBF8-4598-9947-AFF6A142C925",
+  "pid" : 1060,
+  "translated" : false,
+  "cpuType" : "ARM-64",
+  "procLaunch" : "2025-12-28 09:52:35.0535 +0800",
+  "procStartAbsTime" : 13606203813,
+  "procExitAbsTime" : 93986357318,
+  "procName" : "Dock",
+  "procPath" : "\/System\/Library\/CoreServices\/Dock.app\/Contents\/MacOS\/Dock",
+  "bundleInfo" : {"CFBundleShortVersionString":"1.8","CFBundleVersion":"2427.2.4","CFBundleIdentifier":"com.apple.dock"},
+  "buildInfo" : {"ProjectName":"Dock","SourceVersion":"2427002004000000","BuildVersion":"58"},
+  "storeInfo" : {"deviceIdentifierForVendor":"599777AD-F563-54E0-8680-0DFA39990E3A"},
+  "parentProc" : "launchd",
+  "parentPid" : 1,
+  "coalitionName" : "com.apple.Dock.agent",
+  "crashReporterKey" : "3F8805BF-0410-A586-5B8E-EE0662EEE1AE",
+  "appleIntelligenceStatus" : {"state":"unavailable","reasons":["countryLocationIneligible","selectedSiriLanguageIneligibleInfo(und)","selectedSiriLanguageIneligible","deviceNotCapable","regionIneligible","countryBillingIneligible"]},
+  "developerMode" : 1,
+  "throttleTimeout" : 1,
+  "codeSigningID" : "com.apple.dock",
+  "codeSigningTeamID" : "",
+  "codeSigningFlags" : 570522369,
+  "codeSigningValidationCategory" : 1,
+  "codeSigningTrustLevel" : 4294967295,
+  "codeSigningAuxiliaryInfo" : 288230376151711744,
+  "bootSessionUUID" : "226966D8-AEE5-45EF-B040-A1CFAA087A4D",
+  "sip" : "enabled",
+  "vmRegionInfo" : "0 is not in any region.  Bytes before following region: 4374937600\n      REGION TYPE                    START - END         [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      UNUSED SPACE AT START\n--->  \n      __TEXT                      104c44000-105054000    [ 4160K] r-x\/r-x SM=COW  \/System\/Library\/CoreServices\/Dock.app\/Contents\/MacOS\/Dock",
+  "exception" : {"codes":"0x0000000000000001, 0x2000000000000000","rawCodes":[1,2305843009213693952],"type":"EXC_BAD_ACCESS","signal":"SIGKILL","subtype":"KERN_INVALID_ADDRESS at 0x2000000000000000 -> 0x0000000000000000 (possible pointer authentication failure)"},
+  "termination" : {"namespace":"PAC_EXCEPTION","flags":2,"code":1},
+  "vmregioninfo" : "0 is not in any region.  Bytes before following region: 4374937600\n      REGION TYPE                    START - END         [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      UNUSED SPACE AT START\n--->  \n      __TEXT                      104c44000-105054000    [ 4160K] r-x\/r-x SM=COW  \/System\/Library\/CoreServices\/Dock.app\/Contents\/MacOS\/Dock",
+  "extMods" : {"caller":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"system":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"targeted":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"warnings":0},
+  "faultingThread" : 0,
+  "threads" : [{"triggered":true,"id":11618,"threadState":{"x":[{"value":6091937204},{"value":8633935440,"objc-selector":"release"},{"value":8395723760,"symbolLocation":0,"symbol":"OBJC_CLASS_$_OS_os_log"},{"value":6091932080},{"value":8351607712,"symbolLocation":0,"symbol":"_os_log_current_test_callback"},{"value":0},{"value":17246978304},{"value":0},{"value":0},{"value":2147483647},{"value":46879062816},{"value":3},{"value":0},{"value":39137463920},{"value":28991930996921328,"symbolLocation":28991922601197568,"symbol":"OBJC_CLASS_$_OS_os_log"},{"value":8395723760,"symbolLocation":0,"symbol":"OBJC_CLASS_$_OS_os_log"},{"value":8395723760,"symbolLocation":0,"symbol":"OBJC_CLASS_$_OS_os_log"},{"value":16937897467618171536,"symbolLocation":16937897461052080128,"symbol":"-[OS_object release]"},{"value":0},{"value":6091937208},{"value":6091937204},{"value":4},{"value":39144852608},{"value":16441657081487378744},{"value":6091941808},{"value":8504625690516286900,"symbolLocation":8504625683824115712,"symbol":"mshMIGPerform"},{"value":39137497408},{"value":39141703752},{"value":336789693}],"flavor":"ARM_THREAD_STATE64","lr":{"value":4375487656},"cpsr":{"value":2147487744},"fp":{"value":6091937120},"sp":{"value":6091937072},"esr":{"value":2181038084,"description":"(Instruction Abort) Translation fault"},"pc":{"value":0},"far":{"value":2305843009213693952}},"queue":"com.apple.main-thread","frames":[{"imageOffset":0,"imageIndex":2},{"imageOffset":1247608,"imageIndex":0},{"imageOffset":20100,"symbol":"mshMIGPerform","symbolLocation":208,"imageIndex":3},{"imageOffset":393076,"symbol":"__CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE1_PERFORM_FUNCTION__","symbolLocation":60,"imageIndex":4},{"imageOffset":392860,"symbol":"__CFRunLoopDoSource1","symbolLocation":508,"imageIndex":4},{"imageOffset":387276,"symbol":"__CFRunLoopRun","symbolLocation":2168,"imageIndex":4},{"imageOffset":1150516,"symbol":"_CFRunLoopRunSpecificWithOptions","symbolLocation":532,"imageIndex":4},{"imageOffset":197456,"imageIndex":0},{"imageOffset":191492,"imageIndex":0},{"imageOffset":24712,"imageIndex":0},{"imageOffset":36180,"symbol":"start","symbolLocation":7184,"imageIndex":5}]},{"id":11678,"name":"com.apple.dock.animation","threadState":{"x":[{"value":260},{"value":0},{"value":329984},{"value":0},{"value":0},{"value":160},{"value":0},{"value":0},{"value":6097088136},{"value":0},{"value":31744},{"value":136339441875970},{"value":136339441875970},{"value":31744},{"value":0},{"value":136339441875968},{"value":305},{"value":8418511176},{"value":0},{"value":39137579624},{"value":39137579576},{"value":6097088736},{"value":0},{"value":0},{"value":329984},{"value":329985},{"value":330240},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":6567911644},"cpsr":{"value":1610616832},"fp":{"value":6097088256},"sp":{"value":6097088112},"esr":{"value":1442840704,"description":"(Syscall)"},"pc":{"value":6567650552},"far":{"value":0}},"frames":[{"imageOffset":17656,"symbol":"__psynch_cvwait","symbolLocation":8,"imageIndex":6},{"imageOffset":28892,"symbol":"_pthread_cond_wait","symbolLocation":984,"imageIndex":7},{"imageOffset":306744,"imageIndex":0},{"imageOffset":307192,"imageIndex":0},{"imageOffset":51656,"imageIndex":0},{"imageOffset":27656,"symbol":"_pthread_start","symbolLocation":136,"imageIndex":7},{"imageOffset":7080,"symbol":"thread_start","symbolLocation":8,"imageIndex":7}]},{"id":25593,"frames":[],"threadState":{"x":[{"value":6093074432},{"value":31107},{"value":6092537856},{"value":0},{"value":409604},{"value":18446744073709551615},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":0},"cpsr":{"value":4096},"fp":{"value":0},"sp":{"value":6093074432},"esr":{"value":1442840704,"description":"(Syscall)"},"pc":{"value":6567889812},"far":{"value":0}}}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 4374937600,
+    "CFBundleShortVersionString" : "1.8",
+    "CFBundleIdentifier" : "com.apple.dock",
+    "size" : 4259840,
+    "uuid" : "bdeeacd1-0e93-31b1-97e2-c83454aa5631",
+    "path" : "\/System\/Library\/CoreServices\/Dock.app\/Contents\/MacOS\/Dock",
+    "name" : "Dock",
+    "CFBundleVersion" : "2427.2.4"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 4380934144,
+    "size" : 131072,
+    "uuid" : "a14561c9-c790-38ad-8030-74f1d515fd53",
+    "path" : "\/Volumes\/VOLUME\/*\/libLaunchServicesSupport.dylib",
+    "name" : "libLaunchServicesSupport.dylib"
+  },
+  {
+    "size" : 0,
+    "source" : "A",
+    "base" : 0,
+    "uuid" : "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6692151296,
+    "CFBundleShortVersionString" : "1.22",
+    "CFBundleIdentifier" : "com.apple.HIServices",
+    "size" : 442752,
+    "uuid" : "92eb48f7-1411-3740-a32d-945d8ae71a4a",
+    "path" : "\/System\/Library\/Frameworks\/ApplicationServices.framework\/Versions\/A\/Frameworks\/HIServices.framework\/Versions\/A\/HIServices",
+    "name" : "HIServices"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6568169472,
+    "CFBundleShortVersionString" : "6.9",
+    "CFBundleIdentifier" : "com.apple.CoreFoundation",
+    "size" : 5540928,
+    "uuid" : "649000a2-3eb4-3cf5-970a-d3cb37b5780c",
+    "path" : "\/System\/Library\/Frameworks\/CoreFoundation.framework\/Versions\/A\/CoreFoundation",
+    "name" : "CoreFoundation",
+    "CFBundleVersion" : "4201"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6563909632,
+    "size" : 651204,
+    "uuid" : "0975afba-c46b-364c-bd84-a75daa9e455a",
+    "path" : "\/usr\/lib\/dyld",
+    "name" : "dyld"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6567632896,
+    "size" : 246944,
+    "uuid" : "548c45c8-9733-3f0d-8ef4-c06df1df2ad0",
+    "path" : "\/usr\/lib\/system\/libsystem_kernel.dylib",
+    "name" : "libsystem_kernel.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6567882752,
+    "size" : 51900,
+    "uuid" : "527c4ba0-91a5-378b-b3e2-d38269ca5a66",
+    "path" : "\/usr\/lib\/system\/libsystem_pthread.dylib",
+    "name" : "libsystem_pthread.dylib"
+  }
+],
+  "sharedCache" : {
+  "base" : 6562824192,
+  "size" : 5653544960,
+  "uuid" : "acb998b6-263c-3634-b0a8-ae8270a116c2"
+},
+  "vmSummary" : "ReadOnly portion of Libraries: Total=1.2G resident=0K(0%) swapped_out_or_unallocated=1.2G(100%)\nWritable regions: Total=107.4M written=866K(1%) resident=482K(0%) swapped_out=384K(0%) unallocated=106.6M(99%)\n\n                                VIRTUAL   REGION \nREGION TYPE                        SIZE    COUNT (non-coalesced) \n===========                     =======  ======= \nAccelerate framework               384K        3 \nActivity Tracing                   256K        1 \nCoreAnimation                     5616K       67 \nCoreGraphics                        64K        4 \nKernel Alloc Once                   32K        1 \nMALLOC                            97.0M       34 \nMALLOC guard page                 3200K        4 \nMemory Tag 240                     128K        1 \nMemory Tag 246                    2688K       21 \nMemory Tag 248                     128K        1 \nMemory Tag 249                     320K       20 \nSTACK GUARD                       56.0M        3 \nStack                             9264K        3 \nVM_ALLOCATE                        144K        6 \n__AUTH                            2811K      329 \n__AUTH_CONST                      51.7M      609 \n__CTF                               824        1 \n__DATA                            14.6M      565 \n__DATA_CONST                      24.8M      614 \n__DATA_DIRTY                      3781K      533 \n__FONT_DATA                        2352        1 \n__INFO_FILTER                         8        1 \n__LINKEDIT                       590.2M        3 \n__OBJC_RO                         78.4M        1 \n__OBJC_RW                         2570K        1 \n__TEXT                           637.1M      630 \n__TPRO_CONST                       128K        2 \nmapped file                      109.1M       13 \npage table in kernel               482K        1 \nshared memory                      912K       16 \n===========                     =======  ======= \nTOTAL                              1.7G     3489 \n",
+  "legacyInfo" : {
+  "threadTriggered" : {
+    "queue" : "com.apple.main-thread"
+  }
+},
+  "logWritingSignature" : "576cee366b562bb080b3a05f376f5ecfb0cb76f8",
+  "roots_installed" : 0,
+  "bug_type" : "309",
+  "trmStatus" : 2105344,
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "645eb1d0417dab722a215927",
+      "factorPackIds" : [
+
+      ],
+      "deploymentId" : 240000005
+    },
+    {
+      "rolloutId" : "63f9578e238e7b23a1f3030a",
+      "factorPackIds" : [
+
+      ],
+      "deploymentId" : 240000005
+    }
+  ],
+  "experiments" : [
+
+  ]
+}
+}

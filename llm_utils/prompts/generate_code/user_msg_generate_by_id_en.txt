@@ -1,0 +1,77 @@
+Please generate corresponding message generation function code for message ID {msg_id} of service {service_name}.
+
+**Constraint information for message ID {msg_id}:**
+```json
+{msg_constraints}
+```
+
+**Tool function library description (from fuzz_helpers/tool_lib.cc):**
+```cpp
+{tools_content}
+```
+
+**Reference implementation file (pattern):**
+```cpp
+{pattern_content}
+```
+
+**Current PART1 content:**
+```cpp
+{current_part1_content}
+```
+
+**Generation Requirements:**
+
+1. **PART1 supplement content:**
+   - PART1 must include necessary header file definitions (e.g., #include <cstring> etc.), only use standard library, no additional installation required.
+   - If new tool functions are needed to support this message ID, provide them in part1_additions
+   - If this message has cross-component variable constraints, define shared variables in PART1 with naming convention SharedValue_{{id}}_{{i}}, where id is the message ID and i is the index of the shared variable for that message. Shared variables are only assigned on their first reference.
+   - If no new content is needed, part1_additions should be an empty string
+   - New content should follow the style of the pattern file
+
+2. **Component function generation:**
+   - generate_header_{msg_id}: Function to generate message header
+   - generate_descriptor_{msg_id}: Function to generate descriptor section (return empty vector if not OOL message)
+   - generate_body_{msg_id}: Function to generate message body
+   - generate_trailer_{msg_id}: Function to generate trailer section (decide based on constraints)
+   - When adding new fields to each section, use comments to indicate the field's offset and size, following the style of the reference implementation file.
+
+3. **Main generation function:**
+   - generate_message_{msg_id}: Call the above component functions, assemble complete message in order
+   - Must first generate all components, calculate actual message size, then generate header
+   - Assemble in order: header->descriptor->body->trailer
+
+4. **Constraint handling:**
+   - Strictly generate values according to constraint requirements for each field in constraint information
+   - For fields that must equal a specific value, assign directly
+   - For range-constrained fields, use FuzzedDataProvider to generate within range
+   - For "arbitrary" constrained fields, use FuzzedDataProvider to generate randomly
+
+5. **Function signature requirements:**
+   ```cpp
+   // Header generation function
+   static std::vector<uint8_t> generate_header_{msg_id}(FuzzedDataProvider& fuzz_data, uint32_t actual_msg_size);
+   
+   // Descriptor generation function  
+   static std::vector<uint8_t> generate_descriptor_{msg_id}(FuzzedDataProvider& fuzz_data, 
+                                                             std::vector<std::pair<void*, uint32_t>>& ool_buffers);
+   
+   // Message body generation function
+   static std::vector<uint8_t> generate_body_{msg_id}(FuzzedDataProvider& fuzz_data);
+   
+   // Trailer generation function
+   static std::vector<uint8_t> generate_trailer_{msg_id}(FuzzedDataProvider& fuzz_data);
+   
+   // Main generation function
+   static void generate_message_{msg_id}(FuzzedDataProvider& fuzz_data, 
+                                          std::vector<uint8_t>& mach_msg,
+                                          std::vector<std::pair<void*, uint32_t>>& ool_buffers);
+   ```
+
+**Special Notes:**
+- All code must be complete and directly compilable
+- Prohibit any form of code omission or placeholders
+- Strictly use vec.insert method to write elements one by one
+- Maintain exactly the same code style as the pattern file
+
+Please generate complete code for this message ID based on the above requirements.

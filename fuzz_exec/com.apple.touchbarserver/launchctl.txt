@@ -1,0 +1,74 @@
+system/com.apple.touchbarserver = {
+	active count = 0
+	path = /System/Library/LaunchDaemons/com.apple.touchbarserver.plist
+	type = LaunchDaemon
+	state = not running
+
+	program = /usr/libexec/TouchBarServer
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocNanoZone => 0
+		MallocSpaceEfficient => 0
+		XPC_SERVICE_NAME => com.apple.touchbarserver
+	}
+
+	domain = system
+	minimum runtime = 1
+	base minimum runtime = 1
+	exit timeout = 5
+	runs = 0
+	last exit code = (never exited)
+
+	endpoints = {
+		"com.apple.touchbarserver.plugin" = {
+			port = 0x0
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 1
+		}
+		"com.apple.touchbarserver.render" = {
+			port = 0x0
+			active = 0
+			managed = 1
+			reset = 1
+			hide = 1
+			watching = 1
+		}
+		"com.apple.touchbarserver.mig" = {
+			port = 0x0
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 1
+		}
+		"com.apple.touchbarserver" = {
+			port = 0x0
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 1
+		}
+	}
+
+	spawn type = interactive (4)
+	jetsam priority = 170
+	jetsam memory limit (active) = (unlimited)
+	jetsam memory limit (inactive) = (unlimited)
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	exponential throttling grace limit = 10
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = system service | exponential throttling | tle system
+}

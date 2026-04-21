@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/CoreServices/RFBEventHelper.bundle/Contents/MacOS/RFBEventHelperd",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    26510
+  ],
+  "subsystem_end_ids": [
+    26513
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "RFBEventHelperd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100005CCC"
+  ],
+  "dispatch_routine_offsets": [
+    "0x5ccc"
+  ]
+}

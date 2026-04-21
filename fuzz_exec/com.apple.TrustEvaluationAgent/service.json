@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/PrivateFrameworks/TrustEvaluationAgent.framework/Resources/trustevaluationagent",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    12836
+  ],
+  "subsystem_end_ids": [
+    12837
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "trustevaluationagent",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_1000017C4"
+  ],
+  "dispatch_routine_offsets": [
+    "0x17c4"
+  ]
+}

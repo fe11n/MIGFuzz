@@ -1,0 +1,413 @@
+         # Mach Message Generation Tool Functions Reference
+
+## Overview
+This document describes all functions available in `fuzz_helpers/tool_lib.cc` for generating Mach messages. 
+
+
+## Function Specifications
+
+### 1. append_vector
+**Function Signature:**
+```cpp
+void append_vector(std::vector<uint8_t>& target, const std::vector<uint8_t>& source)
+```
+
+**Input Parameters:**
+- `target`: Reference to destination vector that will be modified
+- `source`: Const reference to source vector to be appended
+
+**Return Value:**
+- `void` (modifies target vector in-place)
+
+**Purpose:**
+Helper function to append the contents of one byte vector to another. Equivalent to `target.insert(target.end(), source.begin(), source.end())`.
+
+**Usage Example:**
+Useful for concatenating message parts like header + body + trailer.
+
+---
+
+### 2. generate_trailer
+**Function Signature:**
+```cpp
+std::vector<uint8_t> generate_trailer(uint32_t msg_trailer_size);
+std::vector<uint8_t> generate_trailer(); // Defaults to MACH_MSG_TRAILER_SIZE (52 bytes)
+```
+
+**Input Parameters:**
+- `msg_trailer_size`: Size of the trailer
+
+**Return Value:**
+- `std::vector<uint8_t>`: vector containing standard Mach message trailer
+
+**Purpose:**
+Creates a standard Mach message trailer (type: `MACH_MSG_TRAILER_FORMAT_0`).
+Do NOT declare your own `static std::vector<uint8_t> generate_trailer(...)` locally, use this provided library function instead.
+
+**Usage Example:**
+Used to add a standard trailer to complete Mach message construction.
+
+---
+
+### 3. generate_header (with is_ool parameter)
+**Function Signature:**
+```cpp
+void generate_header(FuzzedDataProvider& fuzz_data, uint32_t msg_size, uint32_t msg_id, std::vector<uint8_t>& header, bool is_ool)
+```
+
+**Input Parameters:**
+- `fuzz_data`: Reference to FuzzedDataProvider for generating random values
+- `msg_size`: Total message size in bytes
+- `msg_id`: Message ID to set in header
+- `header`: Reference to vector that will contain the generated header (resized to 24 bytes)
+- `is_ool`: Boolean indicating if this is an Out-of-Line (OOL) message
+
+**Return Value:**
+- `void` (modifies header vector in-place)
+
+**Purpose:**
+Generates a complete 24-byte Mach message header with:
+- `msgh_bits`: Random bits with complex bit set based on `is_ool` parameter
+- `msgh_size`: Set to provided `msg_size`
+- `msgh_remote_port`: Random port value
+- `msgh_local_port`: Random port value  
+- `msgh_voucher_port`: Random port value
+- `msgh_id`: Set to provided `msg_id`
+
+**Usage Example:**
+Primary function for creating message headers with proper OOL message bit handling.
+
+---
+
+### 4. generate_header (overloaded)
+**Function Signature:**
+```cpp
+void generate_header(FuzzedDataProvider& fuzz_data, uint32_t msg_size, uint32_t msg_id, std::vector<uint8_t>& header)
+```
+
+**Input Parameters:**
+- `fuzz_data`: Reference to FuzzedDataProvider for generating random values
+- `msg_size`: Total message size in bytes
+- `msg_id`: Message ID to set in header
+- `header`: Reference to vector that will contain the generated header
+
+**Return Value:**
+- `void` (modifies header vector in-place)
+
+**Purpose:**
+Convenience overload that calls the main `generate_header` function with `is_ool = false`. Used for non-OOL messages.
+
+---
+
+### 5. choose_one_of
+**Function Signature:**
+```cpp
+uint32_t choose_one_of(FuzzedDataProvider& fuzz_data, const std::vector<uint32_t>& choices)
+```
+
+**Input Parameters:**
+- `fuzz_data`: Reference to FuzzedDataProvider for generating random selection
+- `choices`: Vector of uint32_t values to choose from
+
+**Return Value:**
+- `uint32_t`: Randomly selected value from the choices vector
+
+**Purpose:**
+Randomly selects one element from a provided vector of choices. Useful for selecting random message IDs, port types, or other enumerated values.
+
+**Usage Example:**
+```cpp
+uint32_t selected_id = choose_one_of(fuzz_data, msg_ids);
+```
+
+---
+
+### 6. flip_weighted_coin
+**Function Signature:**
+```cpp
+bool flip_weighted_coin(double probability, FuzzedDataProvider& fuzz_data)
+```
+
+**Input Parameters:**
+- `probability`: Double value between 0.0 and 1.0 representing the probability of returning true
+- `fuzz_data`: Reference to FuzzedDataProvider for generating random probability
+
+**Return Value:**
+- `bool`: True with given probability, false otherwise
+
+**Purpose:**
+Generates a weighted random boolean decision. Uses `FuzzedDataProvider::ConsumeProbability()` to get a random value and compares it against the provided probability threshold.
+
+**Usage Example:**
+```cpp
+bool should_include_trailer = flip_weighted_coin(0.3, fuzz_data); // 30% chance
+```
+
+---
+
+### 7. create_mach_port_with_send_rights
+**Function Signature:**
+```cpp
+mach_port_t create_mach_port_with_send_rights()
+```
+
+**Input Parameters:**
+- None
+
+**Return Value:**
+- `mach_port_t`: Valid Mach port with send rights
+
+**Purpose:**
+Creates a new Mach port with both receive and send rights. The function:
+1. Allocates a port with receive rights using `mach_port_allocate()`
+2. Inserts send rights using `mach_port_insert_right()`
+3. Returns the port handle
+
+**Error Handling:**
+Exits the program if port creation fails.
+
+---
+
+### 8. create_mach_port_with_send_and_receive_rights
+**Function Signature:**
+```cpp
+mach_port_t create_mach_port_with_send_and_receive_rights()
+```
+
+**Input Parameters:**
+- None
+
+**Return Value:**
+- `mach_port_t`: Valid Mach port with both send and receive rights
+
+**Purpose:**
+Similar to `create_mach_port_with_send_rights()` but with more explicit naming and better error handling. Creates a port with both send and receive rights.
+
+**Error Handling:**
+- Prints error messages to stderr
+- Deallocates port if send right insertion fails
+- Exits program on failure
+
+---
+
+**Memory Management:**
+The allocated port array is managed by the caller and should be cleaned up appropriately.
+
+## Constants Used
+
+- `MACH_MSG_HEADER_SIZE`: 24 bytes (standard Mach message header size)
+- `MACH_MSG_TRAILER_SIZE`: 52 bytes (standard trailer size)
+- `MACH_MSG_TRAILER_FORMAT_0`: Standard trailer format
+- `MACH_MSGH_BITS_COMPLEX`: Bit flag for complex (OOL) messages
+- `MAX_OOL_DATA_SIZE`: Maximum size for OOL data allocation
+- `MACH_MSG_OOL_DESCRIPTOR`: Type constant for OOL data descriptors
+- `MACH_MSG_PORT_DESCRIPTOR`: Type constant for port descriptors  
+- `MACH_MSG_OOL_PORTS_DESCRIPTOR`: Type constant for OOL ports descriptors
+
+## Usage Notes
+
+1. **Memory Management**: OOL descriptors allocate memory that must be tracked and cleaned up
+2. **Port Management**: Created ports should be properly deallocated after message sending
+3. **Error Handling**: Several functions exit on failure - consider this in production code
+4. **Thread Safety**: Functions are not thread-safe due to global Mach task references
+5. **Fuzzing Integration**: All functions are designed to work with FuzzedDataProvider for deterministic randomness
+6. **Filesystem Access**: `generate_random_path` respects file permissions and gracefully handles access restrictions
+
+## Integration with Message Generation
+
+These functions are typically used in sequence to build complete Mach messages:
+
+1. Use `generate_header()` to create message header
+2. Use descriptor functions to create any needed descriptors
+3. Generate message body content (can include random file paths from `generate_random_path()`)
+4. Use `get_standard_trailer()` if trailer is needed
+5. Use `append_vector()` to concatenate all parts
+
+**File Path Integration:**
+The `generate_random_path()` function is particularly useful for:
+- Testing file path validation in Mach messages
+- Generating random file references for OOL data
+- Exploring edge cases in filesystem-related message handling
+- Fuzzing file permission and access control logic
+
+---
+
+### 9. get_safari_audit_token
+**Function Signature:**
+```cpp
+std::vector<uint8_t> get_safari_audit_token()
+```
+
+**Input Parameters:**
+- None
+
+**Return Value:**
+- `std::vector<uint8_t>`: 32-byte vector containing the audit token data from Safari process
+
+**Purpose:**
+Retrieves the audit token from a running Safari process as a byte vector. This is the raw audit token that can be used for process identification and privilege validation.
+
+**Implementation Details:**
+1. Checks if running as root (required for task_for_pid)
+2. Uses `get_pid_of_safari()` internally to locate Safari process
+3. Calls `task_for_pid()` to get task port (requires root privileges)
+4. Extracts audit token using `task_info()` with `TASK_AUDIT_TOKEN`
+5. Returns the audit token as a 32-byte vector
+
+**Security Requirements:**
+- **Root privileges required**: The `task_for_pid()` call requires elevated permissions
+- **SIP considerations**: System Integrity Protection may block access to Safari
+- **Process availability**: Safari must be running for successful token retrieval
+
+**Error Handling:**
+- Returns zeroed 32-byte vector if Safari process not found
+- Returns zeroed 32-byte vector if insufficient privileges
+- Prints diagnostic messages for debugging
+
+**Usage Example:**
+Use when you need Safari's audit token for process validation or credential spoofing.
+
+---
+
+### 10. generate_random_path
+**Function Signature:**
+```cpp
+std::optional<std::string> generate_random_path(FuzzedDataProvider& fuzz_data, int max_depth = 30)
+```
+
+**Input Parameters:**
+- `fuzz_data`: Reference to FuzzedDataProvider for generating deterministic random values during fuzzing
+- `max_depth`: Maximum directory traversal depth (default: 30, increased from 10 for broader filesystem coverage)
+
+**Return Value:**
+- `std::optional<std::string>`: Random file path string if successful, `std::nullopt` if no accessible file found
+
+**Purpose:**
+Generates a random file path by performing a random walk through the filesystem starting from the root directory (`/`). This function is designed for fuzzing scenarios where random file paths are needed for testing file-related Mach message operations.
+
+**Implementation Details:**
+1. **Starting Point**: Always starts from root directory (`/`) for maximum filesystem coverage
+2. **Random Walk Algorithm**:
+   - Recursively traverses directories using depth-first search with randomization
+   - At each directory level, collects both subdirectories and files
+   - Makes random decisions between exploring subdirectories or selecting files
+   - Uses `FuzzedDataProvider` for deterministic randomness during fuzzing
+3. **Permission Handling**: Uses `fs::directory_options::skip_permission_denied` to gracefully handle inaccessible directories
+4. **Symlink Protection**: Avoids following symbolic links to prevent infinite loops
+5. **Retry Logic**: Attempts up to 10 times if random walks lead to dead ends
+
+**Algorithm Logic:**
+```
+if (directory has both files and subdirs):
+    50% chance: select random file from current directory
+    50% chance: continue to random subdirectory
+else if (only subdirs):
+    select random subdirectory and continue traversal
+else if (only files):
+    select random file from current directory
+```
+
+**Error Handling:**
+- Silently ignores permission-denied directories
+- Returns `std::nullopt` if no accessible files found after multiple attempts
+- Handles filesystem errors gracefully without crashing
+
+**Performance Considerations:**
+- Limited traversal depth prevents excessive computation
+- Early termination when files are found
+- Efficient use of `FuzzedDataProvider` for fuzzing determinism
+
+**Security Considerations:**
+- Only accesses files the current user has permission to read
+- Cannot access system-protected files without elevated privileges
+- Safe for fuzzing environments as it won't crash on permission errors
+
+**Usage Example:**
+```cpp
+// In fuzzing context
+auto random_path = generate_random_path(fuzz_data);
+if (random_path) {
+    // Use the random path for testing file operations
+    std::cout << "Testing with file: " << *random_path << std::endl;
+} else {
+    std::cout << "No accessible file found" << std::endl;
+}
+```
+
+**Fuzzing Integration:**
+Designed specifically for integration with libFuzzer and similar fuzzing frameworks. The use of `FuzzedDataProvider` ensures that random path generation is deterministic and reproducible for debugging fuzzing crashes.
+
+**Filesystem Coverage:**
+Provides broad coverage of the system's filesystem, including:
+- System directories (`/System`, `/usr`, `/Library`)
+- User directories (`/Users/*`)
+- Application bundles (`/Applications/*.app`)
+- Configuration files, executables, and data files
+
+This function is particularly useful for fuzzing file path handling in Mach messages, testing path validation logic, and exploring edge cases in filesystem operations.
+
+
+---
+
+### 11. generate_granted_port
+**Function Signature:**
+```cpp
+mach_port_t generate_granted_port(mach_msg_type_name_t disposition)
+```
+
+**Input Parameters:**
+- `disposition`: The Mach message type name (e.g., `MACH_MSG_TYPE_MAKE_SEND`, `MACH_MSG_TYPE_MOVE_SEND_ONCE`) indicating the required right.
+
+**Return Value:**
+- `mach_port_t`: A new Mach port with the rights required by the disposition. Returns `MACH_PORT_NULL` on failure.
+
+**Purpose:**
+Creates a new Mach port and ensures it has the specific rights required for a given Mach message disposition. This is useful for generating valid ports for fuzzing Mach messages where specific rights are expected by the kernel.
+
+**Logic:**
+1. Allocates a new port with `MACH_PORT_RIGHT_RECEIVE`.
+2. Based on the `disposition`:
+    - `MACH_MSG_TYPE_MAKE_SEND`, `MACH_MSG_TYPE_MAKE_SEND_ONCE`, `MACH_MSG_TYPE_MOVE_RECEIVE`: Returns the port as-is (since it has receive rights).
+    - `MACH_MSG_TYPE_COPY_SEND`, `MACH_MSG_TYPE_MOVE_SEND`: Inserts a send right (`MACH_MSG_TYPE_MAKE_SEND`) into the port.
+    - `MACH_MSG_TYPE_MOVE_SEND_ONCE`: Inserts a send-once right (`MACH_MSG_TYPE_MAKE_SEND_ONCE`) into the port.
+
+**Usage Example:**
+```cpp
+mach_port_t port = generate_granted_port(MACH_MSG_TYPE_COPY_SEND);
+// port now has send rights and can be used in a message with MACH_MSG_TYPE_COPY_SEND
+```
+
+---
+
+### 12. allocate_ool_buffer
+**Function Signature:**
+```cpp
+void* allocate_ool_buffer(uint32_t size, FuzzedDataProvider& fuzz_data)
+```
+
+**Input Parameters:**
+- `size`: Size of the buffer to allocate in bytes
+- `fuzz_data`: Reference to FuzzedDataProvider for generating random data
+
+**Return Value:**
+- `void*`: Pointer to allocated buffer filled with random data, or `nullptr` on failure
+
+**Purpose:**
+Allocates a buffer in virtual memory using `vm_allocate` and fills it with random data from the fuzzer. Used for creating Out-of-Line (OOL) data buffers in Mach messages.
+
+**Logic:**
+1. If `size` is 0, returns `nullptr`.
+2. Allocates memory using `vm_allocate` with `VM_FLAGS_ANYWHERE`.
+3. If allocation fails, returns `nullptr`.
+4. Fills the allocated buffer with random bytes from `fuzz_data`.
+5. Returns the buffer pointer.
+
+**Usage Example:**
+```cpp
+uint32_t buffer_size = 1024;
+void* ool_buffer = allocate_ool_buffer(buffer_size, fuzz_data);
+if (ool_buffer) {
+    // Use the buffer in OOL descriptor
+    // Remember to deallocate when done
+}
+```

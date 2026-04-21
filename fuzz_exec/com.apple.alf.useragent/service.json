@@ -1,0 +1,23 @@
+{
+  "library_path": "/usr/libexec/ApplicationFirewall/Firewall",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    9999
+  ],
+  "subsystem_end_ids": [
+    10000
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "Firewall",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_1000015A8"
+  ],
+  "dispatch_routine_offsets": [
+    "0x15a8"
+  ]
+}

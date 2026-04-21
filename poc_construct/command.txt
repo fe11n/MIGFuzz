@@ -1,0 +1,28 @@
+sudo ./send_poc_bymessage -v com.apple.cmio.VDCAssistant msg_bin/com.apple.cmio.VDCAssistant_access_violation_0xxxxxxxac0_0x18_3 0
+sudo ./send_poc_bymessage -v -dryrun com.apple.dock.server msg_bin/com.apple.Dock.agent_access_violation_0x0_0x0_2 0
+sudo ./send_poc_bymessage -v -dryrun com.apple.cmio.IIDCVideoAssistant msg_bin/com.apple.cmio.IIDCVideoAssistant_other_0xxxxxxx388_0x0_3 0
+sudo ./send_poc_bymessage -v -dryrun com.apple.cmio.VDCAssistant msg_bin/com.apple.cmio.VDCAssistant_access_violation_0xxxxxxxac0_0x18_3 0
+./send_poc_bygenerator -v --dry-run com.apple.screensharing.server com.apple.screensharing /Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.screensharing/out/crashes/access_violation_0xxxxxxxa34_0x54_1
+
+./send_poc_bymessage -v -dryrun com.apple.uninstalld msg_bin/com.apple.uninstalld_other_0xxxxxxx388_0x0_2 0
+
+sudo  launchctl kickstart -k system/com.apple.screensharing
+python reproduce_crash_bygenerator.py -v /Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.screensharing/out/crashes/access_violation_0xxxxxxxa34_0x54_1
+
+
+./send_poc_bymessage -v -dryrun com.apple.bsd.dirhelper msg_bin/com.apple.bsd.dirhelper_access_violation_0xxxxxxxa44_0x0_4 0
+python reproduce_crash_bygenerator.py -v /Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.bsd.dirhelper/out/crashes/access_violation_0xxxxxxxa44_0x0_4
+
+
+sudo  launchctl kickstart -k system/com.apple.powerd
+sudo python reproduce_crash_bymessage.py --dry-run --no-send /Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.powerd/out/crashes/access_violation_0xxxxxxx1cc_0x0_4 > msg.log
+sudo python reproduce_crash_bygenerator.py -v /Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.powerd/out/crashes/access_violation_0xxxxxxx1cc_0x0_4 >gen.log
+
+
+
+sudo python reproduce_crash_bymessage.py  /Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.bsd.dirhelper/out/crashes/access_violation_0xxxxxxxa44_0x0_4 > msg.log
+sudo python reproduce_crash_bygenerator.py -v /Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.bsd.dirhelper/out/crashes/access_violation_0xxxxxxxa44_0x0_4 > gen.log
+
+
+sudo python reproduce_crash_bymessage.py  /Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.cmio.VDCAssistant/out/icrashes/access_violation_0xxxxxxxac0_0x18_3 > msg.log
+sudo python reproduce_crash_bygenerator.py -v /Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.cmio.VDCAssistant/out/icrashes/access_violation_0xxxxxxxac0_0x18_3 > gen.log

@@ -1,0 +1,18 @@
+[
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.sandboxd/out/crashes/access_violation_0xxxxxxxa34_0x54_1",
+        "messages": [
+            {
+                "body": "030000000080880401000000000200015f960000031e00000000000000001100030d000000000000000012000000000000000000000000005f96000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "header": {
+                    "msgh_bits": 2147488512,
+                    "msgh_id": 322514800,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 96,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ]
+    }
+]

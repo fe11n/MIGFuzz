@@ -1,0 +1,35 @@
+[
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.touchbarserver/out/crashes/access_violation_0xxxxxxxa44_0x0_4",
+        "messages": [
+            {
+                "body": "01000000030c0000ce7b25b095e011000000000000cd8168a38685cef81f9e774b6318e20027976fe82541a7200000001100001f000074750000010045a00100605155d5",
+                "header": {
+                    "msgh_bits": 2358875407,
+                    "msgh_id": 8610,
+                    "msgh_local_port": 2019928698,
+                    "msgh_remote_port": 2937951049,
+                    "msgh_size": 40,
+                    "msgh_voucher_port": 3468751548
+                }
+            }
+        ],
+        "conwith_generator": false
+    },
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.touchbarserver/out/icrashes/access_violation_0xxxxxxxa44_0x0_4",
+        "messages": [
+            {
+                "body": "01000000030c0000ce7b25b095e011000000000000cd8168a38685cef81f9e774b6318e20027976fe82541a7200000001100001f000074750000010045a00100605155d5",
+                "header": {
+                    "msgh_bits": 2358875407,
+                    "msgh_id": 8610,
+                    "msgh_local_port": 2019928698,
+                    "msgh_remote_port": 2937951049,
+                    "msgh_size": 40,
+                    "msgh_voucher_port": 3468751548
+                }
+            }
+        ]
+    }
+]

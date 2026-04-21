@@ -1,0 +1,77 @@
+请为服务 {service_name} 的消息ID {msg_id} 生成对应的消息生成函数代码。
+
+**消息ID {msg_id} 的约束信息：**
+```json
+{msg_constraints}
+```
+
+**工具函数库及说明（tool_lib.cc）：**
+```cpp
+{tools_content}
+```
+
+**参考实现文件（pattern）：**
+```cpp
+{pattern_content}
+```
+
+**当前PART1内容：**
+```cpp
+{current_part1_content}
+```
+
+**生成要求：**
+
+1. **PART1补充内容：**
+   - PART1必须包含必要的头文件定义（如 #include <cstring> 等），只能使用标准库，不需要额外安装的库。
+   - 如果需要新的工具函数来支持该消息ID，请在part1_additions中提供
+   - 如果该ID的消息包括跨组件的变量约束，则将组件共用的变量定义在PART1，变量名为SharedValue_{{id}}_{{i}}，表示消息ID为id的第i个共享变量。共享变量只在第一次被引用时赋值。
+   - 如果不需要新的内容，part1_additions为空字符串
+   - 新的内容应该遵循pattern文件的风格
+
+2. **组件函数生成：**
+   - generate_header_{msg_id}: 生成消息头部的函数
+   - generate_descriptor_{msg_id}: 生成描述符部分的函数（如果不是OOL消息，返回空vector）
+   - generate_body_{msg_id}: 生成消息体的函数
+   - generate_trailer_{msg_id}: 生成trailer部分的函数（根据约束决定是否需要）
+   - 各部分添加新字段时，用注释标明该字段所在偏移和大小，风格类似参考实现文件。
+
+3. **主生成函数：**
+   - generate_message_{msg_id}: 调用上述组件函数，按顺序组装完整消息
+   - 必须先生成所有组件，计算实际消息大小，再生成头部
+   - 按照header->descriptor->body->trailer的顺序组装
+
+4. **约束处理：**
+   - 严格按照约束信息中每个字段的constraint要求生成值
+   - 对于严格等于某值的字段，直接赋值
+   - 对于范围约束的字段，使用FuzzedDataProvider在范围内生成
+   - 对于"任意"约束的字段，使用FuzzedDataProvider随机生成
+
+5. **函数签名要求：**
+   ```cpp
+   // 头部生成函数
+   static std::vector<uint8_t> generate_header_{msg_id}(FuzzedDataProvider& fuzz_data, uint32_t actual_msg_size);
+   
+   // 描述符生成函数  
+   static std::vector<uint8_t> generate_descriptor_{msg_id}(FuzzedDataProvider& fuzz_data, 
+                                                             std::vector<std::pair<void*, uint32_t>>& ool_buffers);
+   
+   // 消息体生成函数
+   static std::vector<uint8_t> generate_body_{msg_id}(FuzzedDataProvider& fuzz_data);
+   
+   // Trailer生成函数
+   static std::vector<uint8_t> generate_trailer_{msg_id}(FuzzedDataProvider& fuzz_data);
+   
+   // 主生成函数
+   static void generate_message_{msg_id}(FuzzedDataProvider& fuzz_data, 
+                                          std::vector<uint8_t>& mach_msg,
+                                          std::vector<std::pair<void*, uint32_t>>& ool_buffers);
+   ```
+
+**特别注意：**
+- 所有代码必须完整且可直接编译使用
+- 禁止使用任何形式的代码省略或占位符
+- 严格使用vec.insert方法逐个写入元素
+- 与pattern文件的代码风格保持完全一致
+
+请基于以上要求生成该消息ID的完整代码。

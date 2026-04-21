@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/PrivateFrameworks/Heimdal.framework/Helpers/kcm",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    1
+  ],
+  "subsystem_end_ids": [
+    3
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "kcm",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "_mheim_ipc_server_routine"
+  ],
+  "dispatch_routine_offsets": [
+    "0x13fe4"
+  ]
+}

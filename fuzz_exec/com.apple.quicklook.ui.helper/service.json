@@ -1,0 +1,31 @@
+{
+  "library_path": "/System/Library/Frameworks/Quartz.framework/Frameworks/QuickLookUI.framework/Resources/QuickLookUIHelper.app/Contents/MacOS/QuickLookUIHelper",
+  "start_function": "",
+  "subsystem_num": 3,
+  "subsystem_start_ids": [
+    4000,
+    6000,
+    10000
+  ],
+  "subsystem_end_ids": [
+    4009,
+    6012,
+    10002
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "QuickLookUIHelper",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10000FBF4",
+    "sub_100010A94",
+    "sub_100011FD8"
+  ],
+  "dispatch_routine_offsets": [
+    "0xfbf4",
+    "0x10a94",
+    "0x11fd8"
+  ]
+}

@@ -1,0 +1,142 @@
+system/com.apple.configd = {
+	active count = 12
+	path = /System/Library/LaunchDaemons/com.apple.configd.plist
+	type = LaunchDaemon
+	state = running
+
+	program = /usr/libexec/configd
+	arguments = {
+		/usr/libexec/configd
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocSpaceEfficient => 1
+		XPC_SERVICE_NAME => com.apple.configd
+	}
+
+	domain = system
+	umask = 22
+	minimum runtime = 10
+	base minimum runtime = 10
+	exit timeout = 5
+	runs = 1
+	pid = 26407
+	immediate reason = speculative
+	forks = 0
+	execs = 1
+	initialized = 1
+	trampolined = 1
+	started suspended = 0
+	proxy started suspended = 0
+	last exit code = (never exited)
+
+	endpoints = {
+		"com.apple.SystemConfiguration.configd" = {
+			port = 0x4003
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.SystemConfiguration.PPPController-priv" = {
+			port = 0x5403
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.network.IPConfiguration" = {
+			port = 0x4103
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.network.EAPOLController" = {
+			port = 0x4203
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.SystemConfiguration.NetworkCategoryManager" = {
+			port = 0x4303
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.networking.captivenetworksupport" = {
+			port = 0x5303
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.SystemConfiguration.PPPController" = {
+			port = 0x5203
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.SystemConfiguration.NetworkInformation" = {
+			port = 0x5103
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.SystemConfiguration.IPMonitorControl" = {
+			port = 0x4403
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.SystemConfiguration.DNSConfiguration" = {
+			port = 0x5003
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.SystemConfiguration.configd.watchdog" = {
+			port = 0x4503
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+	}
+
+	spawn type = interactive (4)
+	jetsam priority = 140
+	jetsam memory limit (active, soft) = 30 MB
+	jetsam memory limit (inactive, soft) = 30 MB
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	exponential throttling grace limit = 3
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = keepalive | supports transactions | inferred program | system service | exponential throttling | tle system
+}

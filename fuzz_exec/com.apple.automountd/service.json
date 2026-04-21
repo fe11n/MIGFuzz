@@ -1,0 +1,23 @@
+{
+  "library_path": "/usr/libexec/automountd",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    666
+  ],
+  "subsystem_end_ids": [
+    674
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "automountd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10001309C"
+  ],
+  "dispatch_routine_offsets": [
+    "0x1309c"
+  ]
+}

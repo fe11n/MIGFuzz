@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/CoreServices/RemoteManagement/screensharingd.bundle/Contents/MacOS/screensharingd",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    26520
+  ],
+  "subsystem_end_ids": [
+    26542
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "screensharingd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10006B458"
+  ],
+  "dispatch_routine_offsets": [
+    "0x6b458"
+  ]
+}

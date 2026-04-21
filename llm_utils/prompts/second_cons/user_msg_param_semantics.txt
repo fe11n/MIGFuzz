@@ -1,0 +1,13 @@
+服务 {service_name} 的参数语义归类任务如下，请结合系统提示完成判断并保持 JSON 输出格式。
+
+### 当前已归并的参数类型
+```json
+{current_parameter_types}
+```
+
+### 待分析的消息伪代码
+```json
+{message_payload}
+```
+
+请直接依据伪代码推断参数列表，并按照系统提示的字段与格式给出 `parameters` 数组。不得输出额外文本或 Markdown。

@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/PreferencePanes/DateAndTime.prefPane/Contents/Resources/TimeZone.prefPane/Contents/Resources/TimeZoneAdminTool",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    6000
+  ],
+  "subsystem_end_ids": [
+    6002
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "TimeZoneAdminTool",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100003AB4"
+  ],
+  "dispatch_routine_offsets": [
+    "0x3ab4"
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "666": {
+    "stage1_variable_identification": {
+      "message_start_offset": {
+        "variable_name": "a1",
+        "description": "The message's starting address variable, serving as the base for all subsequent offset calculations."
+      },
+      "derived_offset_variables": [
+        {
+          "variable_name": "v7",
+          "alias": "string1_aligned_len",
+          "derivation_expression": "(string1_len + 3) & 0xFFFFFFFC",
+          "represents_offset": "This variable represents the 4-byte aligned length of the first variable-length field (string) and is used to calculate the starting offset of the second variable-length field.",
+          "usage_context": "Used to calculate the read location for `string2_len` at `a1 + string1_aligned_len + 52` and for the final validation of the message's total size."
+        },
+        {
+          "variable_name": "v9",
+          "alias": "string2_aligned_len",
+          "derivation_expression": "(string2_len + 3) & 0xFFFFFFFC",
+          "represents_offset": "This variable represents the 4-byte aligned length of the second variable-length field (string).",
+          "usage_context": "Used for the final precise validation of the message's total size via the check: `msg_total_size - string1_aligned_len != string2_aligned_len + 128`."
+        },
+        {
+          "variable_name": "v10",
+          "alias": "string1_buffer_start",
+          "derivation_expression": "a1 + 48",
+          "represents_offset": "48",
+          "usage_context": "Serves as the starting address pointer for the first string, passed to the `memchr` function for validation."
+        },
+        {
+          "variable_name": "v13",
+          "alias": "trailer_aligned_offset",
+          "derivation_expression": "((_WORD)msg_total_size_copy + 3) & 0x1FFC",
+          "represents_offset": "An aligned offset calculated based on the total message size, used to locate the Trailer at the end of the message.",
+          "usage_context": "Used to access the Trailer's type field at `*(a1 + trailer_aligned_offset)` and its size field at `*(a1 + trailer_aligned_offset + 4)`."
+        },
+        {
+          "variable_name": "v14",
+          "alias": "string2_buffer_base",
+          "derivation_expression": "a1 + string1_aligned_len - 1024",
+          "represents_offset": "An intermediate calculation value. Adding 1080 to it (`string2_buffer_base + 1080`) locates the starting position of the second string.",
+          "usage_context": "Used to locate the starting address of the second string, which is then passed to `memchr` and the actual handler function `sub_100001242`."
+        }
+      ],
+      "variable_length_controllers": [
+        {
+          "variable_name": "v2",
+          "alias": "msg_total_size",
+          "controlled_field": "The entire message",
+          "size_calculation": "*(_DWORD *)(a1 + 4)",
+          "offset_impact": "Defines the end boundary of the Body and the start boundary of the Trailer, serving as the core variable for all boundary checks."
+        },
+        {
+          "variable_name": "v4",
+          "alias": "string1_len",
+          "controlled_field": "The first string in the Body",
+          "size_calculation": "*(_DWORD *)(a1 + 44)",
+          "offset_impact": "Determines the length of the first string and, through the calculation of `string1_aligned_len`, directly affects the offset of all subsequent fields."
+        },
+        {
+          "variable_name": "v8",
+          "alias": "string2_len",
+          "controlled_field": "The second string in the Body",
+          "size_calculation": "*(_DWORD *)(a1 + string1_aligned_len + 52)",
+          "offset_impact": "Determines the length of the second string and, through the calculation of `string2_aligned_len`, is used to precisely validate that the entire `msg_total_size` matches."
+        }
+      ],
+      "other_relevant_variables": [
+        {
+          "variable_name": "a2",
+          "alias": "reply_msg_ptr",
+          "purpose": "A pointer to the reply message buffer.",
+          "constraint_role": "Not directly involved in the input message's constraint analysis, but used to store the processing result or error code."
+        },
+        {
+          "variable_name": "v6",
+          "alias": "msg_total_size_copy",
+          "purpose": "A copy of `msg_total_size` (v2), used interchangeably in the code.",
+          "constraint_role": "Serves the same purpose as `msg_total_size` in various size-related constraint checks."
+        }
+      ]
+    },
+    "stage2_header_analysis": {
+      "msg_bits": {
+        "start_offset": "0",
+        "end_offset": "3",
+        "complex_bit": {
+          "constraints": "value >= 0"
+        },
+        "pad": {
+          "constraints": "value == 0"
+        },
+        "voucher_disposition": {
+          "constraints": "value == 0"
+        },
+        "local_disposition": {
+          "constraints": "value == 0"
+        },
+        "remote_disposition": {
+          "constraints": "value == MACH_MSG_TYPE_COPY_SEND (19)"
+        }
+      },
+      "msg_size": {
+        "start_offset": "4",
+        "end_offset": "7",
+        "constraints": "value == string1_aligned_len + string2_aligned_len + 128 AND value >= 2177"
+      },
+      "remote_port": {
+        "start_offset": "8",
+        "end_offset": "11",
+        "constraints": "No explicit constraints."
+      },
+      "local_port": {
+        "start_offset": "12",
+        "end_offset": "15",
+        "constraints": "Must be a valid Mach port."
+      },
+      "voucher_port": {
+        "start_offset": "16",
+        "end_offset": "19",
+        "constraints": "No explicit constraints."
+      },
+      "msg_id": {
+        "start_offset": "20",
+        "end_offset": "23",
+        "constraints": "value == 666 (Determined from input information; not validated in the code)."
+      }
+    },
+    "stage3_structure_location": {
+      "header_boundaries": {
+        "offset_start": 0,
+        "offset_end": 24
+      },
+      "descriptor_analysis": {
+        "existence_determination": "Based on the `msg_bits` analysis (`value >= 0`), this is a simple message and does not contain a Descriptor section."
+      },
+      "body_boundaries": {
+        "offset_start": "24",
+        "offset_end": "msg_total_size"
+      },
+      "trailer_boundaries": {
+        "trailer_type_determination": "The code calculates the Trailer's base address via `trailer_aligned_offset = ((_WORD)msg_total_size_copy + 3) & 0x1FFC;` and checks `*(_DWORD *)(a1 + trailer_aligned_offset + 4) <= 0x1Fu`, requiring the Trailer size to be greater than 31. This indicates the presence of a `mach_msg_audit_trailer_t` (52 bytes).",
+        "offset_start": "trailer_aligned_offset",
+        "offset_end": "trailer_aligned_offset + 52"
+      }
+    },
+    "stage4_constraint_extraction": {
+      "body": {
+        "start_offset": "24",
+        "end_offset": "msg_total_size",
+        "fields": [
+          {
+            "start_offset": "24",
+            "end_offset": "31",
+            "is_padding": true
+          },
+          {
+            "start_offset": "32",
+            "end_offset": "39",
+            "is_padding": false,
+            "field_name": "param_2",
+            "field_type": "QWORD",
+            "constraints": "Must be a valid context handle recognizable by the `sub_1000017B9` function."
+          },
+          {
+            "start_offset": "40",
+            "end_offset": "43",
+            "is_padding": true
+          },
+          {
+            "start_offset": "44",
+            "end_offset": "47",
+            "is_padding": false,
+            "field_name": "string1_len_field",
+            "field_type": "DWORD",
+            "constraints": "0 <= value <= 1024"
+          },
+          {
+            "start_offset": "48",
+            "end_offset": "48 + string1_len - 1",
+            "is_padding": false,
+            "field_name": "string1_buffer",
+            "field_type": "char[]",
+            "constraints": "Must be a null-terminated string with valid UTF-8 encoded content."
+          },
+          {
+            "start_offset": "48 + string1_len",
+            "end_offset": "48 + string1_aligned_len -1",
+            "is_padding": true
+          },
+          {
+            "start_offset": "48 + string1_aligned_len + 4",
+            "end_offset": "48 + string1_aligned_len + 7",
+            "is_padding": false,
+            "field_name": "string2_len_field",
+            "field_type": "DWORD",
+            "constraints": "0 <= value <= 1024"
+          },
+          {
+            "start_offset": "48 + string1_aligned_len + 8",
+            "end_offset": "48 + string1_aligned_len + 8 + string2_len - 1",
+            "is_padding": false,
+            "field_name": "string2_buffer",
+            "field_type": "char[]",
+            "constraints": "Must be a null-terminated string with valid UTF-8 encoded content that represents a path successfully resolvable by `lookupByPath:`."
+          }
+        ]
+      },
+      "trailer": {
+        "start_offset": "trailer_aligned_offset",
+        "end_offset": "trailer_aligned_offset + 52",
+        "fields": [
+          {
+            "start_offset": "trailer_aligned_offset",
+            "end_offset": "trailer_aligned_offset + 3",
+            "is_padding": false,
+            "field_name": "msgh_trailer_type",
+            "field_type": "mach_msg_trailer_type_t",
+            "constraints": "value != 0"
+          },
+          {
+            "start_offset": "trailer_aligned_offset + 4",
+            "end_offset": "trailer_aligned_offset + 7",
+            "is_padding": false,
+            "field_name": "msgh_trailer_size",
+            "field_type": "mach_msg_trailer_size_t",
+            "constraints": "value > 31"
+          }
+        ]
+      }
+    }
+  }
+}

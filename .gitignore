@@ -1,0 +1,78 @@
+# Jackalope and dependencies
+jackalope-modifications/Jackalope/
+libprotobuf-mutator/
+
+# Build artifacts
+libmach-modify.dylib
+libmach-modify.dylib.dSYM/
+*.dSYM/
+harness
+check_mach_structures
+build/
+
+# Service-specific build artifacts and outputs
+# fuzz_exec/*/
+llm_message_checker/checker_exec/checker
+llm_message_checker/result.json
+llm_message_checker/failtest_forlldb.config
+fuzz_exec/*/check_fail_log/
+fuzz_exec/*/check_debug.txt
+fuzz_exec/*/log.txt
+fuzz_exec/*/check_result.json
+fuzz_exec/*/generate_message.cc
+fuzz_exec/*/functions/
+check_result_model_test*
+model_test*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs
+*.log
+log/
+
+# Archives
+*.zip
+service_file_extractor/SystemResource/
+
+# Old structure (deprecated)
+corpus
+out/
+out_*/
+harness_*
+
+# LLM generation
+mig_services/
+other_mig_services/
+
+# Temporary files
+msg_bin/
+poc_construct/msg_bin/
+experiment/exp1/results
+
+mac_server_arm
+mac_server_arme
+
+MIGFuzz/
+
+#tar
+*.tar
+*.tar.gz

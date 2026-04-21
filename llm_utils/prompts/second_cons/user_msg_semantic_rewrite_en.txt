@@ -1,0 +1,10 @@
+Service: {service_name}
+Message ID: {message_id}
+Current parameter index: {parameter_index}
+Current function code:
+{current_function_code}
+Parameter information:
+{parameter}
+Helper utilities overview:
+{tools_intro}
+Follow the system instructions carefully and return only a JSON object.

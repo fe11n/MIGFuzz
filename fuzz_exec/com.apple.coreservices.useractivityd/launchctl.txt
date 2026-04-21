@@ -1,0 +1,114 @@
+gui/501/com.apple.coreservices.useractivityd = {
+	active count = 8
+	path = /System/Library/LaunchAgents/com.apple.coreservices.useractivityd.plist
+	type = LaunchAgent
+	state = running
+
+	program = /System/Library/PrivateFrameworks/UserActivity.framework/Agents/useractivityd
+	arguments = {
+		/System/Library/PrivateFrameworks/UserActivity.framework/Agents/useractivityd
+	}
+
+	inherited environment = {
+		SSH_AUTH_SOCK => /private/tmp/com.apple.launchd.9wN8jZLmjZ/Listeners
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocSpaceEfficient => 1
+		XPC_SERVICE_NAME => com.apple.coreservices.useractivityd
+	}
+
+	domain = gui/501 [100003]
+	asid = 100003
+	minimum runtime = 10
+	base minimum runtime = 10
+	exit timeout = 5
+	runs = 1
+	pid = 26786
+	immediate reason = ipc (mach)
+	forks = 0
+	execs = 1
+	initialized = 1
+	trampolined = 1
+	started suspended = 0
+	proxy started suspended = 0
+	last exit code = (never exited)
+
+	endpoints = {
+		"com.apple.coreservices.lsuseractivityadministration.xpc" = {
+			port = 0x56403
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.coreservices.lsuseractivitymanager.xpc" = {
+			port = 0x56503
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.coreservices.uasharedpasteboardcontroll.xpc" = {
+			port = 0x7f103
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.coreservices.uasharedpasteboardaux.xpc" = {
+			port = 0x56603
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.coreservices.lsuseractivity.simulatorsupport" = {
+			port = 0x7f003
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.coreservices.lsbestappsuggestionmanager.xpc" = {
+			port = 0x7f207
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.coreservices.uasharedpasteboardmanager.xpc" = {
+			port = 0x7ef03
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+	}
+
+	spawn type = adaptive (6)
+	jetsam priority = 40
+	jetsam memory limit (active, soft) = 40 MB
+	jetsam memory limit (inactive, soft) = 40 MB
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	exponential throttling grace limit = 10
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = partial import | supports transactions | supports pressured exit | inferred program | system service | exponential throttling | tle system
+}

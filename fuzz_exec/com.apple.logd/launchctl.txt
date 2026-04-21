@@ -1,0 +1,98 @@
+system/com.apple.logd = {
+	active count = 6
+	path = /System/Library/LaunchDaemons/com.apple.logd.plist
+	type = LaunchDaemon
+	state = running
+
+	program = /usr/libexec/logd
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocSpaceEfficient => 1
+		__CF_USER_TEXT_ENCODING => 0x0:0:0
+		__CFPREFERENCES_AVOID_DAEMON => 1
+		XPC_SERVICE_NAME => com.apple.logd
+	}
+
+	domain = system
+	minimum runtime = 1
+	base minimum runtime = 1
+	exit timeout = 5
+	runs = 1
+	pid = 26396
+	immediate reason = ipc (socket)
+	forks = 0
+	execs = 1
+	initialized = 1
+	trampolined = 1
+	started suspended = 0
+	proxy started suspended = 0
+	last exit code = (never exited)
+
+	endpoints = {
+		"com.apple.logd.watchdog" = {
+			port = 0x1e0b
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.logd.events" = {
+			port = 0xd03
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.logd.cachedelete" = {
+			port = 0x1803
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.logd.admin" = {
+			port = 0x1703
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.logd" = {
+			port = 0x1603
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+	}
+
+	sockets = {
+		"BSDSystemLogger" = {
+			(system logger socket)
+		}
+	}
+
+	spawn type = interactive (4)
+	jetsam priority = 180
+	jetsam memory limit (active, soft) = 50 MB
+	jetsam memory limit (inactive, soft) = 50 MB
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	exponential throttling grace limit = 10
+	panic on consecutive crashes (0)
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = partial import | keepalive | runatload | system service | exponential throttling | tle system
+}

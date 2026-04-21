@@ -1,0 +1,64 @@
+Please fix compilation errors and generate improved Mach message construction code based on the following input information to ensure successful compilation.
+
+【Service Information】
+- Service Name: {service_name}
+
+【Tool Function Library Description】
+The following is the description of the tool function library available for the generated code:
+```
+{generate_tools}
+```
+
+【Existing Message Generation Code (generate_message_cc)】
+The following is the complete content of the generate_message.cc file, containing generation functions for all message IDs:
+```
+{generate_message_cc}
+```
+Note that this file has compilation errors and cannot compile successfully. You need to analyze the issues based on the compilation failure reason and modify it to enable successful compilation.
+
+【Compilation Failure Reason (check_fail_reason)】
+The following is the detailed reason for compilation failure:
+```
+{check_fail_reason}
+```
+
+【Task Requirements】
+1. Based on the compilation failure reason, identify what syntax errors, undefined symbols, type errors, or other compilation issues exist in the code.
+2. Locate the corresponding problem locations in generate_message.cc and explain how to adjust to fix the compilation errors.
+3. Return the new message generation code as required. All generated functions must ensure C++14 syntax correctness and be directly compilable.
+4. Ensure modifications are limited to fixing compilation errors and do not alter the message semantics or structure unless required by the compilation errors.
+5. For the same type of error, the compiler may only report it at the first occurrence. Therefore, when fixing an error, pay extra attention to whether the same error appears elsewhere in the code, and if so, modify it as well.
+6. After fixing, additionally consider whether applying the change introduces other compilation errors (such as whether used functions are declared or defined, etc.) to ensure the updated code can compile successfully.
+
+【Output JSON Structure】
+Return a single JSON object containing the following fields:
+- "part1_content": string; The complete PART1 content (including header includes and tool function definitions). If PART1 needs modification to fix compilation errors, return the modified full content; if no modification is needed, do not output this field. Note: Do not include the introductory comments for PART1 (e.g., "// PART1: Header file inclusions..."), start directly with #include.
+- "updates": object; keys are message IDs (strings), values are the update content objects for that message ID.
+
+Each update content object contains the following fields:
+- "generate_header": string; complete generate_header_{{message_id}} implementation, do not output if no change is needed.
+- "generate_descriptor": string; complete generate_descriptor_{{message_id}} implementation, do not output if no change is needed.
+- "generate_body": string; complete generate_body_{{message_id}} implementation, do not output if no change is needed.
+- "generate_trailer": string; complete generate_trailer_{{message_id}} implementation, do not output if no change is needed.
+- "generate_message": string; complete generate_message_{{message_id}} implementation, do not output if no change is needed.
+- "notes": string; summarize your analysis of compilation error location and fix plan for this message ID.
+
+Example JSON format:
+{{
+  "part1_content": "#include <mach/mach.h>\n...",
+  "updates": {{
+    "96500": {{
+      "generate_header": "static std::vector<uint8_t> generate_header_96500(...) {{ ... }}",
+      "notes": "Fixed undefined symbol error..."
+    }},
+    "96501": {{
+      "generate_body": "static std::vector<uint8_t> generate_body_96501(...) {{ ... }}",
+      "notes": "Adjusted parameter types..."
+    }}
+  }}
+}}
+
+Note:
+- Return only JSON text conforming to the above structure, do not output additional text.
+- When referencing PART1 tool functions, ensure the corresponding functions already exist or are appended in "part1_content".
+- Only output message IDs that need modification; do not include IDs that do not need changes.

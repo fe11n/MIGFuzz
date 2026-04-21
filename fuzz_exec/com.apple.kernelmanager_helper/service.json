@@ -1,0 +1,23 @@
+{
+  "library_path": "/usr/libexec/kernelmanager_helper",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    77000
+  ],
+  "subsystem_end_ids": [
+    77001
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "kernelmanager_helper",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10014EEB8"
+  ],
+  "dispatch_routine_offsets": [
+    "0x14eeb8"
+  ]
+}

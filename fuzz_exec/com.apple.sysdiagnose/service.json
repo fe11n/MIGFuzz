@@ -1,0 +1,23 @@
+{
+  "library_path": "/usr/libexec/sysdiagnosed",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    31337
+  ],
+  "subsystem_end_ids": [
+    31339
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "sysdiagnosed",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10005FB5C"
+  ],
+  "dispatch_routine_offsets": [
+    "0x5fb5c"
+  ]
+}

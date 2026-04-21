@@ -1,0 +1,23 @@
+{
+  "library_path": "/usr/libexec/locationd",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    183319414
+  ],
+  "subsystem_end_ids": [
+    183319416
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "locationd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_1006B1D98"
+  ],
+  "dispatch_routine_offsets": [
+    "0x6b1d98"
+  ]
+}

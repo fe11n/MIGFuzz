@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/CoreServices/RemoteManagement/AppleVNCServer.bundle/Contents/Support/VNCPrivilegeProxy",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    26500
+  ],
+  "subsystem_end_ids": [
+    26503
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "VNCPrivilegeProxy",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100001B0C"
+  ],
+  "dispatch_routine_offsets": [
+    "0x1b0c"
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "666": {
+    "header_constraints": {
+      "msg_bits": {
+        "complex_bit": {
+          "constraints": "value >= 0"
+        },
+        "pad": {
+          "constraints": "value == 0"
+        },
+        "voucher_disposition": {
+          "constraints": "value == 0"
+        },
+        "local_disposition": {
+          "constraints": "value == 0"
+        },
+        "remote_disposition": {
+          "constraints": "value == MACH_MSG_TYPE_COPY_SEND (19)"
+        }
+      },
+      "msg_size": {
+        "constraints": "value == string1_aligned_len + string2_aligned_len + 128 AND value >= 2177"
+      },
+      "remote_port": {
+        "constraints": "No explicit constraints."
+      },
+      "local_port": {
+        "constraints": "Must be a valid Mach port."
+      },
+      "voucher_port": {
+        "constraints": "No explicit constraints."
+      },
+      "msg_id": {
+        "constraints": "value == 666"
+      }
+    },
+    "body_constraints": {
+      "descriptor_section": [],
+      "body": [
+        {
+          "field_name": "pad",
+          "offset_start": 24,
+          "offset_end": 31,
+          "is_padding": true,
+          "constraints": "N/A"
+        },
+        {
+          "field_name": "param_2",
+          "offset_start": 32,
+          "offset_end": 39,
+          "is_padding": false,
+          "constraints": "Must be a valid context handle recognizable by the `sub_1000017B9` function."
+        },
+        {
+          "field_name": "NDR_record",
+          "offset_start": 40,
+          "offset_end": 43,
+          "is_padding": false,
+          "constraints": "Must match the system's NDR format."
+        },
+        {
+          "field_name": "string1_len",
+          "offset_start": 44,
+          "offset_end": 47,
+          "is_padding": false,
+          "constraints": "value > 0"
+        },
+        {
+          "field_name": "string1",
+          "offset_start": 48,
+          "offset_end": "48 + string1_aligned_len",
+          "is_padding": false,
+          "constraints": "Must contain a specific byte pattern or substring."
+        },
+        {
+          "field_name": "pad",
+          "offset_start": "48 + string1_aligned_len",
+          "offset_end": "48 + string1_aligned_len + 52",
+          "is_padding": true,
+          "constraints": "N/A"
+        },
+        {
+          "field_name": "string2_len",
+          "offset_start": "48 + string1_aligned_len + 52",
+          "offset_end": "48 + string1_aligned_len + 56",
+          "is_padding": false,
+          "constraints": "value > 0"
+        },
+        {
+          "field_name": "string2",
+          "offset_start": "48 + string1_aligned_len + 56",
+          "offset_end": "48 + string1_aligned_len + 56 + string2_aligned_len",
+          "is_padding": false,
+          "constraints": "Must contain a specific byte pattern or substring."
+        }
+      ],
+      "trailer": [
+        {
+          "field_name": "mach_msg_audit_trailer_t",
+          "offset_start": "trailer_aligned_offset",
+          "offset_end": "trailer_aligned_offset + 52",
+          "constraints": "Must be present if msg_size allows."
+        }
+      ]
+    }
+  }
+}

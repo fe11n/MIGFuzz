@@ -1,0 +1,172 @@
+system/com.apple.locationd = {
+	active count = 8
+	path = /System/Library/LaunchDaemons/com.apple.locationd.plist
+	type = LaunchDaemon
+	state = running
+
+	program = /usr/libexec/locationd
+	arguments = {
+		/usr/libexec/locationd
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocSpaceEfficient => 1
+		OS_ACTIVITY_ENABLE_DYNAMIC => 1
+		XPC_SERVICE_NAME => com.apple.locationd
+	}
+
+	domain = system
+	username = _locationd
+	group = _locationd
+
+	minimum runtime = 3
+	base minimum runtime = 3
+	exit timeout = 5
+	runs = 1
+	pid = 26443
+	immediate reason = semaphore
+	forks = 0
+	execs = 1
+	initialized = 1
+	trampolined = 1
+	started suspended = 0
+	proxy started suspended = 0
+	last exit code = (never exited)
+
+	semaphores = {
+		successful exit => 0
+	}
+
+	event triggers = {
+		com.apple.locationd.MicroLocationMaintenance => {
+			keepalive = 0
+			service = com.apple.locationd
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"_SequenceNumber" => 1
+				"RequireScreenSleep" => true
+				"Interval" => 86400
+				"AllowBattery" => false
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.locationd.MetricHeartbeat => {
+			keepalive = 0
+			service = com.apple.locationd
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"_SequenceNumber" => 1
+				"GracePeriod" => 1800
+				"Interval" => 14400
+				"AllowBattery" => true
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.locationd.CLClientManager.usersrecencycheck => {
+			keepalive = 0
+			service = com.apple.locationd
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"GracePeriod" => 86400.000000
+				"Interval" => 16070400.000000
+				"AllowBattery" => true
+				"Priority" => "Maintenance"
+			}
+		}
+	}
+
+	endpoints = {
+		"com.apple.locationd.desktop.synchronous" = {
+			port = 0x8703
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.locationd.desktop.agent" = {
+			port = 0x8803
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.locationd.desktop.registration" = {
+			port = 0x8903
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.locationd.routine" = {
+			port = 0xa203
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.locationd.simulation" = {
+			port = 0x8a03
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.locationd.desktop.spi" = {
+			port = 0xa103
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+	}
+
+	event channels = {
+		"com.apple.locationd-events" = {
+			port = 0x1bf0f
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.xpc.activity" = {
+			port = 0xa003
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+	}
+
+	spawn type = adaptive (6)
+	jetsam priority = 40
+	jetsam memory limit (active, soft) = 40 MB
+	jetsam memory limit (inactive, soft) = 40 MB
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	run interval = 86400 seconds
+	exponential throttling grace limit = 10
+	job state = running
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = supports transactions | inferred program | system service | exponential throttling | tle system
+}

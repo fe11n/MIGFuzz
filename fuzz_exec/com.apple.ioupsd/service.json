@@ -1,0 +1,23 @@
+{
+  "library_path": "/usr/libexec/ioupsd",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    60000
+  ],
+  "subsystem_end_ids": [
+    60003
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "ioupsd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100003EE4"
+  ],
+  "dispatch_routine_offsets": [
+    "0x3ee4"
+  ]
+}

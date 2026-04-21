@@ -1,0 +1,27 @@
+{
+  "library_path": "/System/Library/CoreServices/Dwell Control.app/Contents/MacOS/Dwell Control",
+  "start_function": "",
+  "subsystem_num": 2,
+  "subsystem_start_ids": [
+    630050,
+    630060
+  ],
+  "subsystem_end_ids": [
+    630051,
+    630062
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "Dwell Control",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100009808",
+    "sub_100009948"
+  ],
+  "dispatch_routine_offsets": [
+    "0x9808",
+    "0x9948"
+  ]
+}

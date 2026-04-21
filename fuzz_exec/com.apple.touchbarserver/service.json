@@ -1,0 +1,27 @@
+{
+  "library_path": "/usr/libexec/TouchBarServer",
+  "start_function": "",
+  "subsystem_num": 2,
+  "subsystem_start_ids": [
+    8601,
+    8602
+  ],
+  "subsystem_end_ids": [
+    8605,
+    8627
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "TouchBarServer",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_1000024F0",
+    "sub_10000298C"
+  ],
+  "dispatch_routine_offsets": [
+    "0x24f0",
+    "0x298c"
+  ]
+}

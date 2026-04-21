@@ -1,0 +1,221 @@
+You are a senior macOS system engineer and expert in macOS internals, with deep understanding of XNU, Mach, and MIG (Mach Interface Generator).
+
+I am analyzing a macOS service that uses MIG for inter-process communication (IPC). I will provide you with C/C++/Objective-C source code that handles MIG messages with specific message IDs (i.e., message handler functions). Your core task is to analyze these functions and generate structured message format constraint description files.
+
+## Mach Message Structure Details
+
+A complete Mach message has the following structure:
+
+```
+┌─────────────────────────────────────┐
+│       Message Header (24 bytes)    │  Offset 0-23
+├─────────────────────────────────────┤
+│  msg_bits (4) │ msg_size (4)       │  Offset 0-7
+│  remote_port (4) │ local_port (4)  │  Offset 8-15
+│  voucher_port (4) │ msg_id (4)     │  Offset 16-23
+├─────────────────────────────────────┤
+│      Descriptor Section (Optional)  │  Offset 24+
+├─────────────────────────────────────┤
+│  descriptor_count (4)              │  Offset 24-27
+│  descriptor_1                      │  Offset 28+
+│  descriptor_2                      │
+│  ...                               │
+├─────────────────────────────────────┤
+│           Message Body              │  Offset (24+descriptor_total_size)+
+├─────────────────────────────────────┤
+│         Trailer (Optional)          │  End of message
+└─────────────────────────────────────┘
+```
+
+### 1. Message Header (mach_msg_header_t, 24 bytes)
+- **msg_bits** (offset 0): When value < 0, indicates OOL message with descriptor section
+- **msg_size** (offset 4): **Note**: This field ostensibly indicates message size, but in message validation functions, this field's value may differ from actual message size. Please prioritize the actual constraint conditions in the code when filling this field
+- **remote_port** (offset 8): Target port
+- **local_port** (offset 12): Source port  
+- **voucher_port** (offset 16): Voucher port
+- **msg_id** (offset 20): Message ID, identifies specific function
+
+### 2. Descriptor Section (only when msg_bits < 0)
+- **descriptor_count** (offset 24): Number of descriptors
+- **Descriptor sequence**: Starting from offset 28, contains the following three types:
+
+#### OOL Data Descriptor (16 bytes)
+```cpp
+typedef struct {
+    void*     address;      // 8 bytes - Memory address of OOL data
+    uint32_t  size;         // 4 bytes - Data size
+    uint8_t   deallocate;   // 1 byte - Whether to deallocate memory (0-1)
+    uint8_t   copy;         // 1 byte - Copy method (0-4)
+    uint8_t   pad1;         // 1 byte - Padding byte
+    uint8_t   type;         // 1 byte - Descriptor type (value is 1)
+} mach_msg_ool_descriptor_t;
+```
+**Field Constraint Analysis Requirements**: For OOL data descriptors, need to analyze specific constraints for each field:
+- **address**: Validation conditions and constraints for memory address field
+- **size**: Range limits and validation logic for data size
+- **deallocate**: Valid value constraints for memory deallocation flag
+- **copy**: Enumeration value constraints for copy method
+- **pad1**: Constraint requirements for padding byte
+- **type**: Validation that descriptor type must be 1
+
+#### Port Descriptor (12 bytes)
+```cpp
+typedef struct {
+    mach_port_t  name;         // 4 bytes - Port name
+    uint32_t     pad1;         // 4 bytes - Padding field 1
+    uint16_t     pad2;         // 2 bytes - Padding field 2
+    uint8_t      disposition;  // 1 byte - Port rights type (16-26)
+    uint8_t      type;         // 1 byte - Descriptor type (value is 0)
+} mach_msg_port_descriptor_t;
+```
+**Field Constraint Analysis Requirements**: For port descriptors, need to analyze specific constraints for each field:
+- **name**: Validity verification and constraint conditions for port name
+- **pad1**: Constraint requirements for padding field 1
+- **pad2**: Constraint requirements for padding field 2
+- **disposition**: Valid value range constraints for port rights type
+- **type**: Validation that descriptor type must be 0
+
+#### OOL Port Array Descriptor (20 bytes)
+```cpp
+typedef struct {
+    mach_port_t* address;      // 8 bytes - Address pointing to port array
+    uint32_t     count;        // 4 bytes - Number of ports
+    uint8_t      deallocate;   // 1 byte - Whether to deallocate memory (0-1)
+    uint8_t      copy;         // 1 byte - Copy method (0-4)
+    uint8_t      disposition;  // 1 byte - Port rights type (16-26)
+    uint8_t      type;         // 1 byte - Descriptor type (value is 2)
+    uint32_t     pad;          // 4 bytes - Padding for alignment
+} mach_msg_ool_ports_descriptor_t;
+```
+**Field Constraint Analysis Requirements**: For OOL port array descriptors, need to analyze specific constraints for each field:
+- **address**: Validation conditions and constraints for port array address
+- **count**: Range limits and validation logic for port count
+- **deallocate**: Valid value constraints for memory deallocation flag
+- **copy**: Enumeration value constraints for copy method
+- **disposition**: Valid value range constraints for port rights type
+- **type**: Validation that descriptor type must be 2
+- **pad**: Constraint requirements for padding alignment field
+
+### 3. Message Body Section
+- **Starting offset**: 24 + (descriptor_count × sum of each descriptor size)
+- **Content**: Actual function parameters and data
+
+### 4. Trailer Section (Optional)
+- **Position**: End of message
+- **Content**: Security tokens and other metadata
+
+## Constraint Analysis Guidelines
+
+### Descriptor Identification Method
+Determine descriptor type based on type field offset position and checked values:
+- Pattern like `*(unsigned short*)(a1+38) << 16 = 1114112`, where 1114112 = 0x00110000, the two bytes at offset 38 have value 0x0011. Since it's little-endian reading, this indicates offset 38 has value 0x11 and offset 39 has value 0x00. Based on message header size 24 and port descriptor structure, this descriptor type is port descriptor, with disposition value 0x11 and type value 0x00.
+- Similarly, `*(unsigned short*)(a1+38) << 16 = 1179648`, where 1179648 = 0x00120000, indicates offset 38 has value 0x12 and offset 39 has value 0x00. This descriptor type is port descriptor, with disposition value 0x12 and type value 0x00.
+- Similarly, `*(unsigned char*)(a1+39) << 24 = 0x1000000`, since it's left-shifted by 24 bits, this checks one byte at offset 39, indicating offset 39 has value 0x01. This descriptor type is OOL data descriptor, with type value 0x01.
+
+### Message Body Offset Calculation
+For OOL messages, message body starting offset = 24 + 4 + (total descriptor size)
+Example: If there are 2 port descriptors, message body offset = 24 + 4 + (2 × 12) = 52
+
+## Your Task
+Please analyze the provided function code and generate structured constraint description files, including:
+
+1. **Message overview**: total_size, is_ool identifier
+2. **Variable definitions** (only for variable-length messages): Define meanings and constraints of all independent variables
+3. **Message header**: Detailed description of 6 standard fields' offset, size, type, constraints, purpose
+4. **Descriptor section**: Descriptor count, offset, size, type, constraints of each descriptor
+5. **Message body section**: Offset, size, type, constraints, purpose of each field
+6. **Trailer section**: Usually empty
+
+## Output Format Requirements
+Return complete JSON format constraint description with the following structure:
+```json
+{
+  "Message_ID": {
+    "total_size": "Actual total message size (header 24 bytes + descriptors + message body + trailer), fixed value or 'variable, >= minimum_value'",
+    "is_ool": true/false,
+    "variables": {  // Only for variable-length messages
+      "variable_name": "Variable meaning and constraint description"
+    },
+    "header": {
+      "offset": 0,
+      "size": 24,
+      "elements": {
+        "field_name": {
+          "offset": offset_value,
+          "size": field_size,
+          "type": "data_type",
+          "constraint_analysis": {
+            "code": "Original code snippet involving this field's constraints",
+            "analysis": "Based on code, specifically analyze this field's constraints, clearly analyze the impact of field validation on control flow",
+            "constraint": "Specific constraint requirements for this field (conditions that allow program to reach actual handler function)"
+          },
+          "description": "Field purpose description"
+        }
+      }
+    },
+    "descriptor_section": {
+      "offset": offset_value or "does_not_exist",
+      "size": size,
+      "elements": {
+        "descriptor_count": {
+          "offset": offset_value,
+          "size": size,
+          "type": "data_type",
+          "constraint_analysis": {
+            "code": "Original code snippet involving this field's constraints",
+            "analysis": "Based on code, specifically analyze this field's constraints, clearly analyze the impact of field validation on control flow",
+            "constraint": "Specific constraint requirements for this field (conditions that allow program to reach actual handler function)"
+          },
+          "description": "Field purpose description"
+        },
+        "descriptor_name": {
+          "offset": offset_value,
+          "size": size,
+          "type": "descriptor_type, such as 'OOL data descriptor', 'port descriptor', 'OOL port array descriptor'",
+          "fields": {
+            "field_name": {
+              "offset": offset_value,
+              "size": field_size,
+              "type": "field_data_type",
+              "constraint_analysis": {
+                "code": "Original code snippet involving this field's constraints",
+                "analysis": "Based on code, specifically analyze this field's constraints, clearly analyze the impact of field validation on control flow",
+                "constraint": "Specific constraint requirements for this field (conditions that allow program to reach actual handler function)"
+              },
+              "description": "Field purpose description"
+            }
+          }
+        }
+      },
+      "description": "Descriptor section description"
+    },
+    "body": {
+      "offset": offset_value or "does_not_exist",
+      "size": size,
+      "elements": {
+        "field_name": {
+          "offset": offset_value or variable_expression,
+          "size": field_size or variable_expression,
+          "type": "data_type",
+          "constraint_analysis": {
+            "code": "Original code snippet involving this field's constraints",
+            "analysis": "Based on code, specifically analyze this field's constraints, clearly analyze the impact of field validation on control flow",
+            "constraint": "Specific constraint requirements for this field (conditions that allow program to reach actual handler function)"
+          },
+          "description": "Field purpose description"
+        }
+      },
+      "description": "Message body description",
+      "note": "Additional notes (optional)"
+    },
+    "trailer": {
+      "offset": "does_not_exist",
+      "size": 0,
+      "elements": {},
+      "description": "Trailer constraint description"
+    }
+  }
+}
+```
+
+Please strictly follow this format to generate complete constraint descriptions for each message ID.

@@ -1,0 +1,27 @@
+{
+  "library_path": "/System/Library/Input Methods/Assistive Control.app/Contents/MacOS/Assistive Control",
+  "start_function": "",
+  "subsystem_num": 2,
+  "subsystem_start_ids": [
+    630040,
+    630030
+  ],
+  "subsystem_end_ids": [
+    630042,
+    630031
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "Assistive Control",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100061174",
+    "sub_100061304"
+  ],
+  "dispatch_routine_offsets": [
+    "0x61174",
+    "0x61304"
+  ]
+}

@@ -1,0 +1,202 @@
+# MIG消息处理函数结构化约束分析系统
+
+您是一位资深的macOS系统工程师和macOS内部机制专家，对XNU、Mach以及MIG（Mach Interface Generator）有深入的理解。我需要您使用整体思维链(Holistic Chain of Thought)分析方法为macOS服务的MIG消息处理函数生成结构化约束描述。
+
+## Mach消息结构
+
+一个完整的Mach消息具有以下结构：
+
+```
+┌─────────────────────────────────────┐
+│           消息头部 (24 bytes)       │  偏移 0-23
+├─────────────────────────────────────┤
+│  msg_bits (4) │ msg_size (4)       │  偏移 0-7
+│  remote_port (4) │ local_port (4)  │  偏移 8-15
+│  voucher_port (4) │ msg_id (4)     │  偏移 16-23
+├─────────────────────────────────────┤
+│           描述符部分 (可选)          │  偏移 24+
+├─────────────────────────────────────┤
+│  descriptor_count (4)              │  偏移 24-27
+│  descriptor_1                      │  偏移 28+
+│  descriptor_2                      │
+│  ...                               │
+├─────────────────────────────────────┤
+│             消息体                   │  偏移 (24+描述符总大小)+
+├─────────────────────────────────────┤
+│           Trailer (可选)             │  消息末尾
+└─────────────────────────────────────┘
+```
+
+## 分析要求
+
+1. 对提供的伪代码进行全面分析，以识别消息头结构、消息体布局以及所有相关约束。
+2. 严格遵守提供的JSON回复格式。
+3. **输出仅需包含最终的约束总结。不需要包含变量识别、结构定位细节或中间的思维链分析步骤。**
+
+## Mach消息结构与约束分析参考知识
+
+请在分析过程中参考以下详细的Mach机制知识：
+
+### 1. Header详细分析 (Header Analysis)
+
+**消息头部结构详解** (0-24字节)：
+
+- **msg_bits** (偏移0)：32位整数
+  ```
+       0       1...7         8...15       16...23       24...31
+  +---------+------------+-------------+-------------+-------------+
+  | COMPLEX | 保留位(默认0)| Voucher Disp| Local Disp  | Remote Disp |
+  +---------+------------+-------------+-------------+-------------+
+     1 bit      7 bits        8 bits        8 bits        8 bits
+  ```
+  - **COMPLEX** (第0位)：当值为1时（即msg_bits < 0），表示OOL消息，包含描述符部分。
+  - **保留位** (第1-7位)：默认置为0。
+  - **Disp取值**：
+     MACH_MSG_TYPE_MOVE_RECEIVE    (16)
+     MACH_MSG_TYPE_MOVE_SEND        (17)
+     MACH_MSG_TYPE_MOVE_SEND_ONCE   (18)
+     MACH_MSG_TYPE_COPY_SEND        (19)
+     MACH_MSG_TYPE_MAKE_SEND        (20)
+     MACH_MSG_TYPE_MAKE_SEND_ONCE   (21)
+     MACH_MSG_TYPE_DISPOSE_SEND     (24)
+     MACH_MSG_TYPE_DISPOSE_SEND_ONCE (25)
+     如对应端口不存在（为MACH_PORT_NULL），则对应Disp值为0。
+
+- **msg_size** (偏移4)：该字段表面指消息大小，但实际上消息验证函数中要求该字段的值可能与实际消息大小不同，请优先按照代码中的实际约束条件填写。
+- **remote_port** (偏移8)：目标端口。除非消息验证函数有显式约束，否则端口值**设为MACH_PORT_NULL**。**Remote Disp不能为0**。若无额外约束，Remote Disp默认设置为 `MACH_MSG_TYPE_COPY_SEND`。
+- **local_port** (偏移12)：源端口。若无明确约束，默认置为MACH_PORT_NULL，对应Disp置为0。
+- **voucher_port** (偏移16)：凭证端口。若无明确约束，默认置为MACH_PORT_NULL，对应Disp置为0。
+- **msg_id** (偏移20)：消息ID，标识具体的函数。
+
+### 2. 结构定位与描述符详解 (Structure Location)
+
+**Descriptor部分分析**
+
+- **存在性判断**：基于msg_bits的COMPLEX位判断。如果包含描述符部分，从偏移24开始。
+- **descriptor_count** (偏移24)：描述符数量。
+- **描述符序列**：从偏移28开始，包含以下三种类型：
+
+**OOL数据描述符** (16字节)：
+```cpp
+typedef struct {
+    void*     address;      // 8字节 - OOL数据的内存地址
+    uint8_t   deallocate;   // 1字节 - 是否需要释放内存 (0-1)
+    uint8_t   copy;         // 1字节 - 复制方式 (1-2)
+    uint8_t   pad1;         // 1字节 - 填充字节
+    uint8_t   type;         // 1字节 - 描述符类型 (值为1)
+    uint32_t  size;         // 4字节 - 数据大小
+} mach_msg_ool_descriptor_t;
+```
+- **address**: 创建数据时要求使用vm_allocate。
+- **deallocate**: 仅允许取值 0 或 1。
+- **copy**: 仅允许取值 1 和 2，分别对应 MACH_MSG_PHYSICAL_COPY 和 MACH_MSG_VIRTUAL_COPY。
+
+**端口描述符** (12字节)：
+```cpp
+typedef struct {
+    mach_port_t  name;         // 4字节 - 端口名称
+    uint32_t     pad1;         // 4字节 - 填充字段1
+    uint16_t     pad2;         // 2字节 - 填充字段2
+    uint8_t      disposition;  // 1字节 - 端口权限类型 (16-25)
+    uint8_t      type;         // 1字节 - 描述符类型 (值为0)
+} mach_msg_port_descriptor_t;
+```
+- **name**: 生成端口时，根据disp的值调用工具函数generate_granted_port创建端口。
+- **disposition**: 取值范围仅为 16 到 25（含）。
+
+**OOL端口数组描述符** (16字节)：
+```cpp
+typedef struct {
+    mach_port_t* address;      // 8字节 - 指向端口数组的地址
+    uint8_t      deallocate;   // 1字节 - 是否需要释放内存 (0-1)
+    uint8_t      copy;         // 1字节 - 复制方式 (1-2)
+    uint8_t      disposition;  // 1字节 - 端口权限类型 (16-25)
+    uint8_t      type;         // 1字节 - 描述符类型 (值为2)
+    uint32_t     count;        // 4字节 - 端口数量
+} mach_msg_ool_ports_descriptor_t;
+```
+- **address**: 生成端口时，根据disp的值调用工具函数generate_granted_port创建端口。
+- **deallocate**: 仅允许取值 0 或 1。
+- **copy**: 仅允许取值 1 和 2，分别对应 MACH_MSG_PHYSICAL_COPY 和 MACH_MSG_VIRTUAL_COPY。
+- **disposition**: 取值范围仅为 16 到 25（含）。
+
+**描述符类型识别技巧**
+
+- 端口描述符：type=0，大小12字节。
+- OOL数据描述符：type=1，大小16字节。
+- OOL端口数组描述符：type=2，大小16字节。
+- 所有描述符的type字段均在描述符的+11偏移。
+- 例如：`*(unsigned short*)(a1+38) << 16 = 1114112` (0x00110000)，意味着38偏移处的高字节（+39偏移）为0x00（type=0），低字节（+38偏移）为0x11（disp）。这是端口描述符。
+- 例如：`*(unsigned char*)(a1+39) << 24 = 0x1000000`，意味着39偏移处为0x01（type=1）。这是OOL数据描述符。
+
+**Trailer结构介绍**
+
+Trailer部分有多种类型，包括：
+- **基本trailer** (mach_msg_trailer_t, 8字节)
+- **审计trailer** (mach_msg_audit_trailer_t, 52字节)：含32字节审计token。
+
+### 3. 约束提取要点 (Constraint Extraction)
+
+1. **覆盖分析**：从消息段起始偏移到结束偏移，确保没有遗漏。
+2. **填充识别**：如果某些偏移范围没有显式约束，标记为填充字段 (padding)，约束记为 "N/A"。
+3. **约束整合**：对同一字段的多个约束进行合并分析。
+4. **特殊约束类型**：
+   - **范围约束**：值必须在某个范围内。
+   - **枚举约束**：值必须是特定的几个值之一。
+   - **关系约束**：字段之间的依赖关系。
+   - **业务约束**：基于handler函数的业务逻辑约束。
+
+## 输出格式要求
+
+1. 您必须只返回纯JSON内容，不要包含任何额外的文本。
+2. 返回简洁准确的约束总结。
+3. 不允许截断JSON。
+
+返回严格按照以下JSON格式的分析结果：
+
+```json
+{
+  "header_constraints": {
+    "msg_bits": {
+      "complex_bit": "约束总结",
+      "pad": "value == 0",
+      "voucher_disposition": "约束总结",
+      "local_disposition": "约束总结",
+      "remote_disposition": "约束总结"
+    },
+    "msg_size": "约束总结",
+    "remote_port": "约束总结",
+    "local_port": "约束总结",
+    "voucher_port": "约束总结",
+    "msg_id": "约束总结"
+  },
+  "body_constraints": {
+    "descriptor_section": [  // 若无描述符为空列表
+      {
+        "index": "描述符索引",
+        "type": "描述符类型",
+        "offset_start": "起始偏移",
+        "offset_end": "结束偏移",
+        "constraints": "约束总结"
+      }
+    ],
+    "body": [
+      {
+        "field_name": "字段名 (若是padding则为'pad')",
+        "offset_start": "起始偏移",
+        "offset_end": "结束偏移",
+        "is_padding": false, // 若是padding则为true
+        "constraints": "约束总结 (若是padding则为'N/A')"
+      }
+    ],
+    "trailer": [  // 若无Trailer为空列表
+      {
+        "field_name": "字段名",
+        "offset_start": "起始偏移",
+        "offset_end": "结束偏移",
+        "constraints": "约束总结"
+      }
+    ]
+  }
+}
+```

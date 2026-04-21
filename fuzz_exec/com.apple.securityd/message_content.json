@@ -1,0 +1,109 @@
+[
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.securityd/out/crashes/access_violation_0xxxxxxx148_0x0_1",
+        "messages": [
+            {
+                "body": "e82541a7200000001100001f",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 65,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ]
+    },
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.securityd/out/crashes/access_violation_0xxxxxxxfec_0x0_1",
+        "messages": [
+            {
+                "body": "a03eef7aa64a8c05802e9eaf",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 70,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ]
+    },
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.securityd/out/crashes/access_violation_0xxxxxxxf4c_0x0_2",
+        "messages": [
+            {
+                "body": "",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 71,
+                    "msgh_local_port": 4278190080,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 24,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ]
+    },
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.securityd/out/crashes/access_violation_0xxxxxxx364_0xxxxxxxxxxxxxxf18_1",
+        "messages": [
+            {
+                "body": "0400000000002c040100000000010001070a000000402c0401000000000100017a08000000802c040100000000010001cb00000000c02c040100000000010001b7010000000000000000000000000000070a0000000000007a080000cb000000b701000000000000000000000000000020000000000000000000000000000000f501000000000000000000000000000000000000db720000cb860100347e0000",
+                "header": {
+                    "msgh_bits": 2147483648,
+                    "msgh_id": 1044,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 132,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ]
+    },
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.securityd/out/crashes/access_violation_0xxxxxxx568_0x0_3",
+        "messages": [
+            {
+                "body": "02000000031c0000c2ab0f1c3ad31100030b0000ca131976fac911000000000016f4c4ed7ba5f35d5500988311289900f50100000000000000000000000000000000000045730000cb860100c87e0000",
+                "header": {
+                    "msgh_bits": 2147488512,
+                    "msgh_id": 1077,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 52,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "993b2b0755dd52ec03100000",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 72,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ]
+    },
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.securityd/out/crashes/access_violation_0xxxxxxx0a8_0x0_2",
+        "messages": [
+            {
+                "body": "0100000000005502010000000001100075000000",
+                "header": {
+                    "msgh_bits": 2147483667,
+                    "msgh_id": 69,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 40,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ]
+    }
+]

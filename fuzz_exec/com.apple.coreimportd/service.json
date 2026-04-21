@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/coreimportd",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    26000
+  ],
+  "subsystem_end_ids": [
+    26001
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "coreimportd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100007F38"
+  ],
+  "dispatch_routine_offsets": [
+    "0x7f38"
+  ]
+}

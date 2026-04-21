@@ -1,0 +1,2576 @@
+{
+  "config": {
+    "check_interval": 60,
+    "stall_minutes": 10,
+    "max_duration_hours": 24,
+    "results_root": "experiment/exp1/results"
+  },
+  "to_fuzz": [],
+  "fuzzing": [],
+  "fuzzed": [
+    "com.apple.afpfs_afpLoad",
+    "com.apple.afpfs_checkafp",
+    "com.apple.airport.wps",
+    "com.apple.alf.useragent",
+    "com.apple.AssistiveControl",
+    "com.apple.audio.coreaudiod",
+    "com.apple.auditd",
+    "com.apple.automountd",
+    "com.apple.bsd.dirhelper",
+    "com.apple.cmio.AVCAssistant",
+    "com.apple.cmio.IIDCVideoAssistant",
+    "com.apple.cmio.iOSScreenCaptureAssistant",
+    "com.apple.cmio.VDCAssistant",
+    "com.apple.configd",
+    "com.apple.coreimportd",
+    "com.apple.CoreLocationAgent",
+    "com.apple.coreservices.useractivityd",
+    "com.apple.corespotlightd",
+    "com.apple.Dock.agent",
+    "com.apple.dspluginhelperd",
+    "com.apple.DwellControl",
+    "com.apple.eapolcfg_auth",
+    "com.apple.endpointsecurity.endpointsecurityd",
+    "com.apple.fairplayd",
+    "com.apple.familycontrols",
+    "com.apple.familycontrols.useragent",
+    "com.apple.FileCoordination",
+    "com.apple.filesystems.doubleagentd",
+    "com.apple.filesystems.fskitd",
+    "com.apple.fseventsd",
+    "com.apple.gssd",
+    "com.apple.ioupsd",
+    "com.apple.Kerberos.digest-service",
+    "com.apple.Kerberos.kcm",
+    "com.apple.Kerberos.kdc",
+    "com.apple.kernelmanager_helper",
+    "com.apple.kernelmanagerd",
+    "com.apple.kuncd",
+    "com.apple.locationd",
+    "com.apple.logd",
+    "com.apple.lskdd",
+    "com.apple.ManagedClient",
+    "com.apple.ManagedClient.enroll",
+    "com.apple.ManagedClient.mechanism",
+    "com.apple.ManagedClient.startup",
+    "com.apple.mdworker.mail",
+    "com.apple.mdworker.shared",
+    "com.apple.mdworker.single.arm64",
+    "com.apple.mdworker.single.x86_64",
+    "com.apple.mdworker.sizing",
+    "com.apple.memory-maintenance",
+    "com.apple.metadata.mdbulkimport",
+    "com.apple.metadata.mdflagwriter",
+    "com.apple.metadata.mds",
+    "com.apple.metadata.mds.index",
+    "com.apple.metadata.mds.scan",
+    "com.apple.metadata.mds.spindump",
+    "com.apple.MobileFileIntegrity",
+    "com.apple.netauth.sys.auth",
+    "com.apple.netauth.sys.gui",
+    "com.apple.netauth.user.auth",
+    "com.apple.netauth.user.gui",
+    "com.apple.nlcd",
+    "com.apple.notifyd",
+    "com.apple.opendirectoryd",
+    "com.apple.powerd",
+    "com.apple.preferences.timezone.admintool",
+    "com.apple.quicklook",
+    "com.apple.quicklook.ui.helper",
+    "com.apple.RemoteDesktop.agent",
+    "com.apple.RemoteDesktop.PrivilegeProxy",
+    "com.apple.ReportCrash",
+    "com.apple.ReportCrash.Root",
+    "com.apple.RFBEventHelper",
+    "com.apple.sandboxd",
+    "com.apple.SCHelper",
+    "com.apple.ScreenReaderUIServer",
+    "com.apple.screensharing",
+    "com.apple.screensharing.agent",
+    "com.apple.security.syspolicy",
+    "com.apple.securityd",
+    "com.apple.spindump",
+    "com.apple.suhelperd",
+    "com.apple.sysdiagnose",
+    "com.apple.syslogd",
+    "com.apple.SystemUIServer.agent",
+    "com.apple.tailspind",
+    "com.apple.taskgated",
+    "com.apple.touchbarserver",
+    "com.apple.TrustEvaluationAgent",
+    "com.apple.TrustEvaluationAgent.system",
+    "com.apple.uninstalld",
+    "com.apple.universalaccesscontrol",
+    "com.apple.universalaccessd",
+    "com.apple.watchdogd",
+    "com.apple.WindowServer"
+  ],
+  "jobs": {
+    "com.apple.afpfs_afpLoad": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T00:10:52",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.afpfs_afpLoad",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.afpfs_afpLoad/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.afpfs_afpLoad/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.afpfs_afpLoad/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.afpfs_afpLoad/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T00:11:52",
+      "duration": "00:01:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.afpfs_checkafp": {
+      "status": "completed",
+      "start_time": "2026-01-27T00:11:53",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.afpfs_checkafp",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.afpfs_checkafp/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.afpfs_checkafp/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.afpfs_checkafp/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.afpfs_checkafp/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 13,
+        "unique_samples_latest": 1,
+        "total_execs_latest": 27220,
+        "execs_per_sec_latest": 47,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T00:22:53",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.airport.wps": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T00:22:54",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.airport.wps",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.airport.wps/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.airport.wps/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.airport.wps/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.airport.wps/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 777,
+        "execs_per_sec_latest": 7,
+        "crashes_latest": 0,
+        "hangs_latest": 776,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T00:25:54",
+      "duration": "00:03:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.alf.useragent": {
+      "status": "completed",
+      "start_time": "2026-01-27T00:25:56",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.alf.useragent",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.alf.useragent/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.alf.useragent/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.alf.useragent/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.alf.useragent/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 1,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T00:36:56",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.AssistiveControl": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T00:36:57",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.AssistiveControl",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.AssistiveControl/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.AssistiveControl/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.AssistiveControl/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.AssistiveControl/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 1002,
+        "execs_per_sec_latest": 5,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T00:40:57",
+      "duration": "00:04:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.audio.coreaudiod": {
+      "status": "completed",
+      "start_time": "2026-01-27T00:40:58",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.audio.coreaudiod",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.audio.coreaudiod/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.audio.coreaudiod/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.audio.coreaudiod/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.audio.coreaudiod/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 161,
+        "unique_samples_latest": 4,
+        "total_execs_latest": 105,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 7,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T00:58:59",
+      "duration": "00:18:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.auditd": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T00:59:00",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.auditd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.auditd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.auditd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.auditd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.auditd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 152,
+        "unique_samples_latest": 7,
+        "total_execs_latest": 1563,
+        "execs_per_sec_latest": 9,
+        "crashes_latest": 0,
+        "hangs_latest": 9,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T01:05:01",
+      "duration": "00:06:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.automountd": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T01:05:02",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.automountd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.automountd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.automountd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.automountd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.automountd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T01:06:02",
+      "duration": "00:01:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.bsd.dirhelper": {
+      "status": "completed",
+      "start_time": "2026-01-27T01:06:03",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.bsd.dirhelper",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.bsd.dirhelper/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.bsd.dirhelper/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.bsd.dirhelper/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.bsd.dirhelper/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 272,
+        "unique_samples_latest": 7,
+        "total_execs_latest": 4852,
+        "execs_per_sec_latest": 7,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T01:17:04",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.cmio.AVCAssistant": {
+      "status": "completed",
+      "start_time": "2026-01-27T01:17:05",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.cmio.AVCAssistant",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.AVCAssistant/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.AVCAssistant/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.AVCAssistant/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.AVCAssistant/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 85,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 7,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T01:28:05",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.cmio.IIDCVideoAssistant": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T01:28:07",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.cmio.IIDCVideoAssistant",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.IIDCVideoAssistant/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.IIDCVideoAssistant/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.IIDCVideoAssistant/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.IIDCVideoAssistant/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 3080,
+        "execs_per_sec_latest": 6,
+        "crashes_latest": 1116,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T01:38:07",
+      "duration": "00:10:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.cmio.iOSScreenCaptureAssistant": {
+      "status": "completed",
+      "start_time": "2026-01-27T01:38:09",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.cmio.iOSScreenCaptureAssistant",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.iOSScreenCaptureAssistant/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.iOSScreenCaptureAssistant/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.iOSScreenCaptureAssistant/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.iOSScreenCaptureAssistant/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 28,
+        "unique_samples_latest": 1,
+        "total_execs_latest": 3477,
+        "execs_per_sec_latest": 6,
+        "crashes_latest": 310,
+        "hangs_latest": 59,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T01:49:09",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.cmio.VDCAssistant": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T01:49:11",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.cmio.VDCAssistant",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.VDCAssistant/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.VDCAssistant/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.VDCAssistant/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.cmio.VDCAssistant/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 2415,
+        "execs_per_sec_latest": 5,
+        "crashes_latest": 1112,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T01:57:11",
+      "duration": "00:08:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.configd": {
+      "status": "completed",
+      "start_time": "2026-01-27T01:57:12",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.configd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.configd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.configd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.configd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.configd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 1073,
+        "unique_samples_latest": 33,
+        "total_execs_latest": 113246,
+        "execs_per_sec_latest": 6,
+        "crashes_latest": 2477,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T02:30:13",
+      "duration": "00:33:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.coreimportd": {
+      "status": "completed",
+      "start_time": "2026-01-27T02:30:14",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.coreimportd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.coreimportd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.coreimportd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.coreimportd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.coreimportd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 16,
+        "unique_samples_latest": 1,
+        "total_execs_latest": 6732,
+        "execs_per_sec_latest": 19,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T02:41:14",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.CoreLocationAgent": {
+      "status": "completed",
+      "start_time": "2026-01-27T02:41:16",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.CoreLocationAgent",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.CoreLocationAgent/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.CoreLocationAgent/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.CoreLocationAgent/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.CoreLocationAgent/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 298,
+        "unique_samples_latest": 2,
+        "total_execs_latest": 10147,
+        "execs_per_sec_latest": 15,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T02:52:16",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.coreservices.useractivityd": {
+      "status": "completed",
+      "start_time": "2026-01-27T02:52:17",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.coreservices.useractivityd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.coreservices.useractivityd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.coreservices.useractivityd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.coreservices.useractivityd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.coreservices.useractivityd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 240,
+        "unique_samples_latest": 9,
+        "total_execs_latest": 173329,
+        "execs_per_sec_latest": 234,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T03:03:17",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.corespotlightd": {
+      "status": "completed",
+      "start_time": "2026-01-27T03:03:19",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.corespotlightd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.corespotlightd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.corespotlightd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.corespotlightd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.corespotlightd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 12,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 0,
+        "hangs_latest": 11,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T03:14:19",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.Dock.agent": {
+      "status": "completed",
+      "start_time": "2026-01-27T03:14:20",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.Dock.agent",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Dock.agent/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Dock.agent/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Dock.agent/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Dock.agent/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 2141,
+        "unique_samples_latest": 47,
+        "total_execs_latest": 27382,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 12,
+        "hangs_latest": 1423,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T03:37:21",
+      "duration": "00:23:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.dspluginhelperd": {
+      "status": "completed",
+      "start_time": "2026-01-27T03:37:22",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.dspluginhelperd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.dspluginhelperd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.dspluginhelperd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.dspluginhelperd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.dspluginhelperd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 628,
+        "unique_samples_latest": 10,
+        "total_execs_latest": 56731,
+        "execs_per_sec_latest": 28,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T03:52:22",
+      "duration": "00:15:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.DwellControl": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T03:52:24",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.DwellControl",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.DwellControl/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.DwellControl/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.DwellControl/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.DwellControl/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 1101,
+        "execs_per_sec_latest": 5,
+        "crashes_latest": 0,
+        "hangs_latest": 1100,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T03:57:24",
+      "duration": "00:05:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.eapolcfg_auth": {
+      "status": "completed",
+      "start_time": "2026-01-27T03:57:25",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.eapolcfg_auth",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.eapolcfg_auth/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.eapolcfg_auth/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.eapolcfg_auth/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.eapolcfg_auth/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 204,
+        "unique_samples_latest": 7,
+        "total_execs_latest": 320912,
+        "execs_per_sec_latest": 843,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T04:08:25",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.endpointsecurity.endpointsecurityd": {
+      "status": "completed",
+      "start_time": "2026-01-27T04:08:26",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.endpointsecurity.endpointsecurityd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.endpointsecurity.endpointsecurityd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.endpointsecurity.endpointsecurityd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.endpointsecurity.endpointsecurityd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.endpointsecurity.endpointsecurityd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 63,
+        "unique_samples_latest": 2,
+        "total_execs_latest": 147155,
+        "execs_per_sec_latest": 252,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T04:19:27",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.fairplayd": {
+      "status": "completed",
+      "start_time": "2026-01-27T04:19:28",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.fairplayd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.fairplayd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.fairplayd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.fairplayd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.fairplayd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 400,
+        "unique_samples_latest": 11,
+        "total_execs_latest": 7623,
+        "execs_per_sec_latest": 6,
+        "crashes_latest": 1526,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T04:33:28",
+      "duration": "00:14:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.familycontrols": {
+      "status": "completed",
+      "start_time": "2026-01-27T04:33:30",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.familycontrols",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.familycontrols/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.familycontrols/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.familycontrols/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.familycontrols/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 1324,
+        "unique_samples_latest": 20,
+        "total_execs_latest": 19451,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 2392,
+        "hangs_latest": 255,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T04:50:30",
+      "duration": "00:17:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.familycontrols.useragent": {
+      "status": "completed",
+      "start_time": "2026-01-27T04:50:32",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.familycontrols.useragent",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.familycontrols.useragent/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.familycontrols.useragent/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.familycontrols.useragent/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.familycontrols.useragent/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 14,
+        "unique_samples_latest": 1,
+        "total_execs_latest": 430365,
+        "execs_per_sec_latest": 669,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T05:01:32",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.FileCoordination": {
+      "status": "completed",
+      "start_time": "2026-01-27T05:01:34",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.FileCoordination",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.FileCoordination/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.FileCoordination/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.FileCoordination/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.FileCoordination/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 300,
+        "unique_samples_latest": 8,
+        "total_execs_latest": 91804,
+        "execs_per_sec_latest": 99,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T05:12:34",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.filesystems.doubleagentd": {
+      "status": "completed",
+      "start_time": "2026-01-27T05:12:35",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.filesystems.doubleagentd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.filesystems.doubleagentd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.filesystems.doubleagentd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.filesystems.doubleagentd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.filesystems.doubleagentd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 124,
+        "unique_samples_latest": 2,
+        "total_execs_latest": 11638,
+        "execs_per_sec_latest": 16,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T05:23:35",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.filesystems.fskitd": {
+      "status": "completed",
+      "start_time": "2026-01-27T05:23:37",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.filesystems.fskitd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.filesystems.fskitd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.filesystems.fskitd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.filesystems.fskitd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.filesystems.fskitd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 1635,
+        "unique_samples_latest": 30,
+        "total_execs_latest": 31867,
+        "execs_per_sec_latest": 19,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T05:42:37",
+      "duration": "00:19:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.fseventsd": {
+      "status": "completed",
+      "start_time": "2026-01-27T05:42:38",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.fseventsd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.fseventsd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.fseventsd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.fseventsd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.fseventsd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 251,
+        "unique_samples_latest": 4,
+        "total_execs_latest": 17,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T05:59:39",
+      "duration": "00:17:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.gssd": {
+      "status": "completed",
+      "start_time": "2026-01-27T05:59:40",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.gssd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.gssd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.gssd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.gssd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.gssd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 748,
+        "unique_samples_latest": 14,
+        "total_execs_latest": 14620,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 2586,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T06:21:41",
+      "duration": "00:22:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.ioupsd": {
+      "status": "completed",
+      "start_time": "2026-01-27T06:21:42",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.ioupsd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ioupsd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ioupsd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ioupsd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ioupsd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 52,
+        "unique_samples_latest": 2,
+        "total_execs_latest": 306802,
+        "execs_per_sec_latest": 401,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T06:32:43",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.Kerberos.digest-service": {
+      "status": "completed",
+      "start_time": "2026-01-27T06:32:44",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.Kerberos.digest-service",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Kerberos.digest-service/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Kerberos.digest-service/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Kerberos.digest-service/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Kerberos.digest-service/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 78,
+        "unique_samples_latest": 4,
+        "total_execs_latest": 93304,
+        "execs_per_sec_latest": 234,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T06:43:44",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.Kerberos.kcm": {
+      "status": "completed",
+      "start_time": "2026-01-27T06:43:46",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.Kerberos.kcm",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Kerberos.kcm/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Kerberos.kcm/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Kerberos.kcm/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Kerberos.kcm/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 61,
+        "unique_samples_latest": 3,
+        "total_execs_latest": 126530,
+        "execs_per_sec_latest": 231,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T06:54:46",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.Kerberos.kdc": {
+      "status": "completed",
+      "start_time": "2026-01-27T06:54:47",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.Kerberos.kdc",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Kerberos.kdc/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Kerberos.kdc/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Kerberos.kdc/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.Kerberos.kdc/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 61,
+        "unique_samples_latest": 3,
+        "total_execs_latest": 94210,
+        "execs_per_sec_latest": 185,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T07:05:47",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.kernelmanager_helper": {
+      "status": "completed",
+      "start_time": "2026-01-27T07:05:49",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.kernelmanager_helper",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.kernelmanager_helper/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.kernelmanager_helper/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.kernelmanager_helper/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.kernelmanager_helper/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 1,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T07:16:49",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.kernelmanagerd": {
+      "status": "completed",
+      "start_time": "2026-01-27T07:16:50",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.kernelmanagerd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.kernelmanagerd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.kernelmanagerd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.kernelmanagerd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.kernelmanagerd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 1,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T07:27:50",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.kuncd": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T07:27:52",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.kuncd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.kuncd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.kuncd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.kuncd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.kuncd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T07:28:52",
+      "duration": "00:01:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.locationd": {
+      "status": "completed",
+      "start_time": "2026-01-27T07:28:53",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.locationd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.locationd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.locationd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.locationd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.locationd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 70,
+        "unique_samples_latest": 5,
+        "total_execs_latest": 222535,
+        "execs_per_sec_latest": 338,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T07:39:53",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.logd": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T07:39:55",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.logd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.logd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.logd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.logd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.logd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 805,
+        "execs_per_sec_latest": 6,
+        "crashes_latest": 0,
+        "hangs_latest": 797,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T07:42:55",
+      "duration": "00:03:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.lskdd": {
+      "status": "completed",
+      "start_time": "2026-01-27T07:42:57",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.lskdd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.lskdd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.lskdd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.lskdd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.lskdd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 111,
+        "unique_samples_latest": 4,
+        "total_execs_latest": 570,
+        "execs_per_sec_latest": 1,
+        "crashes_latest": 0,
+        "hangs_latest": 7,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T07:54:57",
+      "duration": "00:12:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.ManagedClient": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T07:54:58",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.ManagedClient",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T07:55:58",
+      "duration": "00:01:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.ManagedClient.enroll": {
+      "status": "completed",
+      "start_time": "2026-01-27T07:56:00",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.ManagedClient.enroll",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient.enroll/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient.enroll/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient.enroll/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient.enroll/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 69,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T08:07:00",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.ManagedClient.mechanism": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T08:07:02",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.ManagedClient.mechanism",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient.mechanism/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient.mechanism/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient.mechanism/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient.mechanism/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 1028,
+        "execs_per_sec_latest": 37,
+        "crashes_latest": 10,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T08:09:02",
+      "duration": "00:02:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.ManagedClient.startup": {
+      "status": "completed",
+      "start_time": "2026-01-27T08:09:03",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.ManagedClient.startup",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient.startup/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient.startup/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient.startup/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ManagedClient.startup/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 25,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T08:20:03",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.mdworker.mail": {
+      "status": "completed",
+      "start_time": "2026-01-27T08:20:05",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.mdworker.mail",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.mail/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.mail/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.mail/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.mail/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 256,
+        "unique_samples_latest": 9,
+        "total_execs_latest": 51508,
+        "execs_per_sec_latest": 82,
+        "crashes_latest": 0,
+        "hangs_latest": 2,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T08:31:05",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.mdworker.shared": {
+      "status": "completed",
+      "start_time": "2026-01-27T08:31:06",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.mdworker.shared",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.shared/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.shared/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.shared/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.shared/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 284,
+        "unique_samples_latest": 6,
+        "total_execs_latest": 79666,
+        "execs_per_sec_latest": 79,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T08:42:06",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.mdworker.single.arm64": {
+      "status": "completed",
+      "start_time": "2026-01-27T08:42:08",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.mdworker.single.arm64",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.single.arm64/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.single.arm64/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.single.arm64/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.single.arm64/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 306,
+        "unique_samples_latest": 11,
+        "total_execs_latest": 135,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T09:20:08",
+      "duration": "00:38:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.mdworker.single.x86_64": {
+      "status": "completed",
+      "start_time": "2026-01-27T09:20:10",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.mdworker.single.x86_64",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.single.x86_64/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.single.x86_64/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.single.x86_64/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.single.x86_64/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 217,
+        "unique_samples_latest": 12,
+        "total_execs_latest": 110836,
+        "execs_per_sec_latest": 90,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T09:31:10",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.mdworker.sizing": {
+      "status": "completed",
+      "start_time": "2026-01-27T09:31:12",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.mdworker.sizing",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.sizing/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.sizing/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.sizing/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.mdworker.sizing/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 270,
+        "unique_samples_latest": 12,
+        "total_execs_latest": 7650,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 0,
+        "hangs_latest": 416,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T09:43:12",
+      "duration": "00:12:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.memory-maintenance": {
+      "status": "completed",
+      "start_time": "2026-01-27T09:43:14",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.memory-maintenance",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.memory-maintenance/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.memory-maintenance/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.memory-maintenance/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.memory-maintenance/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 115,
+        "unique_samples_latest": 2,
+        "total_execs_latest": 35712,
+        "execs_per_sec_latest": 63,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T09:55:14",
+      "duration": "00:12:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.metadata.mdbulkimport": {
+      "status": "completed",
+      "start_time": "2026-01-27T09:55:15",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.metadata.mdbulkimport",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mdbulkimport/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mdbulkimport/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mdbulkimport/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mdbulkimport/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 287,
+        "unique_samples_latest": 11,
+        "total_execs_latest": 39405,
+        "execs_per_sec_latest": 99,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T10:06:15",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.metadata.mdflagwriter": {
+      "status": "completed",
+      "start_time": "2026-01-27T10:06:17",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.metadata.mdflagwriter",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mdflagwriter/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mdflagwriter/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mdflagwriter/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mdflagwriter/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 26,
+        "unique_samples_latest": 1,
+        "total_execs_latest": 97170,
+        "execs_per_sec_latest": 140,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T10:17:17",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.metadata.mds": {
+      "status": "completed",
+      "start_time": "2026-01-27T10:17:18",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.metadata.mds",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 1743,
+        "unique_samples_latest": 33,
+        "total_execs_latest": 25140,
+        "execs_per_sec_latest": 8,
+        "crashes_latest": 3455,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T10:50:20",
+      "duration": "00:33:01",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.metadata.mds.index": {
+      "status": "completed",
+      "start_time": "2026-01-27T10:50:21",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.metadata.mds.index",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds.index/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds.index/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds.index/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds.index/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 1190,
+        "unique_samples_latest": 32,
+        "total_execs_latest": 49024,
+        "execs_per_sec_latest": 73,
+        "crashes_latest": 108,
+        "hangs_latest": 448,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T11:02:21",
+      "duration": "00:12:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.metadata.mds.scan": {
+      "status": "completed",
+      "start_time": "2026-01-27T11:02:23",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.metadata.mds.scan",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds.scan/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds.scan/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds.scan/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds.scan/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 274,
+        "unique_samples_latest": 4,
+        "total_execs_latest": 69152,
+        "execs_per_sec_latest": 198,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T11:13:23",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.metadata.mds.spindump": {
+      "status": "completed",
+      "start_time": "2026-01-27T11:13:25",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.metadata.mds.spindump",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds.spindump/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds.spindump/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds.spindump/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.metadata.mds.spindump/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 250,
+        "unique_samples_latest": 6,
+        "total_execs_latest": 49494,
+        "execs_per_sec_latest": 34,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T11:24:25",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.MobileFileIntegrity": {
+      "status": "completed",
+      "start_time": "2026-01-27T11:24:26",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.MobileFileIntegrity",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.MobileFileIntegrity/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.MobileFileIntegrity/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.MobileFileIntegrity/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.MobileFileIntegrity/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 2056,
+        "unique_samples_latest": 34,
+        "total_execs_latest": 275252,
+        "execs_per_sec_latest": 93,
+        "crashes_latest": 592,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T12:04:27",
+      "duration": "00:40:01",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.netauth.sys.auth": {
+      "status": "completed",
+      "start_time": "2026-01-27T12:04:28",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.netauth.sys.auth",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.sys.auth/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.sys.auth/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.sys.auth/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.sys.auth/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 417,
+        "unique_samples_latest": 13,
+        "total_execs_latest": 74835,
+        "execs_per_sec_latest": 173,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T12:15:29",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.netauth.sys.gui": {
+      "status": "completed",
+      "start_time": "2026-01-27T12:15:30",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.netauth.sys.gui",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.sys.gui/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.sys.gui/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.sys.gui/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.sys.gui/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 703,
+        "unique_samples_latest": 30,
+        "total_execs_latest": 209,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T13:19:32",
+      "duration": "01:04:01",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.netauth.user.auth": {
+      "status": "completed",
+      "start_time": "2026-01-27T13:19:33",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.netauth.user.auth",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.user.auth/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.user.auth/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.user.auth/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.user.auth/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 300,
+        "unique_samples_latest": 8,
+        "total_execs_latest": 54445,
+        "execs_per_sec_latest": 47,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T13:30:34",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.netauth.user.gui": {
+      "status": "completed",
+      "start_time": "2026-01-27T13:30:35",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.netauth.user.gui",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.user.gui/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.user.gui/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.user.gui/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.netauth.user.gui/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 699,
+        "unique_samples_latest": 28,
+        "total_execs_latest": 3002,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T14:28:36",
+      "duration": "00:58:01",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.nlcd": {
+      "status": "completed",
+      "start_time": "2026-01-27T14:28:37",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.nlcd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.nlcd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.nlcd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.nlcd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.nlcd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 64,
+        "unique_samples_latest": 4,
+        "total_execs_latest": 16872,
+        "execs_per_sec_latest": 48,
+        "crashes_latest": 0,
+        "hangs_latest": 2,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T14:39:38",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.notifyd": {
+      "status": "completed",
+      "start_time": "2026-01-27T14:39:39",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.notifyd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.notifyd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.notifyd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.notifyd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.notifyd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 451,
+        "unique_samples_latest": 15,
+        "total_execs_latest": 9311,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 13,
+        "hangs_latest": 1290,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T14:53:39",
+      "duration": "00:14:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.opendirectoryd": {
+      "status": "completed",
+      "start_time": "2026-01-27T14:53:41",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.opendirectoryd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.opendirectoryd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.opendirectoryd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.opendirectoryd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.opendirectoryd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 258,
+        "unique_samples_latest": 9,
+        "total_execs_latest": 129215,
+        "execs_per_sec_latest": 275,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T15:04:41",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.powerd": {
+      "status": "completed",
+      "start_time": "2026-01-27T15:04:42",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.powerd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.powerd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.powerd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.powerd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.powerd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 1276,
+        "unique_samples_latest": 30,
+        "total_execs_latest": 477,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 105,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T15:27:43",
+      "duration": "00:23:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.preferences.timezone.admintool": {
+      "status": "completed",
+      "start_time": "2026-01-27T15:27:44",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.preferences.timezone.admintool",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.preferences.timezone.admintool/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.preferences.timezone.admintool/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.preferences.timezone.admintool/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.preferences.timezone.admintool/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 282,
+        "unique_samples_latest": 7,
+        "total_execs_latest": 27657,
+        "execs_per_sec_latest": 340,
+        "crashes_latest": 200,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T15:38:44",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.quicklook": {
+      "status": "completed",
+      "start_time": "2026-01-27T15:38:46",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.quicklook",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.quicklook/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.quicklook/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.quicklook/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.quicklook/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 192,
+        "unique_samples_latest": 9,
+        "total_execs_latest": 41332,
+        "execs_per_sec_latest": 68,
+        "crashes_latest": 10,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T15:49:46",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.quicklook.ui.helper": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T15:49:47",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.quicklook.ui.helper",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.quicklook.ui.helper/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.quicklook.ui.helper/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.quicklook.ui.helper/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.quicklook.ui.helper/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T15:50:47",
+      "duration": "00:01:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.RemoteDesktop.agent": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T15:50:48",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.RemoteDesktop.agent",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.RemoteDesktop.agent/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.RemoteDesktop.agent/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.RemoteDesktop.agent/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.RemoteDesktop.agent/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 2323,
+        "execs_per_sec_latest": 5,
+        "crashes_latest": 1158,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T15:59:49",
+      "duration": "00:09:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.RemoteDesktop.PrivilegeProxy": {
+      "status": "completed",
+      "start_time": "2026-01-27T15:59:50",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.RemoteDesktop.PrivilegeProxy",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.RemoteDesktop.PrivilegeProxy/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.RemoteDesktop.PrivilegeProxy/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.RemoteDesktop.PrivilegeProxy/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.RemoteDesktop.PrivilegeProxy/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 139,
+        "unique_samples_latest": 3,
+        "total_execs_latest": 167673,
+        "execs_per_sec_latest": 281,
+        "crashes_latest": 85,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T16:10:50",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.ReportCrash": {
+      "status": "completed",
+      "start_time": "2026-01-27T16:10:52",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.ReportCrash",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ReportCrash/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ReportCrash/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ReportCrash/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ReportCrash/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 240,
+        "unique_samples_latest": 8,
+        "total_execs_latest": 177938,
+        "execs_per_sec_latest": 160,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T16:21:52",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.ReportCrash.Root": {
+      "status": "completed",
+      "start_time": "2026-01-27T16:21:53",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.ReportCrash.Root",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ReportCrash.Root/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ReportCrash.Root/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ReportCrash.Root/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ReportCrash.Root/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 255,
+        "unique_samples_latest": 3,
+        "total_execs_latest": 67898,
+        "execs_per_sec_latest": 80,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T16:32:54",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.RFBEventHelper": {
+      "status": "completed",
+      "start_time": "2026-01-27T16:32:55",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.RFBEventHelper",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.RFBEventHelper/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.RFBEventHelper/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.RFBEventHelper/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.RFBEventHelper/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 197,
+        "unique_samples_latest": 1,
+        "total_execs_latest": 4859,
+        "execs_per_sec_latest": 18,
+        "crashes_latest": 0,
+        "hangs_latest": 1,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T16:43:55",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.sandboxd": {
+      "status": "completed",
+      "start_time": "2026-01-27T16:43:56",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.sandboxd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.sandboxd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.sandboxd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.sandboxd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.sandboxd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 555,
+        "unique_samples_latest": 15,
+        "total_execs_latest": 28547,
+        "execs_per_sec_latest": 28,
+        "crashes_latest": 1635,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T16:59:57",
+      "duration": "00:16:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.SCHelper": {
+      "status": "completed",
+      "start_time": "2026-01-27T16:59:58",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.SCHelper",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.SCHelper/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.SCHelper/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.SCHelper/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.SCHelper/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 93,
+        "unique_samples_latest": 3,
+        "total_execs_latest": 132776,
+        "execs_per_sec_latest": 354,
+        "crashes_latest": 226,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T17:10:59",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.ScreenReaderUIServer": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T17:11:00",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.ScreenReaderUIServer",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ScreenReaderUIServer/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ScreenReaderUIServer/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ScreenReaderUIServer/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.ScreenReaderUIServer/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 1067,
+        "execs_per_sec_latest": 5,
+        "crashes_latest": 0,
+        "hangs_latest": 1066,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T17:16:01",
+      "duration": "00:05:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.screensharing": {
+      "status": "completed",
+      "start_time": "2026-01-27T17:16:02",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.screensharing",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.screensharing/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.screensharing/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.screensharing/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.screensharing/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 949,
+        "unique_samples_latest": 17,
+        "total_execs_latest": 17950,
+        "execs_per_sec_latest": 30,
+        "crashes_latest": 2455,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T17:35:02",
+      "duration": "00:19:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.screensharing.agent": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T17:35:04",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.screensharing.agent",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.screensharing.agent/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.screensharing.agent/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.screensharing.agent/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.screensharing.agent/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 3758,
+        "unique_samples_latest": 18,
+        "total_execs_latest": 271,
+        "execs_per_sec_latest": 1,
+        "crashes_latest": 18,
+        "hangs_latest": 2,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T17:38:04",
+      "duration": "00:03:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.security.syspolicy": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T17:38:05",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.security.syspolicy",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.security.syspolicy/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.security.syspolicy/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.security.syspolicy/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.security.syspolicy/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 1133,
+        "execs_per_sec_latest": 5,
+        "crashes_latest": 0,
+        "hangs_latest": 1132,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T17:43:05",
+      "duration": "00:05:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.securityd": {
+      "status": "completed",
+      "start_time": "2026-01-27T17:43:06",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.securityd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.securityd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.securityd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.securityd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.securityd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 86,
+        "unique_samples_latest": 4,
+        "total_execs_latest": 183,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 79,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T18:10:07",
+      "duration": "00:27:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.spindump": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T18:10:08",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.spindump",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.spindump/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.spindump/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.spindump/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.spindump/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 2097,
+        "execs_per_sec_latest": 5,
+        "crashes_latest": 1048,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T18:18:08",
+      "duration": "00:08:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.suhelperd": {
+      "status": "completed",
+      "start_time": "2026-01-27T18:18:09",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.suhelperd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.suhelperd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.suhelperd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.suhelperd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.suhelperd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 548,
+        "unique_samples_latest": 20,
+        "total_execs_latest": 29192,
+        "execs_per_sec_latest": 14,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T18:48:10",
+      "duration": "00:30:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.sysdiagnose": {
+      "status": "completed",
+      "start_time": "2026-01-27T18:48:11",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.sysdiagnose",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.sysdiagnose/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.sysdiagnose/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.sysdiagnose/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.sysdiagnose/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 19952,
+        "unique_samples_latest": 10,
+        "total_execs_latest": 2391,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T19:31:14",
+      "duration": "00:43:03",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.syslogd": {
+      "status": "completed",
+      "start_time": "2026-01-27T19:31:15",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.syslogd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.syslogd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.syslogd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.syslogd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.syslogd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 210,
+        "unique_samples_latest": 9,
+        "total_execs_latest": 135,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T19:49:16",
+      "duration": "00:18:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.SystemUIServer.agent": {
+      "status": "completed",
+      "start_time": "2026-01-27T19:49:17",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.SystemUIServer.agent",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.SystemUIServer.agent/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.SystemUIServer.agent/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.SystemUIServer.agent/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.SystemUIServer.agent/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 20,
+        "unique_samples_latest": 1,
+        "total_execs_latest": 8,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T20:00:17",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.tailspind": {
+      "status": "completed",
+      "start_time": "2026-01-27T20:00:18",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.tailspind",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.tailspind/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.tailspind/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.tailspind/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.tailspind/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 1,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T20:11:18",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.taskgated": {
+      "status": "completed",
+      "start_time": "2026-01-27T20:11:19",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.taskgated",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.taskgated/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.taskgated/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.taskgated/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.taskgated/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 2289,
+        "execs_per_sec_latest": 4,
+        "crashes_latest": 208,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T20:22:19",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.touchbarserver": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T20:22:20",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.touchbarserver",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.touchbarserver/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.touchbarserver/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.touchbarserver/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.touchbarserver/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 2328,
+        "execs_per_sec_latest": 5,
+        "crashes_latest": 1163,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T20:30:21",
+      "duration": "00:08:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.TrustEvaluationAgent": {
+      "status": "completed",
+      "start_time": "2026-01-27T20:30:22",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.TrustEvaluationAgent",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.TrustEvaluationAgent/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.TrustEvaluationAgent/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.TrustEvaluationAgent/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.TrustEvaluationAgent/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 27,
+        "unique_samples_latest": 1,
+        "total_execs_latest": 506002,
+        "execs_per_sec_latest": 1000,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T20:41:22",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.TrustEvaluationAgent.system": {
+      "status": "completed",
+      "start_time": "2026-01-27T20:41:24",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.TrustEvaluationAgent.system",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.TrustEvaluationAgent.system/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.TrustEvaluationAgent.system/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.TrustEvaluationAgent.system/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.TrustEvaluationAgent.system/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 27,
+        "unique_samples_latest": 1,
+        "total_execs_latest": 603969,
+        "execs_per_sec_latest": 1214,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T20:52:24",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.uninstalld": {
+      "status": "completed",
+      "start_time": "2026-01-27T20:52:25",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.uninstalld",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.uninstalld/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.uninstalld/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.uninstalld/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.uninstalld/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 418,
+        "unique_samples_latest": 4,
+        "total_execs_latest": 227,
+        "execs_per_sec_latest": 0,
+        "crashes_latest": 72,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T21:08:26",
+      "duration": "00:16:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.universalaccesscontrol": {
+      "status": "completed",
+      "start_time": "2026-01-27T21:08:27",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.universalaccesscontrol",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.universalaccesscontrol/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.universalaccesscontrol/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.universalaccesscontrol/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.universalaccesscontrol/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 118,
+        "unique_samples_latest": 2,
+        "total_execs_latest": 26466,
+        "execs_per_sec_latest": 57,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T21:19:27",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.universalaccessd": {
+      "status": "stopped_early",
+      "start_time": "2026-01-27T21:19:29",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.universalaccessd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.universalaccessd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.universalaccessd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.universalaccessd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.universalaccessd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 0,
+        "unique_samples_latest": 0,
+        "total_execs_latest": 1126,
+        "execs_per_sec_latest": 5,
+        "crashes_latest": 0,
+        "hangs_latest": 1125,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T21:25:29",
+      "duration": "00:06:00",
+      "stop_reason": "process_exit"
+    },
+    "com.apple.watchdogd": {
+      "status": "completed",
+      "start_time": "2026-01-27T21:25:30",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.watchdogd",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.watchdogd/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.watchdogd/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.watchdogd/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.watchdogd/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 3,
+        "offsets_latest": 9,
+        "unique_samples_latest": 1,
+        "total_execs_latest": 306934,
+        "execs_per_sec_latest": 493,
+        "crashes_latest": 0,
+        "hangs_latest": 0,
+        "corpus_final": 3,
+        "corpus_growth": 3
+      },
+      "end_time": "2026-01-27T21:36:30",
+      "duration": "00:11:00",
+      "stop_reason": "stalled_10min"
+    },
+    "com.apple.WindowServer": {
+      "status": "completed",
+      "start_time": "2026-01-27T21:36:32",
+      "paths": {
+        "workspace": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.WindowServer",
+        "out_dir": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.WindowServer/out",
+        "log_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.WindowServer/fuzz.log",
+        "run_sh": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.WindowServer/run.sh"
+      },
+      "history_file": "/Users/fuzz_vr/Workspace/MachServerFuzz/experiment/exp1/results/2026-01-27/com.apple.WindowServer/coverage_history.jsonl",
+      "metrics": {
+        "corpus_initial": 0,
+        "corpus_current": 1,
+        "offsets_latest": 292,
+        "unique_samples_latest": 9,
+        "total_execs_latest": 1800,
+        "execs_per_sec_latest": 4,
+        "crashes_latest": 852,
+        "hangs_latest": 0,
+        "corpus_final": 1,
+        "corpus_growth": 1
+      },
+      "end_time": "2026-01-27T21:57:32",
+      "duration": "00:21:00",
+      "stop_reason": "stalled_10min"
+    }
+  }
+}

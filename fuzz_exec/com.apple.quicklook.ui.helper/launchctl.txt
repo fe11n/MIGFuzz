@@ -1,0 +1,68 @@
+gui/501/com.apple.quicklook.ui.helper = {
+	active count = 0
+	path = /System/Library/LaunchAgents/com.apple.quicklook.ui.helper.plist
+	type = LaunchAgent
+	state = not running
+
+	program = /System/Library/Frameworks/Quartz.framework/Frameworks/QuickLookUI.framework/Resources/QuickLookUIHelper.app/Contents/MacOS/QuickLookUIHelper
+	arguments = {
+		/System/Library/Frameworks/Quartz.framework/Frameworks/QuickLookUI.framework/Resources/QuickLookUIHelper.app/Contents/MacOS/QuickLookUIHelper
+	}
+
+	working directory = /tmp
+
+	inherited environment = {
+		SSH_AUTH_SOCK => /private/tmp/com.apple.launchd.9wN8jZLmjZ/Listeners
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocSpaceEfficient => 1
+		XPC_SERVICE_NAME => com.apple.quicklook.ui.helper
+	}
+
+	domain = gui/501 [100003]
+	asid = 100003
+	minimum runtime = 1
+	base minimum runtime = 1
+	exit timeout = 5
+	runs = 0
+	last exit code = (never exited)
+
+	endpoints = {
+		"com.apple.quicklook.ui.helper" = {
+			port = 0x0
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 1
+		}
+		"com.apple.quicklook.ui.helper.active" = {
+			port = 0x0
+			active = 0
+			managed = 1
+			reset = 1
+			hide = 1
+			watching = 1
+		}
+	}
+
+	spawn type = interactive (4)
+	jetsam priority = 40
+	jetsam memory limit (active) = (unlimited)
+	jetsam memory limit (inactive) = (unlimited)
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	exponential throttling grace limit = 10
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = supports transactions | supports pressured exit | inferred program | system service | exponential throttling | tle system
+}

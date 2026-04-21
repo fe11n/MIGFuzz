@@ -1,0 +1,147 @@
+system/com.apple.memory-maintenance = {
+	active count = 4
+	path = /System/Library/LaunchDaemons/com.apple.memory-maintenance.plist
+	type = LaunchDaemon
+	state = running
+
+	program = /usr/libexec/mmaintenanced
+	arguments = {
+		/usr/libexec/mmaintenanced
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocSpaceEfficient => 1
+		XPC_SERVICE_NAME => com.apple.memory-maintenance
+	}
+
+	domain = system
+	minimum runtime = 10
+	base minimum runtime = 10
+	exit timeout = 5
+	runs = 1
+	pid = 30068
+	immediate reason = xpc event
+	forks = 0
+	execs = 1
+	initialized = 1
+	trampolined = 1
+	started suspended = 0
+	proxy started suspended = 0
+	last exit code = (never exited)
+
+	event triggers = {
+		com.apple.trial.NamespaceUpdate.COREOS_FAST_PREWARMING => {
+			keepalive = 0
+			service = com.apple.memory-maintenance
+			stream = com.apple.notifyd.matching
+			monitor = com.apple.notifyd
+			descriptor = {
+				"Notification" => "com.apple.trial.NamespaceUpdate.COREOS_FAST_PREWARMING"
+			}
+		}
+		com.apple.trial.NamespaceUpdate.COREOS_GMPOWER_VM_TUNING_PAGE_SHORTAGE_THRESHOLDS => {
+			keepalive = 0
+			service = com.apple.memory-maintenance
+			stream = com.apple.notifyd.matching
+			monitor = com.apple.notifyd
+			descriptor = {
+				"Notification" => "com.apple.trial.NamespaceUpdate.COREOS_GMPOWER_VM_TUNING_PAGE_SHORTAGE_THRESHOLDS"
+			}
+		}
+		com.apple.trial.NamespaceUpdate.FREEZER_POLICIES => {
+			keepalive = 0
+			service = com.apple.memory-maintenance
+			stream = com.apple.notifyd.matching
+			monitor = com.apple.notifyd
+			descriptor = {
+				"Notification" => "com.apple.trial.NamespaceUpdate.FREEZER_POLICIES"
+			}
+		}
+		com.apple.trial.NamespaceUpdate.COREOS_VM_OBJECT_COPY_DELAYED_NO_WAIT => {
+			keepalive = 0
+			service = com.apple.memory-maintenance
+			stream = com.apple.notifyd.matching
+			monitor = com.apple.notifyd
+			descriptor = {
+				"Notification" => "com.apple.trial.NamespaceUpdate.COREOS_VM_OBJECT_COPY_DELAYED_NO_WAIT"
+			}
+		}
+		com.apple.memory-maintenance.ane-abandonment-check => {
+			keepalive = 0
+			service = com.apple.memory-maintenance
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"Interval" => 3600
+				"RequireScreenSleep" => true
+				"RequiresClassC" => false
+				"AllowBattery" => true
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.memory-maintenance.report-ecc-status => {
+			keepalive = 0
+			service = com.apple.memory-maintenance
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-System
+			descriptor = {
+				"Repeating" => true
+				"Interval" => 86400
+				"RequiresClassC" => false
+				"AllowBattery" => true
+				"Priority" => "Maintenance"
+			}
+		}
+	}
+
+	endpoints = {
+		"com.apple.mmaintenanced.server" = {
+			port = 0x1007
+			host-special port = 33 (memory error stats)
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+	}
+
+	event channels = {
+		"com.apple.notifyd.matching" = {
+			port = 0xca1ab
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.xpc.activity" = {
+			port = 0xb3e43
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+	}
+
+	spawn type = background (5)
+	jetsam priority = 40
+	jetsam memory limit (active, soft) = 15 MB
+	jetsam memory limit (inactive, soft) = 15 MB
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	exponential throttling grace limit = 10
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = low priority i/o | supports transactions | supports pressured exit | abandon process group | inferred program | system service | exponential throttling | tle system
+}

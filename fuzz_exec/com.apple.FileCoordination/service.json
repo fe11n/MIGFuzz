@@ -1,0 +1,23 @@
+{
+  "library_path": "/usr/sbin/filecoordinationd",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    867800
+  ],
+  "subsystem_end_ids": [
+    867808
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "filecoordinationd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "_vfs_nspace_server_routine"
+  ],
+  "dispatch_routine_offsets": [
+    "0x1b00"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/PrivateFrameworks/EAP8021X.framework/Resources/eapolcfg_auth",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    22000
+  ],
+  "subsystem_end_ids": [
+    22004
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "eapolcfg_auth",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_1000011C8"
+  ],
+  "dispatch_routine_offsets": [
+    "0x11c8"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "library_path": "/usr/sbin/spindump",
+  "start_function": "",
+  "subsystem_num": 2,
+  "subsystem_start_ids": [
+    1,
+    1003
+  ],
+  "subsystem_end_ids": [
+    3,
+    1011
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "spindump",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_1000B3454",
+    "sub_1000B3488"
+  ],
+  "dispatch_routine_offsets": [
+    "0xb3454",
+    "0xb3488"
+  ]
+}

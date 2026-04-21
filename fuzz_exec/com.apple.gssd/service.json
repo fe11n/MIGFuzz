@@ -1,0 +1,23 @@
+{
+  "library_path": "/usr/sbin/gssd",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    999
+  ],
+  "subsystem_end_ids": [
+    1008
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "gssd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100009454"
+  ],
+  "dispatch_routine_offsets": [
+    "0x9454"
+  ]
+}

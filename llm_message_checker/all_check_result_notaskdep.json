@@ -1,0 +1,588 @@
+{
+  "services": {
+    "com.apple.AssistiveControl": {
+      "compile_success": true,
+      "total_ids": 3,
+      "org_success_ids": 3,
+      "reg_success_ids": 3
+    },
+    "com.apple.CoreLocationAgent": {
+      "compile_success": true,
+      "total_ids": 1,
+      "org_success_ids": 0,
+      "reg_success_ids": 0
+    },
+    "com.apple.Dock.agent": {
+      "compile_success": true,
+      "total_ids": 53,
+      "org_success_ids": 0,
+      "reg_success_ids": 0
+    },
+    "com.apple.DwellControl": {
+      "compile_success": true,
+      "total_ids": 3,
+      "org_success_ids": 3,
+      "reg_success_ids": 3
+    },
+    "com.apple.FileCoordination": {
+      "compile_success": true,
+      "total_ids": 8,
+      "org_success_ids": 8,
+      "reg_success_ids": 8
+    },
+    "com.apple.Kerberos.digest-service": {
+      "compile_success": true,
+      "total_ids": 2,
+      "org_success_ids": 0,
+      "reg_success_ids": 0
+    },
+    "com.apple.Kerberos.kcm": {
+      "compile_success": true,
+      "total_ids": 2,
+      "org_success_ids": 0,
+      "reg_success_ids": 0
+    },
+    "com.apple.Kerberos.kdc": {
+      "compile_success": true,
+      "total_ids": 2,
+      "org_success_ids": 0,
+      "reg_success_ids": 0
+    },
+    "com.apple.ManagedClient": {
+      "compile_success": true,
+      "total_ids": 49,
+      "org_success_ids": 20,
+      "reg_success_ids": 28
+    },
+    "com.apple.ManagedClient.enroll": {
+      "compile_success": true,
+      "total_ids": 49,
+      "org_success_ids": 20,
+      "reg_success_ids": 36
+    },
+    "com.apple.ManagedClient.mechanism": {
+      "compile_success": true,
+      "total_ids": 49,
+      "org_success_ids": 18,
+      "reg_success_ids": 27
+    },
+    "com.apple.ManagedClient.startup": {
+      "compile_success": true,
+      "total_ids": 49,
+      "org_success_ids": 20,
+      "reg_success_ids": 34
+    },
+    "com.apple.MobileFileIntegrity": {
+      "compile_success": true,
+      "total_ids": 10,
+      "org_success_ids": 5,
+      "reg_success_ids": 9
+    },
+    "com.apple.RFBEventHelper": {
+      "compile_success": true,
+      "total_ids": 3,
+      "org_success_ids": 2,
+      "reg_success_ids": 3
+    },
+    "com.apple.RemoteDesktop.PrivilegeProxy": {
+      "compile_success": true,
+      "total_ids": 3,
+      "org_success_ids": 2,
+      "reg_success_ids": 3
+    },
+    "com.apple.RemoteDesktop.agent": {
+      "compile_success": true,
+      "total_ids": 2,
+      "org_success_ids": 2,
+      "reg_success_ids": 2
+    },
+    "com.apple.ReportCrash": {
+      "compile_success": true,
+      "total_ids": 6,
+      "org_success_ids": 2,
+      "reg_success_ids": 5
+    },
+    "com.apple.ReportCrash.Root": {
+      "compile_success": true,
+      "total_ids": 6,
+      "org_success_ids": 1,
+      "reg_success_ids": 4
+    },
+    "com.apple.SCHelper": {
+      "compile_success": true,
+      "total_ids": 2,
+      "org_success_ids": 2,
+      "reg_success_ids": 2
+    },
+    "com.apple.ScreenReaderUIServer": {
+      "compile_success": true,
+      "total_ids": 2,
+      "org_success_ids": 1,
+      "reg_success_ids": 1
+    },
+    "com.apple.SystemUIServer.agent": {
+      "compile_success": true,
+      "total_ids": 1,
+      "org_success_ids": 0,
+      "reg_success_ids": 1
+    },
+    "com.apple.TrustEvaluationAgent": {
+      "compile_success": true,
+      "total_ids": 1,
+      "org_success_ids": 1,
+      "reg_success_ids": 1
+    },
+    "com.apple.TrustEvaluationAgent.system": {
+      "compile_success": true,
+      "total_ids": 1,
+      "org_success_ids": 1,
+      "reg_success_ids": 1
+    },
+    "com.apple.WindowServer": {
+      "compile_success": false,
+      "total_ids": 0,
+      "org_success_ids": null,
+      "reg_success_ids": null
+    },
+    "com.apple.afpfs_afpLoad": {
+      "compile_success": true,
+      "total_ids": 1,
+      "org_success_ids": 1,
+      "reg_success_ids": 1
+    },
+    "com.apple.afpfs_checkafp": {
+      "compile_success": true,
+      "total_ids": 1,
+      "org_success_ids": 1,
+      "reg_success_ids": 1
+    },
+    "com.apple.airport.wps": {
+      "compile_success": true,
+      "total_ids": 2,
+      "org_success_ids": 1,
+      "reg_success_ids": 1
+    },
+    "com.apple.alf.useragent": {
+      "compile_success": true,
+      "total_ids": 1,
+      "org_success_ids": 1,
+      "reg_success_ids": 1
+    },
+    "com.apple.audio.coreaudiod": {
+      "compile_success": false,
+      "total_ids": 0,
+      "org_success_ids": null,
+      "reg_success_ids": null
+    },
+    "com.apple.auditd": {
+      "compile_success": true,
+      "total_ids": 3,
+      "org_success_ids": 2,
+      "reg_success_ids": 2
+    },
+    "com.apple.automountd": {
+      "compile_success": true,
+      "total_ids": 8,
+      "org_success_ids": 1,
+      "reg_success_ids": 3
+    },
+    "com.apple.bsd.dirhelper": {
+      "compile_success": true,
+      "total_ids": 7,
+      "org_success_ids": 1,
+      "reg_success_ids": 6
+    },
+    "com.apple.cmio.AVCAssistant": {
+      "compile_success": true,
+      "total_ids": 23,
+      "org_success_ids": 18,
+      "reg_success_ids": 22
+    },
+    "com.apple.cmio.IIDCVideoAssistant": {
+      "compile_success": true,
+      "total_ids": 21,
+      "org_success_ids": 19,
+      "reg_success_ids": 21
+    },
+    "com.apple.cmio.VDCAssistant": {
+      "compile_success": true,
+      "total_ids": 24,
+      "org_success_ids": 21,
+      "reg_success_ids": 24
+    },
+    "com.apple.cmio.iOSScreenCaptureAssistant": {
+      "compile_success": true,
+      "total_ids": 8,
+      "org_success_ids": 7,
+      "reg_success_ids": 8
+    },
+    "com.apple.configd": {
+      "compile_success": true,
+      "total_ids": 18,
+      "org_success_ids": 12,
+      "reg_success_ids": 17
+    },
+    "com.apple.coreimportd": {
+      "compile_success": true,
+      "total_ids": 1,
+      "org_success_ids": 1,
+      "reg_success_ids": 1
+    },
+    "com.apple.coreservices.useractivityd": {
+      "compile_success": true,
+      "total_ids": 8,
+      "org_success_ids": 2,
+      "reg_success_ids": 6
+    },
+    "com.apple.corespotlightd": {
+      "compile_success": true,
+      "total_ids": 1,
+      "org_success_ids": 1,
+      "reg_success_ids": 1
+    },
+    "com.apple.dspluginhelperd": {
+      "compile_success": true,
+      "total_ids": 9,
+      "org_success_ids": 4,
+      "reg_success_ids": 6
+    },
+    "com.apple.eapolcfg_auth": {
+      "compile_success": true,
+      "total_ids": 4,
+      "org_success_ids": 2,
+      "reg_success_ids": 4
+    },
+    "com.apple.endpointsecurity.endpointsecurityd": {
+      "compile_success": true,
+      "total_ids": 2,
+      "org_success_ids": 2,
+      "reg_success_ids": 2
+    },
+    "com.apple.fairplayd": {
+      "compile_success": true,
+      "total_ids": 11,
+      "org_success_ids": 8,
+      "reg_success_ids": 11
+    },
+    "com.apple.familycontrols": {
+      "compile_success": true,
+      "total_ids": 28,
+      "org_success_ids": 6,
+      "reg_success_ids": 18
+    },
+    "com.apple.familycontrols.useragent": {
+      "compile_success": true,
+      "total_ids": 1,
+      "org_success_ids": 1,
+      "reg_success_ids": 1
+    },
+    "com.apple.filesystems.doubleagentd": {
+      "compile_success": true,
+      "total_ids": 4,
+      "org_success_ids": 1,
+      "reg_success_ids": 3
+    },
+    "com.apple.filesystems.fskitd": {
+      "compile_success": true,
+      "total_ids": 40,
+      "org_success_ids": 22,
+      "reg_success_ids": 34
+    },
+    "com.apple.fseventsd": {
+      "compile_success": true,
+      "total_ids": 7,
+      "org_success_ids": 6,
+      "reg_success_ids": 7
+    },
+    "com.apple.gssd": {
+      "compile_success": true,
+      "total_ids": 9,
+      "org_success_ids": 5,
+      "reg_success_ids": 7
+    },
+    "com.apple.ioupsd": {
+      "compile_success": true,
+      "total_ids": 3,
+      "org_success_ids": 3,
+      "reg_success_ids": 3
+    },
+    "com.apple.kernelmanager_helper": {
+      "compile_success": true,
+      "total_ids": 1,
+      "org_success_ids": 0,
+      "reg_success_ids": 0
+    },
+    "com.apple.kernelmanagerd": {
+      "compile_success": true,
+      "total_ids": 1,
+      "org_success_ids": 0,
+      "reg_success_ids": 0
+    },
+    "com.apple.kuncd": {
+      "compile_success": true,
+      "total_ids": 7,
+      "org_success_ids": 1,
+      "reg_success_ids": 2
+    },
+    "com.apple.locationd": {
+      "compile_success": true,
+      "total_ids": 2,
+      "org_success_ids": 1,
+      "reg_success_ids": 1
+    },
+    "com.apple.logd": {
+      "compile_success": true,
+      "total_ids": 5,
+      "org_success_ids": 4,
+      "reg_success_ids": 4
+    },
+    "com.apple.lskdd": {
+      "compile_success": true,
+      "total_ids": 6,
+      "org_success_ids": 0,
+      "reg_success_ids": 0
+    },
+    "com.apple.mdworker.mail": {
+      "compile_success": true,
+      "total_ids": 10,
+      "org_success_ids": 4,
+      "reg_success_ids": 7
+    },
+    "com.apple.mdworker.shared": {
+      "compile_success": true,
+      "total_ids": 10,
+      "org_success_ids": 4,
+      "reg_success_ids": 7
+    },
+    "com.apple.mdworker.single.arm64": {
+      "compile_success": true,
+      "total_ids": 10,
+      "org_success_ids": 5,
+      "reg_success_ids": 7
+    },
+    "com.apple.mdworker.single.x86_64": {
+      "compile_success": true,
+      "total_ids": 10,
+      "org_success_ids": 4,
+      "reg_success_ids": 8
+    },
+    "com.apple.mdworker.sizing": {
+      "compile_success": true,
+      "total_ids": 10,
+      "org_success_ids": 4,
+      "reg_success_ids": 8
+    },
+    "com.apple.memory-maintenance": {
+      "compile_success": true,
+      "total_ids": 2,
+      "org_success_ids": 2,
+      "reg_success_ids": 2
+    },
+    "com.apple.metadata.mdbulkimport": {
+      "compile_success": true,
+      "total_ids": 10,
+      "org_success_ids": 5,
+      "reg_success_ids": 7
+    },
+    "com.apple.metadata.mdflagwriter": {
+      "compile_success": false,
+      "total_ids": 0,
+      "org_success_ids": null,
+      "reg_success_ids": null
+    },
+    "com.apple.metadata.mds": {
+      "compile_success": true,
+      "total_ids": 97,
+      "org_success_ids": 36,
+      "reg_success_ids": 63
+    },
+    "com.apple.metadata.mds.index": {
+      "compile_success": true,
+      "total_ids": 51,
+      "org_success_ids": 45,
+      "reg_success_ids": 50
+    },
+    "com.apple.metadata.mds.scan": {
+      "compile_success": true,
+      "total_ids": 13,
+      "org_success_ids": 6,
+      "reg_success_ids": 8
+    },
+    "com.apple.metadata.mds.spindump": {
+      "compile_success": true,
+      "total_ids": 10,
+      "org_success_ids": 5,
+      "reg_success_ids": 7
+    },
+    "com.apple.netauth.sys.auth": {
+      "compile_success": true,
+      "total_ids": 10,
+      "org_success_ids": 6,
+      "reg_success_ids": 10
+    },
+    "com.apple.netauth.sys.gui": {
+      "compile_success": true,
+      "total_ids": 24,
+      "org_success_ids": 13,
+      "reg_success_ids": 22
+    },
+    "com.apple.netauth.user.auth": {
+      "compile_success": true,
+      "total_ids": 10,
+      "org_success_ids": 5,
+      "reg_success_ids": 9
+    },
+    "com.apple.netauth.user.gui": {
+      "compile_success": true,
+      "total_ids": 24,
+      "org_success_ids": 11,
+      "reg_success_ids": 22
+    },
+    "com.apple.nlcd": {
+      "compile_success": true,
+      "total_ids": 5,
+      "org_success_ids": 1,
+      "reg_success_ids": 2
+    },
+    "com.apple.notifyd": {
+      "compile_success": true,
+      "total_ids": 37,
+      "org_success_ids": 11,
+      "reg_success_ids": 22
+    },
+    "com.apple.opendirectoryd": {
+      "compile_success": true,
+      "total_ids": 4,
+      "org_success_ids": 1,
+      "reg_success_ids": 4
+    },
+    "com.apple.powerd": {
+      "compile_success": true,
+      "total_ids": 36,
+      "org_success_ids": 0,
+      "reg_success_ids": 0
+    },
+    "com.apple.preferences.timezone.admintool": {
+      "compile_success": true,
+      "total_ids": 2,
+      "org_success_ids": 1,
+      "reg_success_ids": 2
+    },
+    "com.apple.quicklook": {
+      "compile_success": true,
+      "total_ids": 9,
+      "org_success_ids": 7,
+      "reg_success_ids": 7
+    },
+    "com.apple.quicklook.ui.helper": {
+      "compile_success": true,
+      "total_ids": 23,
+      "org_success_ids": 17,
+      "reg_success_ids": 21
+    },
+    "com.apple.sandboxd": {
+      "compile_success": true,
+      "total_ids": 22,
+      "org_success_ids": 11,
+      "reg_success_ids": 16
+    },
+    "com.apple.screensharing": {
+      "compile_success": true,
+      "total_ids": 22,
+      "org_success_ids": 19,
+      "reg_success_ids": 21
+    },
+    "com.apple.screensharing.agent": {
+      "compile_success": true,
+      "total_ids": 55,
+      "org_success_ids": 49,
+      "reg_success_ids": 55
+    },
+    "com.apple.security.syspolicy": {
+      "compile_success": true,
+      "total_ids": 10,
+      "org_success_ids": 1,
+      "reg_success_ids": 2
+    },
+    "com.apple.securityd": {
+      "compile_success": false,
+      "total_ids": 0,
+      "org_success_ids": null,
+      "reg_success_ids": null
+    },
+    "com.apple.spindump": {
+      "compile_success": true,
+      "total_ids": 10,
+      "org_success_ids": 10,
+      "reg_success_ids": 10
+    },
+    "com.apple.suhelperd": {
+      "compile_success": true,
+      "total_ids": 37,
+      "org_success_ids": 25,
+      "reg_success_ids": 34
+    },
+    "com.apple.sysdiagnose": {
+      "compile_success": true,
+      "total_ids": 2,
+      "org_success_ids": 2,
+      "reg_success_ids": 2
+    },
+    "com.apple.syslogd": {
+      "compile_success": true,
+      "total_ids": 6,
+      "org_success_ids": 0,
+      "reg_success_ids": 4
+    },
+    "com.apple.tailspind": {
+      "compile_success": true,
+      "total_ids": 1,
+      "org_success_ids": 1,
+      "reg_success_ids": 1
+    },
+    "com.apple.taskgated": {
+      "compile_success": true,
+      "total_ids": 3,
+      "org_success_ids": 2,
+      "reg_success_ids": 3
+    },
+    "com.apple.touchbarserver": {
+      "compile_success": true,
+      "total_ids": 26,
+      "org_success_ids": 20,
+      "reg_success_ids": 25
+    },
+    "com.apple.uninstalld": {
+      "compile_success": true,
+      "total_ids": 7,
+      "org_success_ids": 6,
+      "reg_success_ids": 6
+    },
+    "com.apple.universalaccesscontrol": {
+      "compile_success": true,
+      "total_ids": 6,
+      "org_success_ids": 6,
+      "reg_success_ids": 6
+    },
+    "com.apple.universalaccessd": {
+      "compile_success": true,
+      "total_ids": 8,
+      "org_success_ids": 8,
+      "reg_success_ids": 8
+    },
+    "com.apple.watchdogd": {
+      "compile_success": true,
+      "total_ids": 1,
+      "org_success_ids": 0,
+      "reg_success_ids": 0
+    }
+  },
+  "summary": {
+    "total_services": 96,
+    "uncheckable_services": 0,
+    "compile_failed_services": 4,
+    "total_ids": 1207,
+    "total_org_success": 619,
+    "total_reg_success": 877
+  }
+}

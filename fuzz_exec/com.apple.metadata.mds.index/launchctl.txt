@@ -1,0 +1,76 @@
+system/com.apple.metadata.mds.index = {
+	active count = 3
+	path = /System/Library/LaunchDaemons/com.apple.metadata.mds.index.plist
+	type = LaunchDaemon
+	state = running
+	bundle id = com.apple.Spotlight
+
+	program = /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mds_stores
+	arguments = {
+		/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mds_stores
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocSpaceEfficient => 1
+		XPC_SERVICE_NAME => com.apple.metadata.mds.index
+	}
+
+	domain = system
+	minimum runtime = 10
+	base minimum runtime = 10
+	exit timeout = 5
+	runs = 1
+	pid = 26632
+	immediate reason = ipc (mach)
+	forks = 0
+	execs = 1
+	initialized = 1
+	trampolined = 1
+	started suspended = 0
+	proxy started suspended = 0
+	last exit code = (never exited)
+
+	endpoints = {
+		"com.apple.metadata.mds.index.xpc" = {
+			port = 0x2b903
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.metadata.mds.index" = {
+			port = 0x2b803
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+	}
+
+	spawn type = interactive (4)
+	jetsam priority = 40
+	jetsam memory limit (active, soft) = 1000 MB
+	jetsam memory limit (inactive, soft) = 1000 MB
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	resource limits = {
+		maxfiles (soft) => 2048
+		maxfiles (hard) => 2048
+	}
+
+	exponential throttling grace limit = 3
+	job state = running
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = low priority background i/o | supports transactions | inferred program | system service | exponential throttling | tle system
+}

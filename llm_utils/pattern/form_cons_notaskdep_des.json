@@ -1,0 +1,51 @@
+{
+  "2008": {
+    "header_constraints": {
+      "msg_bits": {
+        "complex_bit": {
+          "constraints": "bit 0 == 1"
+        },
+        "pad": {
+          "constraints": "value == 0"
+        },
+        "voucher_disposition": {
+          "constraints": "value == 0"
+        },
+        "local_disposition": {
+          "constraints": "value == 0"
+        },
+        "remote_disposition": {
+          "constraints": "value == MACH_MSG_TYPE_COPY_SEND (19)"
+        }
+      },
+      "msg_size": {
+        "constraints": "value == 40"
+      },
+      "remote_port": {
+        "constraints": "No explicit constraints."
+      },
+      "local_port": {
+        "constraints": "Must be a valid Mach port."
+      },
+      "voucher_port": {
+        "constraints": "No explicit constraints."
+      },
+      "msg_id": {
+        "constraints": "value == 2008"
+      }
+    },
+    "body_constraints": {
+      "descriptor_section": [
+        {
+          "index": 1,
+          "type": "Port Descriptor",
+          "offset_start": 28,
+          "offset_end": 40,
+          "constraints": "offset 38 (disposition) == 0x12, offset 39 (type) == 0x00"
+        }
+      ],
+      "body": [],
+      "trailer": []
+    }
+  }
+}

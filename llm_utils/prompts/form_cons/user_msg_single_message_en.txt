@@ -1,0 +1,39 @@
+I need to generate structured constraint descriptions for message ID {message_id}.
+
+## Message Details Analysis
+
+### Message ID {message_id} - {function_name}
+
+**Main function pseudocode (message parsing logic):**
+```c
+{pseudocode}
+```
+
+**Analysis points:**
+- Observe how the main function extracts data from messages
+- Analyze message field structure and validation logic
+- Understand the role of each field in message parsing
+
+## Task Requirements
+Please carefully analyze the pseudocode for the above message ID and generate structured constraint descriptions.
+
+Requirements:
+1. **Strict JSON format**: Include total_size, is_ool, header, descriptor_section, body, trailer sections
+2. **Detailed analysis of each element**: Provide offset, size, type, constraint_analysis, purpose description
+3. **Variable handling**: For variable-length messages, define all independent variables in variables section
+4. **Precise constraints**: Based on pseudocode analysis, provide accurate constraint expressions
+5. **🎯 Detailed Descriptor Field Constraint Analysis Requirements**: For messages containing descriptors, must analyze constraints for each field within descriptors in detail:
+   - **OOL Data Descriptor**: Analyze specific constraints for address, size, deallocate, copy, pad1, type fields
+   - **Port Descriptor**: Analyze specific constraints for name, pad1, pad2, disposition, type fields
+   - **OOL Port Array Descriptor**: Analyze specific constraints for address, count, deallocate, copy, disposition, type, pad fields
+   - Each descriptor field must include constraint_analysis structure (code, analysis, constraint three sub-elements)
+6. **🎯 constraint_analysis structure requirements**: Each field must include the following three sub-elements:
+   - **code**: Based on the field's offset position, find the original code snippet involving this field's constraints in the code
+   - **analysis**: Based on code, specifically analyze this field's constraints, clearly analyze the impact of field validation on control flow, explain why specific constraints are needed to reach the handler function
+   - **constraint**: Specific constraint requirements for this field, must be conditions that allow program to reach actual handler function (may be opposite to surface check conditions in code)
+
+## constraint_analysis Analysis Guidelines
+- **Offset matching principle**: Based on field's offset value, find corresponding memory access code in pseudocode (e.g., `*(_DWORD *)(a1 + 4)` represents 4-byte field at offset 4)
+- **Control flow analysis**: Analyze program branches after each field check, identify which conditions cause early error returns
+- **Constraint inversion logic**: If code is `if (condition) {{ return error; }}`, then successful execution constraint is `NOT condition`
+- **Execution path priority**: Constraint goal is to let program execute to actual handler function, not just pass surface checks

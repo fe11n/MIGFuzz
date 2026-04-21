@@ -1,0 +1,139 @@
+[
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.RemoteDesktop.PrivilegeProxy/out/icrashes/access_violation_0xxxxxxx4ec_0xxxxxxx074_3",
+        "messages": [
+            {
+                "body": "020000000080e10401000000010200011f0d000000c0e10401000000010200015003000045454545454545451f0d000050030000",
+                "header": {
+                    "msgh_bits": 2147483667,
+                    "msgh_id": 26501,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 76,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "45454545454545450f0945457afb295415442bde009c1e1d00000000010000000100000001000000",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 26500,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 64,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "0050690f00000000000000010000000000006c67747511000100000000000000010020ff45450f00",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 26500,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 64,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "454545454545454545454545454545454545454545454545540f0945de7afb291d15442b00009c1e",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 26500,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 64,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "0000000000000100000001000f000100000050690100000000000000670000000000006c00747511",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 26500,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 64,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "0000010020ff00000f00010045454545454545454545454545454545454545454545454545454545",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 26500,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 64,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "fb29540f442bde7a9c1e1d1500000000000000000000000100000001690f00010000005000010000",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 26500,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 64,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "00000000006c67007511000000000074000000010020ff00450f0001454545454545454545454545",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 26500,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 64,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "4545454545454545454545450f0945457afb295415442bde009c1e1d000000000100000001000000",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 26500,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 64,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "000100000050690f00000000000000010000000000006c6774751100af000000527e30d9dc77bddf",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 26500,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 64,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 26502,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 24,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "020000000080e10401000000000100015109000000c0e10401000000000100010100000000000000000000005109000001000000",
+                "header": {
+                    "msgh_bits": 2147483667,
+                    "msgh_id": 26501,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 76,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ]
+    }
+]

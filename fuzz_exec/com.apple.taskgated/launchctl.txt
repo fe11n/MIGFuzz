@@ -1,0 +1,54 @@
+system/com.apple.taskgated = {
+	active count = 0
+	path = /System/Library/LaunchDaemons/com.apple.taskgated.plist
+	type = LaunchDaemon
+	state = not running
+
+	program = /usr/libexec/taskgated
+	arguments = {
+		/usr/libexec/taskgated
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocSpaceEfficient => 1
+		XPC_SERVICE_NAME => com.apple.taskgated
+	}
+
+	domain = system
+	minimum runtime = 10
+	base minimum runtime = 10
+	exit timeout = 5
+	runs = 0
+	last exit code = (never exited)
+
+	endpoints = {
+		"com.apple.taskgated" = {
+			port = 0x2203
+			task-special port = 9 (access)
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 1
+		}
+	}
+
+	spawn type = interactive (4)
+	jetsam priority = 40
+	jetsam memory limit (active, soft) = 35 MB
+	jetsam memory limit (inactive, soft) = 35 MB
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	exponential throttling grace limit = 10
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = supports transactions | inferred program | system service | exponential throttling | tle system
+}

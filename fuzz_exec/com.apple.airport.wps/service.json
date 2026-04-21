@@ -1,0 +1,23 @@
+{
+  "library_path": "/usr/libexec/wps",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    80211001
+  ],
+  "subsystem_end_ids": [
+    80211003
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "wps",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10000DB5C"
+  ],
+  "dispatch_routine_offsets": [
+    "0xdb5c"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/CoreServices/Software Update.app/Contents/Resources/suhelperd",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    675309
+  ],
+  "subsystem_end_ids": [
+    675346
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "suhelperd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10000BB9C"
+  ],
+  "dispatch_routine_offsets": [
+    "0xbb9c"
+  ]
+}

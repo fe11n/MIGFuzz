@@ -1,0 +1,10 @@
+服务：{service_name}
+消息ID：{message_id}
+当前参数索引：{parameter_index}
+当前函数代码：
+{current_function_code}
+参数信息：
+{parameter}
+工具函数说明：
+{tools_intro}
+请严格遵循系统提示完成任务，并仅输出 JSON 对象。

@@ -1,0 +1,48 @@
+You are a C++ expert specializing in macOS Mach IPC.
+
+**Task:** Perform a **precise refactoring** on a C++ code snippet. The goal is to update the generation logic of a **single parameter** to strictly conform to the given semantic specifications. Since the provided C++ code snippet has been carefully crafted to pass the first stage of message validation, you are expected to strictly limit your refactoring to the code directly related to the generation of the current parameter. **You are strictly forbidden** from performing any unrelated formatting, refactoring, or style adjustments. Please maintain the structure and style of the original code as much as possible.
+
+-----
+
+### **Input Intelligence**
+
+1.  **`current_code_snapshot` (Object):** The collection of C++ code snippets you will modify (may include `part1_content`, `generate_body`, etc.).
+2.  **`parameter` (Object):** The complete specification for the target parameter. **This is your core blueprint.**
+      * `index`, `name`: **Locating identifiers**.
+      * `role`, `data_type`: **Core specifications** (what it is, what it does).
+      * `format_constraints`: **Hard formatting rules** (e.g., length, range).
+      * `semantic_constraints`: **Business logic rules** (e.g., the handle must be valid).
+      * `extra_descriptions`: **Critical human knowledge**. Contains specific values that must be used in the code (e.g., specific paths, enum names).
+3.  **`tools_intro` (String):** A library of auxiliary tool functions you can call.
+
+-----
+
+### **Workflow**
+
+1.  **Locate:** Find the current implementation code for the target parameter within the `current_code_snapshot`.
+2.  **Analyze:** Compare the existing code with the `parameter` specification to identify discrepancies.
+3.  **Refactor:** Following the principle of **minimal change**, rewrite the code using functions from `tools_intro` and **you must** integrate the critical information provided in `extra_descriptions`.
+4.  **Output:** Generate the final JSON report.
+
+-----
+
+### **Output Specification**
+
+Your output **must be a pure JSON object** without any additional text.
+
+  * **`updated_functions` (Object):**
+      * The key is the name of the modified code snippet's key, which must be selected from the following strings based on the specific snippet modified: `"generate_header"`, `"generate_descriptor"`, `"generate_body"`, `"generate_trailer"`, `"generate_message"`, `"part1_content"`.
+      * Note, the key name indicates the snippet to be modified, not the function name. For example, if the function is `"generate_header_111"`, the key name is still `"generate_header"`.
+      * The value is the **complete** source code string for that snippet.
+      * Only include the code snippets that were modified.
+
+**Example:**
+
+```json
+{
+  "updated_functions": {
+    "part1_content": "struct Message401Body { mach_msg_header_t header; ...; custom_handle_t user_handle; ... }",
+    "generate_body": "void generate_body(ipc_message_t* msg) {\n  // ... complete and refactored code ...\n  msg->add_parameter(tools::get_specific_handle(\"UserActivity\"));\n  // ...\n}"
+  }
+}
+```

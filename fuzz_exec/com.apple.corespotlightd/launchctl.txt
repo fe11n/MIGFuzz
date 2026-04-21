@@ -1,0 +1,333 @@
+gui/501/com.apple.corespotlightd = {
+	active count = 9
+	path = /System/Library/LaunchAgents/com.apple.corespotlightd.plist
+	type = LaunchAgent
+	state = running
+
+	program = /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/corespotlightd
+	arguments = {
+		/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/corespotlightd
+	}
+
+	inherited environment = {
+		SSH_AUTH_SOCK => /private/tmp/com.apple.launchd.9wN8jZLmjZ/Listeners
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocSpaceEfficient => 1
+		XPC_SERVICE_NAME => com.apple.corespotlightd
+	}
+
+	domain = gui/501 [100003]
+	asid = 100003
+	minimum runtime = 10
+	base minimum runtime = 10
+	exit timeout = 5
+	runs = 1
+	pid = 26857
+	immediate reason = ipc (mach)
+	forks = 0
+	execs = 1
+	initialized = 1
+	trampolined = 1
+	started suspended = 0
+	proxy started suspended = 0
+	last exit code = (never exited)
+
+	event triggers = {
+		com.apple.spotlight.textstore.Analytics => {
+			keepalive = 0
+			service = com.apple.corespotlightd
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-Aqua
+			descriptor = {
+				"Repeating" => true
+				"_SequenceNumber" => 1
+				"GracePeriod" => 300
+				"Delay" => 3600
+			}
+		}
+		com.apple.DataDeliveryServices.update.com.apple.MobileAsset.SpotlightResources => {
+			keepalive = 0
+			service = com.apple.corespotlightd
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-Aqua
+			descriptor = {
+				"_SequenceNumber" => 1
+				"GracePeriod" => 16261
+				"Delay" => 32521
+				"Priority" => "Utility"
+			}
+		}
+		com.apple.LaunchServices.applicationUnregistered => {
+			keepalive = 0
+			service = com.apple.corespotlightd
+			stream = com.apple.distnoted.matching
+			monitor = com.apple.UserEventAgent-Aqua
+			descriptor = {
+				"Name" => "com.apple.LaunchServices.applicationUnregistered"
+			}
+		}
+		com.apple.searchd.reportStorageUsage => {
+			keepalive = 0
+			service = com.apple.corespotlightd
+			stream = com.apple.bg.system.task
+			monitor = com.apple.dasd
+			descriptor = {
+				"RequiresNetworkConnectivity" => false
+				"RepeatingTask" => {
+					"Interval" => 86400
+				}
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.searchd.duplicateOidCheck => {
+			keepalive = 0
+			service = com.apple.corespotlightd
+			stream = com.apple.bg.system.task
+			monitor = com.apple.dasd
+			descriptor = {
+				"RequiresExternalPower" => false
+				"RequiresNetworkConnectivity" => false
+				"RepeatingTask" => {
+					"Interval" => 86400
+				}
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.searchd.reportAppUsage => {
+			keepalive = 0
+			service = com.apple.corespotlightd
+			stream = com.apple.bg.system.task
+			monitor = com.apple.dasd
+			descriptor = {
+				"RequiresNetworkConnectivity" => false
+				"RepeatingTask" => {
+					"Interval" => 86400
+				}
+				"Priority" => "Maintenance"
+				"RequiresProtectionClass" => "A"
+			}
+		}
+		com.apple.corespotlight.developer.ReindexAllItemsWithIdentifiers => {
+			keepalive = 0
+			service = com.apple.corespotlightd
+			stream = com.apple.notifyd.matching
+			monitor = com.apple.notifyd
+			descriptor = {
+				"Notification" => "com.apple.corespotlight.developer.ReindexAllItemsWithIdentifiers"
+			}
+		}
+		com.apple.spotlightui.prefschanged => {
+			keepalive = 0
+			service = com.apple.corespotlightd
+			stream = com.apple.notifyd.matching
+			monitor = com.apple.notifyd
+			descriptor = {
+				"Notification" => "com.apple.spotlightui.prefschanged"
+			}
+		}
+		com.apple.datamigrator.migrationDidFinish => {
+			keepalive = 0
+			service = com.apple.corespotlightd
+			stream = com.apple.notifyd.matching
+			monitor = com.apple.notifyd
+			descriptor = {
+				"Notification" => "com.apple.datamigrator.migrationDidFinish"
+			}
+		}
+		com.apple.corespotlight.developer.ReindexAllItems => {
+			keepalive = 0
+			service = com.apple.corespotlightd
+			stream = com.apple.notifyd.matching
+			monitor = com.apple.notifyd
+			descriptor = {
+				"Notification" => "com.apple.corespotlight.developer.ReindexAllItems"
+			}
+		}
+		com.apple.searchd.loadtrial => {
+			keepalive = 0
+			service = com.apple.corespotlightd
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-Aqua
+			descriptor = {
+				"Repeating" => true
+				"Interval" => 43200
+				"GracePeriod" => 3600
+				"Delay" => 3600
+				"AllowBattery" => true
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.corespotlightd.updateContacts => {
+			keepalive = 0
+			service = com.apple.corespotlightd
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-Aqua
+			descriptor = {
+				"Repeating" => true
+				"GracePeriod" => 43200
+				"Interval" => 86400
+				"PowerNap" => true
+				"Delay" => 86400
+				"AllowBattery" => false
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.searchd.heartbeat => {
+			keepalive = 0
+			service = com.apple.corespotlightd
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-Aqua
+			descriptor = {
+				"Repeating" => true
+				"Interval" => 7200
+				"GracePeriod" => 300
+				"Delay" => 7200
+				"AllowBattery" => true
+				"Priority" => "Utility"
+			}
+		}
+		com.apple.searchd.expirations => {
+			keepalive = 0
+			service = com.apple.corespotlightd
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-Aqua
+			descriptor = {
+				"Repeating" => true
+				"Interval" => 86400.000000
+				"GracePeriod" => 43200.000000
+				"PowerNap" => true
+				"Delay" => 86400
+				"AllowBattery" => true
+				"Priority" => "Maintenance"
+			}
+		}
+		com.apple.searchd.expirations.AB => {
+			keepalive = 0
+			service = com.apple.corespotlightd
+			stream = com.apple.xpc.activity
+			monitor = com.apple.UserEventAgent-Aqua
+			descriptor = {
+				"Repeating" => true
+				"Interval" => 86400.000000
+				"GracePeriod" => 43200.000000
+				"RequiresClassA" => true
+				"Delay" => 86400
+				"AllowBattery" => true
+				"Priority" => "Maintenance"
+			}
+		}
+	}
+
+	endpoints = {
+		"com.apple.spotlight.SearchAgent" = {
+			port = 0x66203
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.corespotlightd.cachedelete" = {
+			port = 0x6de03
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.spotlight.IndexDelegateAgent" = {
+			port = 0x57303
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+			non-launching = 1
+		}
+		"com.apple.spotlight.IndexAgent" = {
+			port = 0x6dd03
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.MobileAsset.SpotlightResources" = {
+			port = 0x66303
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+	}
+
+	event channels = {
+		"com.apple.biome.compute.publisher.user" = {
+			port = 0x84d03
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.distnoted.matching" = {
+			port = 0x66403
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.bg.system.task" = {
+			port = 0x66503
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.notifyd.matching" = {
+			port = 0x6dc03
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+		"com.apple.xpc.activity" = {
+			port = 0x66603
+			active = 1
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 0
+		}
+	}
+
+	spawn type = adaptive (6)
+	jetsam priority = 40
+	jetsam memory limit (active, soft) = 40 MB
+	jetsam memory limit (inactive, soft) = 40 MB
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	resource limits = {
+		maxfiles (soft) => 1024
+		maxfiles (hard) => 1024
+	}
+
+	exponential throttling grace limit = 3
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = partial import | supports transactions | supports pressured exit | inferred program | system service | exponential throttling | tle system
+}

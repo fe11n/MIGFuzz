@@ -1,0 +1,31 @@
+{
+  "library_path": "/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mds_stores",
+  "start_function": "",
+  "subsystem_num": 3,
+  "subsystem_start_ids": [
+    44200,
+    23000,
+    22000
+  ],
+  "subsystem_end_ids": [
+    44208,
+    23014,
+    22029
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "mds_stores",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10002B3E0",
+    "sub_10002B9E0",
+    "sub_10002CCA0"
+  ],
+  "dispatch_routine_offsets": [
+    "0x2b3e0",
+    "0x2b9e0",
+    "0x2cca0"
+  ]
+}

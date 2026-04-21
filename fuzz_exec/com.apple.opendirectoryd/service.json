@@ -1,0 +1,27 @@
+{
+  "library_path": "/usr/libexec/opendirectoryd",
+  "start_function": "",
+  "subsystem_num": 2,
+  "subsystem_start_ids": [
+    8500,
+    9500
+  ],
+  "subsystem_end_ids": [
+    8502,
+    9502
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "opendirectoryd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "_extmodule_reply_server_routine",
+    "_session_reply_server_routine"
+  ],
+  "dispatch_routine_offsets": [
+    "0x5acc8",
+    "0x5b3a8"
+  ]
+}

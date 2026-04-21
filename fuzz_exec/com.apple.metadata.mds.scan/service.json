@@ -1,0 +1,43 @@
+{
+  "library_path": "/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdsync",
+  "start_function": "",
+  "subsystem_num": 6,
+  "subsystem_start_ids": [
+    2405,
+    46000,
+    47000,
+    50000,
+    57000,
+    49000
+  ],
+  "subsystem_end_ids": [
+    2409,
+    46002,
+    47003,
+    50002,
+    57001,
+    49001
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "mdsync",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100038CC0",
+    "sub_100039838",
+    "sub_10003A0D8",
+    "sub_10003ACD0",
+    "sub_10003AFDC",
+    "sub_10003B18C"
+  ],
+  "dispatch_routine_offsets": [
+    "0x38cc0",
+    "0x39838",
+    "0x3a0d8",
+    "0x3acd0",
+    "0x3afdc",
+    "0x3b18c"
+  ]
+}

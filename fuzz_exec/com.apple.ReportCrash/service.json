@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/CoreServices/ReportCrash",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    2405
+  ],
+  "subsystem_end_ids": [
+    2412
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "ReportCrash",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_1000222F8"
+  ],
+  "dispatch_routine_offsets": [
+    "0x222f8"
+  ]
+}

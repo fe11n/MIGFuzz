@@ -1,0 +1,27 @@
+{
+  "library_path": "/usr/sbin/notifyd",
+  "start_function": "",
+  "subsystem_num": 2,
+  "subsystem_start_ids": [
+    64,
+    1000
+  ],
+  "subsystem_end_ids": [
+    73,
+    1033
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "notifyd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100008C8C",
+    "sub_10000B2A0"
+  ],
+  "dispatch_routine_offsets": [
+    "0x8c8c",
+    "0xb2a0"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "library_path": "/System/Library/PrivateFrameworks/ScreenReader.framework/Resources/ScreenReaderUIServer.app/Contents/MacOS/ScreenReaderUIServer",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    630400
+  ],
+  "subsystem_end_ids": [
+    630402
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "ScreenReaderUIServer",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_1000037D0"
+  ],
+  "dispatch_routine_offsets": [
+    "0x37d0"
+  ]
+}

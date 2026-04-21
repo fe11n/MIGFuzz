@@ -1,0 +1,111 @@
+system/com.apple.sysdiagnose = {
+	active count = 0
+	path = /System/Library/LaunchDaemons/com.apple.sysdiagnose.plist
+	type = LaunchDaemon
+	state = not running
+
+	program = /usr/libexec/sysdiagnosed
+	arguments = {
+		/usr/libexec/sysdiagnosed
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		MallocSpaceEfficient => 1
+		XPC_SERVICE_NAME => com.apple.sysdiagnose
+	}
+
+	domain = system
+	minimum runtime = 10
+	base minimum runtime = 10
+	exit timeout = 5
+	runs = 0
+	last exit code = (never exited)
+
+	event triggers = {
+		com.apple.sysdiagnose.remote => {
+			keepalive = 0
+			service = com.apple.sysdiagnose
+			stream = com.apple.remoted.service
+			monitor = com.apple.remoted
+			descriptor = {
+				"ServiceProperties" => {
+					"UsesRemoteXPC" => true
+				}
+				"ExposedToUntrustedDevices" => [
+					0 = "HasInternalSecurityPolicies"
+				]
+				"RequireEntitlement" => "com.apple.private.sysdiagnose.remote"
+			}
+		}
+		com.apple.sysdiagnose.remote.trusted => {
+			keepalive = 0
+			service = com.apple.sysdiagnose
+			stream = com.apple.remoted.service
+			monitor = com.apple.remoted
+			descriptor = {
+				"ServiceProperties" => {
+					"UsesRemoteXPC" => true
+				}
+				"RequireEntitlement" => "com.apple.private.sysdiagnose.remote"
+			}
+		}
+	}
+
+	endpoints = {
+		"com.apple.sysdiagnose.service.xpc" = {
+			port = 0x0
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 1
+		}
+		"com.apple.sysdiagnose.CacheDelete" = {
+			port = 0x0
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 1
+		}
+		"com.apple.sysdiagnose.kernel.ipc" = {
+			port = 0x2a03
+			host-special port = 23 (sysdiagnose notification)
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 1
+		}
+	}
+
+	event channels = {
+		"com.apple.remoted.service" = {
+			port = 0x0
+			active = 0
+			managed = 1
+			reset = 0
+			hide = 0
+			watching = 1
+		}
+	}
+
+	spawn type = interactive (4)
+	jetsam priority = 200
+	jetsam memory limit (active) = (unlimited)
+	jetsam memory limit (inactive) = (unlimited)
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	exponential throttling grace limit = 10
+	probabilistic guard malloc policy = {
+		activation rate = 1/1000
+		sample rate = 1/0
+	}
+
+	properties = supports transactions | supports pressured exit | inferred program | system service | exponential throttling | tle system
+}

@@ -1,0 +1,23 @@
+{
+  "library_path": "/usr/libexec/amfid",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    1000
+  ],
+  "subsystem_end_ids": [
+    1012
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "amfid",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_100009634"
+  ],
+  "dispatch_routine_offsets": [
+    "0x9634"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "library_path": "/usr/libexec/watchdogd",
+  "start_function": "",
+  "subsystem_num": 1,
+  "subsystem_start_ids": [
+    6009000
+  ],
+  "subsystem_end_ids": [
+    6009001
+  ],
+  "fuzz": {
+    "enabled": true,
+    "instrument_module": "watchdogd",
+    "iterations": 1000,
+    "threads": 5
+  },
+  "dispatch_routines": [
+    "sub_10000C21C"
+  ],
+  "dispatch_routine_offsets": [
+    "0xc21c"
+  ]
+}

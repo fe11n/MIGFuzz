@@ -1,0 +1,20 @@
+Please generate strict structured constraint descriptions for a single message ID of service {service_name}.
+
+## Target Function Information
+
+**Service Name**: {service_name}
+**Message ID**: {message_id}
+**Function Name**: {function_name}
+
+**Main Function Pseudocode:**
+```
+{pseudocode}
+```
+
+**Handler Function Pseudocode:**
+```
+{handle_function_pseudocode}
+```
+
+## Task Requirements
+Please refer to the example provided earlier and generate complete structured constraint descriptions for the above single message ID.

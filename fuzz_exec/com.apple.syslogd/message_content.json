@@ -1,0 +1,78 @@
+[
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.syslogd/out/crashes/access_violation_0xxxxxxxa34_0x54_1",
+        "messages": [
+            {
+                "body": "010000000000d40201000000010274017e0000006f6e650a66690a647e00000000000000340000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "header": {
+                    "msgh_bits": 2148799232,
+                    "msgh_id": 117,
+                    "msgh_local_port": 7427,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 56,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "77697468616e6420636f6d6d000000008c65602073616d7072756e2d68652060f5010000f501000014000000f5010000140000008a6a0000a3860100d96f0000",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 119,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "010000000000d40201000000010100016f000000706c655f2273616d6f0000000000000034000000746865206d61746368657320696c6520686520666966207465636b20232043682020202020646f0a6e202a3b",
+                "header": {
+                    "msgh_bits": 2148864768,
+                    "msgh_id": 118,
+                    "msgh_local_port": 1763730796,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 56,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ]
+    },
+    {
+        "filename": "/Users/fuzz_vr/Workspace/MachServerFuzz/fuzz_exec/com.apple.syslogd/out/icrashes/access_violation_0xxxxxxxa34_0x54_1",
+        "messages": [
+            {
+                "body": "010000000080500401000000010274017e0000006f6e650a66690a647e00000000000000340000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "header": {
+                    "msgh_bits": 2148799232,
+                    "msgh_id": 117,
+                    "msgh_local_port": 7683,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 56,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "77697468616e6420636f6d6d000000008c65602073616d7072756e2d68652060f5010000f501000014000000f50100001400000039690000a3860100276d0000",
+                "header": {
+                    "msgh_bits": 19,
+                    "msgh_id": 119,
+                    "msgh_local_port": 0,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 36,
+                    "msgh_voucher_port": 0
+                }
+            },
+            {
+                "body": "010000000080500401000000010100016f000000706c655f2273616d6f0000000000000034000000746865206d61746368657320696c6520686520666966207465636b20232043682020202020646f0a6e202a3b",
+                "header": {
+                    "msgh_bits": 2148864768,
+                    "msgh_id": 118,
+                    "msgh_local_port": 1763730796,
+                    "msgh_remote_port": 0,
+                    "msgh_size": 56,
+                    "msgh_voucher_port": 0
+                }
+            }
+        ]
+    }
+]
